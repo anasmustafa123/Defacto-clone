@@ -18,21 +18,21 @@
 - [ ] Men Page
 - [ ] Products Page
 - [ ] Product Page
-- [x] Favorites Page (Assigned to Doha)
+- [x] Favorites Page (Doha)
 - [ ] Help Page
 - [ ] Admin Page
 
 **Components**
-- [ ] Header (Assigned to Abanoub)
-- [ ] Footer (Assigned to Daghash)
+- [ ] Header (Abanoub)
+- [ ] Footer (Daghash)
 - [ ] Image Slider
 - [ ] Trends
 - [ ] Collections
 - [ ] Shopping Cart
 - [ ] Sidebar Filters
-- [ ] Register (Assigned to Mariam)
+- [ ] Register (Mariam)
 - [ ] Login
-- [x] Products View Images (Assigned to Abdallah / Anas)
+- [x] Products View Images (Abdallah / Anas)
 
 **Adding Functionality**
 - [ ]
