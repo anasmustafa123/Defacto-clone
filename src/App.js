@@ -1,9 +1,10 @@
 import './App.css';
 import ProductView from './components/ProductView/ProductView';
 function App() {
+  
   return (
     <div className="App">
-      
+      <h1>hi</h1>
     </div>
     
   );
