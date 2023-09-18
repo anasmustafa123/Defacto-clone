@@ -17,7 +17,7 @@
 - [ ] Women Page
 - [ ] Men Page
 - [ ] Products Page
-- [ ] Product Page
+- [ ] Product Page  (anas)
 - [x] Favorites Page (Doha)
 - [ ] Help Page
 - [ ] Admin Page
