@@ -1,4 +1,4 @@
-export function Stars({ starsCount }) {
+export default function Stars({ starsCount }) {
   const addStar = () => (
     <i class="text-sm p-0 bx bxs-star"></i>
   )
