@@ -1,10 +1,12 @@
-import './App.css';
-import ProductView from './components/ProductView/ProductView';
+import './App.css'; 
+import HomeView from './components/HomeView';
+import HomePage from './pages/HomePage';
 function App() {
   
   return (
     <div className="App">
-      <h1>hi</h1>
+    
+      <HomePage/>
     </div>
     
   );
