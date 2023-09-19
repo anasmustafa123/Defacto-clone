@@ -26,7 +26,7 @@
 **Components**
 - [x] Header (Abanoub / Anas)
 - [ ] Footer (Daghash)
-- [ ] Image Slider
+- [x] Image Slider (Anas)
 - [ ] Trends
 - [ ] Collections
 - [ ] Shopping Cart
