@@ -1,10 +1,9 @@
 import './App.css';
-import VerySmallContainer from './components/footer/very samll container';
+import SmiFinalFooter from './components/footer/smi final footer';
 function App() {
   return (
     <div className="App">
-      <VerySmallContainer />
-
+      <SmiFinalFooter />
     </div>
   );
 }
