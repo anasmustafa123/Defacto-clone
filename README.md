@@ -1,5 +1,5 @@
 # Defacto Clone
-## Team supervisor
+## Team Leader
 - Fatma yasser
 
 ## Team Members
@@ -17,13 +17,14 @@
 - [ ] Women Page
 - [ ] Men Page
 - [ ] Products Page
-- [ ] Product Page  (anas)
+- [x] Product Page  (Anas)
 - [x] Favorites Page (Doha)
 - [ ] Help Page
 - [ ] Admin Page
+- [x] Stores Page (Doha)
 
 **Components**
-- [ ] Header (Abanoub)
+- [x] Header (Abanoub / Anas)
 - [ ] Footer (Daghash)
 - [ ] Image Slider
 - [ ] Trends
