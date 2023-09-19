@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Stars } from "./Stars";
 function ProductView() {
-  let [toggleHeart, setToggleHeart] = useState(false);
+  const [toggleHeart, setToggleHeart] = useState(false);
   return (
     <div className="w-full">
       <div className="w-full relative">
