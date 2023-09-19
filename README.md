@@ -13,8 +13,8 @@
 ### 1. Todo
 
 **Pages**
-- [ ] Home Page
-- [ ] Women Page
+- [ ] Home Page  (Abdallah)
+- [x] Women Page (Anas)
 - [ ] Men Page
 - [ ] Products Page
 - [x] Product Page  (Anas)
@@ -27,13 +27,15 @@
 - [x] Header (Abanoub / Anas)
 - [ ] Footer (Daghash)
 - [x] Image Slider (Anas)
-- [ ] Trends
+- [x] Trends  (Anas)
 - [ ] Collections
 - [ ] Shopping Cart
 - [ ] Sidebar Filters
 - [ ] Register (Mariam)
 - [ ] Login
 - [x] Products View Images (Abdallah / Anas)
-
+- [ ] collections
+- [ ] appreals
+- [ ] accessories
 **Adding Functionality**
 - [ ]

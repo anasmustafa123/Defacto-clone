@@ -40,13 +40,13 @@ export default function ImageSlider() {
             nextMove()
 
         }}
-        className="absolute bottom-10 right-24  bg-slate-900 text-white p-2 rounded-lg cursor-pointer"
+        className="absolute bottom-10 right-24  bg-slate-900 text-white p-2 rounded-lg cursor-pointer hover:bg-white hover:text-black"
       >
         <i class="bx bx-right-arrow-alt text-3xl"></i>
       </div>
       <div
         onClick={previosMove}
-        className="absolute bottom-10 left-24  bg-slate-900 text-white p-2 rounded-lg cursor-pointer"
+        className="absolute bottom-10 left-24  bg-slate-900 text-white p-2 rounded-lg cursor-pointer hover:bg-white hover:text-black"
       >
         <i class="bx bx-left-arrow-alt text-3xl"></i>
       </div>

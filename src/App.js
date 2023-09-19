@@ -1,9 +1,11 @@
 import './App.css';
-import ImageSlider from './components/imageSlider/ImageSlider';
+import Header from "./components/Header"
+import Women from './pages/Women';
 function App() {
   return (
     <div className="App">
-      <ImageSlider />
+      <Header />
+      <Women />
     </div>
   );
 }

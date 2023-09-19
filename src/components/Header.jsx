@@ -1,10 +1,10 @@
 export default function Header() {
   return (
     <>
-      <div className="flex justify-between w-full  p-4 h-20 items-center">
+      <div className="flex justify-between w-full  p-4 h-20 items-center border-b-2">
         <div className="logo">
           <a href="#j">
-            <img
+            <img 
               src="https://dfcdn.defacto.com.tr/AssetsV2/dist/img/de-facto-logo-light-v2.svg"
               alt=""
               width="141"
