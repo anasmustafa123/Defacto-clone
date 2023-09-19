@@ -1,9 +1,10 @@
 import './App.css';
-import Footer from './components/footer/Footer';
+import VerySmallContainer from './components/footer/very samll container';
 function App() {
   return (
     <div className="App">
-      <Footer />
+      <VerySmallContainer />
+
     </div>
   );
 }
