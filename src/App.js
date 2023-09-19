@@ -4,7 +4,7 @@ import { Sto } from './pages/Sto';
 function App() {
   return (
     <div className="App">
-      <Fav/>
+      {/* <Fav/> */}
       <Sto/> 
     </div>
   );
