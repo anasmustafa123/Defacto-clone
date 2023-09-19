@@ -1,6 +1,16 @@
 import ImageSlider from "../components/clothes-page/ImageSlider";
 import Trends from "../components/clothes-page/Trends";
-export default function Women() {
+export default function Women({ bg, setbg }) {
+  function toggle(){
+    if(bg == 'white'){
+      setbg('black')
+    }else{
+      setbg('white')
+    }
+  }
+  let s = {
+    backgroundColor: bg,
+  };
   let trends = {
     headerName: "TRENDS",
     imgs: [
@@ -65,7 +75,7 @@ export default function Women() {
     ],
   };
   return (
-    <div className="flex flex-col gap-12 pt-12">
+    <div style={s} className="flex flex-col gap-12 pt-12">
       <ImageSlider />
       <div className="flex justify-center">
         <img
@@ -98,6 +108,11 @@ export default function Women() {
         />
       </div>
       <Trends data={accessories} />
+      <button
+        onClick={toggle}
+      >
+        click me
+      </button>
     </div>
   );
 }

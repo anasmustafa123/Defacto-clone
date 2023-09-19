@@ -39,3 +39,5 @@
 - [ ] accessories
 **Adding Functionality**
 - [ ]
+**Data Collecting**
+- collecting the data from zappos api  (Anas)

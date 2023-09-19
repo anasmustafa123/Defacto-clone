@@ -1,5 +1,6 @@
 import { useState } from "react";
 export default function ImageSlider() {
+  
   let slides = [
     {
       imgUrl:
@@ -18,11 +19,11 @@ export default function ImageSlider() {
       ? setSlideIndex(slideIndex + 1)
       : setSlideIndex(0);
   };
-  const previosMove = () => {
-    slideIndex > 0
-      ? setSlideIndex(slideIndex - 1)
-      : setSlideIndex(slides.length - 1);
-  };
+    const previosMove = () => {
+      slideIndex > 0
+        ? setSlideIndex(slideIndex - 1)
+        : setSlideIndex(slides.length - 1);
+    };
   const containerStyle = {
     width: "101rem",
     height: "35rem",
