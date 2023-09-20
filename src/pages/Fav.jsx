@@ -1,6 +1,7 @@
 import React from 'react'
 
 export const Fav = () => {
+  
   return (
     <div className="flex ">
         <div className=' pl-4 m-8'>
