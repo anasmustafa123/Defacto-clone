@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Stars  from "./Stars";
-import {Context} from "../../context/Context"
+import {CartContext} from "../../context/Context"
 import React, { useContext } from 'react';
 
 
 function ProductView() {
   const [toggleHeart, setToggleHeart] = useState(false);
-  const { addToCart } = useContext(Context);
+  const { addToCart } = useContext(CartContext);
   return (
     <div className="w-full">
       <div className="w-full relative">

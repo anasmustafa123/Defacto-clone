@@ -7,11 +7,12 @@ function HomeView({ setGenderChoosed }) {
           setGenderChoosed(1);
         }}
         to="/women"
-        className="relative hover:scale-125 transition duration-500 cursor-pointer"
+        className="relative group  cursor-pointer"
       >
         <img
           src="https://dfcdn.defacto.com.tr/Mobile/woman_desktop_240e37ff-b1c6-4e53-aef7-9e64ec86b93c_e94d07a3-862e-4895-b03f-00e26e33ec69_DI_316.jpg"
           alt=""
+          className="group-hover:scale-125 transition duration-500"
         />
         <div
           style={{

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { Context } from "../context/Context";
+import { CartContext } from "../context/Context";
 import React, { useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom'
 
 export default function Header({genderChoosed, setGenderChoosed}) {
-  const { cartSize } = useContext(Context);
+  const { cartSize } = useContext(CartContext);
   const navigate = useNavigate()
   return (
     <>
