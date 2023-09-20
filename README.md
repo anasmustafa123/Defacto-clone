@@ -13,7 +13,7 @@
 ### 1. Todo
 
 **Pages**
-- [x] Home Page  (Abdallah)
+- [x] Home Page  (Abdallah / Anas)
 - [x] Women Page (Anas)
 - [x] Men Page (Anas)
 - [x] kids Page (Anas)
@@ -27,7 +27,7 @@
 
 **Components**
 - [x] Header (Abanoub / Anas)
-- [x] Footer (Daghash)
+- [x] Footer (Daghash / Anas)
 - [x] Image Slider (Anas)
 - [x] Trends  (Anas)
 - [ ] Collections   (Doha)

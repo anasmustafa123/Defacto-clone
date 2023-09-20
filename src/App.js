@@ -9,11 +9,12 @@ import verySmallContainer from "./components/footer/FooterPart2";
 import ImgWithText from "./components/footer/ImgWithText";
 import HomePage from "./pages/HomePage";
 import { useState } from "react";
+import ProductsPage from "./pages/ProductsPage";
 function App() {
   let [genderChoosed, setGenderChoosed] = useState(0);
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter>
       <Header genderChoosed = {genderChoosed} setGenderChoosed ={setGenderChoosed}  />
         <Routes>
           <Route path="/" element={<HomePage setGenderChoosed ={setGenderChoosed} />} />
@@ -25,7 +26,8 @@ function App() {
           <Route path="/kids" element={<GenderHomePage genderData={kids} />} />
         </Routes>
         <Footer />
-      </BrowserRouter>
+      </BrowserRouter> */}
+      <ProductsPage />
     </>
   );
 }

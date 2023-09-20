@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Stars } from "./Stars";
+import Stars from "./Stars"
 function ProductView() {
   const [toggleHeart, setToggleHeart] = useState(false);
   return (
