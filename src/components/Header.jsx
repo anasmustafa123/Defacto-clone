@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
+import { Context } from "../context/Context";
+import React, { useContext } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom'
+
 export default function Header({genderChoosed, setGenderChoosed}) {
+  const { cartSize } = useContext(Context);
+  const navigate = useNavigate()
   return (
     <>
       <div className="flex justify-between w-full  p-4 h-20 items-center border-b-2">
@@ -97,9 +103,11 @@ export default function Header({genderChoosed, setGenderChoosed}) {
               </li>
               <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
                 <i class="bx bx-shopping-bag"></i>
-                <a href="#" className="text-base hover:text-gray-400">
-                  shopping cart
-                </a>
+                
+            <NavLink to={'/cart'} className="text-base hover:text-gray-400">
+                  shopping cart <span>{cartSize}</span>
+                </NavLink>
+
               </li>
             </ul>
           </nav>

@@ -9,6 +9,8 @@ import verySmallContainer from "./components/footer/FooterPart2";
 import ImgWithText from "./components/footer/ImgWithText";
 import HomePage from "./pages/HomePage";
 import { useState } from "react";
+import ProductsView from "./components/ProductsView/ProductsView";
+import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 function App() {
   let [genderChoosed, setGenderChoosed] = useState(0);
   return (
@@ -23,6 +25,8 @@ function App() {
           />
           <Route path="/men" element={<GenderHomePage genderData={men} />} />
           <Route path="/kids" element={<GenderHomePage genderData={kids} />} />
+          <Route path="/products" element={<ProductsView />} />
+          <Route path="/cart" element={<ShoppingCart />} />
         </Routes>
         <Footer />
       </BrowserRouter>
