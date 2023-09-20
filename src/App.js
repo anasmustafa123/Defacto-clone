@@ -7,12 +7,16 @@ import Footer from "./components/footer/Footer";
 import smiFinalFooter from "./components/footer/FooterPart3";
 import verySmallContainer from "./components/footer/FooterPart2";
 import ImgWithText from "./components/footer/ImgWithText";
+import HomePage from "./pages/HomePage";
+import { useState } from "react";
 function App() {
+  let [genderChoosed, setGenderChoosed] = useState(0);
   return (
     <>
-         <Header />
       <BrowserRouter>
+      <Header genderChoosed = {genderChoosed} setGenderChoosed ={setGenderChoosed}  />
         <Routes>
+          <Route path="/" element={<HomePage setGenderChoosed ={setGenderChoosed} />} />
           <Route
             path="/women"
             element={<GenderHomePage genderData={women} />}
@@ -20,8 +24,8 @@ function App() {
           <Route path="/men" element={<GenderHomePage genderData={men} />} />
           <Route path="/kids" element={<GenderHomePage genderData={kids} />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </>
   );
 }

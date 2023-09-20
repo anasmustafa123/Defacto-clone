@@ -1,38 +1,72 @@
-export default function Header() {
+import { Link } from "react-router-dom";
+export default function Header({genderChoosed, setGenderChoosed}) {
   return (
     <>
       <div className="flex justify-between w-full  p-4 h-20 items-center border-b-2">
-        <div className="logo">
-          <a href="#j">
-            <img 
+        <div onClick={()=>{setGenderChoosed(0)}} className="logo">
+          <Link to="/">
+            <img
               src="https://dfcdn.defacto.com.tr/AssetsV2/dist/img/de-facto-logo-light-v2.svg"
               alt=""
               width="141"
             />
-          </a>
+          </Link>
         </div>
 
         <nav className="defacto-nav">
           <ul className="p-0 m-0 flex ">
-            <li className=" mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300">
-              <a href="#" className=" no-underline font-bold ">
-                WOMEN
-              </a>
+            <li
+              onClick={() => {
+                setGenderChoosed(1);
+              }}
+              className={
+                " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
+                " " +
+                (genderChoosed == 1 && "font-semibold underline")
+              }
+            >
+              <Link to="/women">WOMEN</Link>
             </li>
-            <li className=" mr-5  hover:border-b-2 hover:text-gray-400 hover:border-gray-300">
-              <a href="#" className=" no-underline font-bold  ">
-                MEN
-              </a>
+            <li
+              onClick={() => {
+                setGenderChoosed(2);
+              }}
+              className={
+                " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
+                " " +
+                (genderChoosed == 2 && "font-semibold underline")
+              }
+            >
+              <Link to="/men">MEN</Link>
             </li>
-            <li className=" mr-5  hover:border-b-2 hover:text-gray-400 hover:border-gray-300">
-              <a href="#" className=" no-underline font-bold  ">
-                KIDS
-              </a>
+            <li
+              onClick={() => {
+                setGenderChoosed(3);
+              }}
+              className={
+                " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
+                " " +
+                (genderChoosed == 3 && "font-semibold underline")
+              }
+            >
+              <Link to="/kids">KIDS</Link>
             </li>
-            <li className=" mr-5  hover:border-b-2 hover:text-gray-400 hover:border-gray-300">
-              <a href="#" className=" no-underline font-bold  ">
-                BABY
-              </a>
+            <li
+              onClick={() => {
+                setGenderChoosed(4);
+              }}
+              className={
+                " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
+                " " +
+                (genderChoosed == 4 && "font-semibold underline")
+              }
+            >
+              <Link
+                to="/stores"
+                className=" no-underline hover:text-gray-400 hover:border-gray-300"
+              >
+                STORES
+              </Link>
             </li>
           </ul>
         </nav>

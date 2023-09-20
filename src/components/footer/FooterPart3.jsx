@@ -48,32 +48,62 @@ function FooterPart3() {
         <div className="flex justify-around font-light mb-10">
           <div className="flex flex-col gap-2">
             {arr1.map((v, index) => (
-              <p key={index}>{v}</p>
+              <p
+                className="cursor-pointer hover:underline hover:text-gray-500"
+                key={index}
+              >
+                {v}
+              </p>
             ))}
-          </div >
+          </div>
           <div className="flex flex-col gap-2">
             {arr2.map((v, index) => (
-              <p key={index}>{v}</p>
+              <p
+                className="cursor-pointer hover:underline hover:text-gray-500"
+                key={index}
+              >
+                {v}
+              </p>
             ))}
           </div>
           <div className="flex flex-col gap-2">
             {arr3.map((v, index) => (
-              <p key={index}>{v}</p>
+              <p
+                className="cursor-pointer hover:underline hover:text-gray-500"
+                key={index}
+              >
+                {v}
+              </p>
             ))}
           </div>
           <div className="flex flex-col gap-2">
             {arr4.map((v, index) => (
-              <p key={index}>{v}</p>
+              <p
+                className=" cursor-pointerhover:underline hover:text-gray-500"
+                key={index}
+              >
+                {v}
+              </p>
             ))}
           </div>
           <div className="flex flex-col gap-2">
             {arr5.map((v, index) => (
-              <p key={index}>{v}</p>
+              <p
+                className="cursor-pointer hover:underline hover:text-gray-500"
+                key={index}
+              >
+                {v}
+              </p>
             ))}
-          </div >
+          </div>
           <div className="flex flex-col gap-2">
             {arr6.map((v, index) => (
-              <p key={index}>{v}</p>
+              <p
+                className="cursor-pointer hover:underline hover:text-gray-500"
+                key={index}
+              >
+                {v}
+              </p>
             ))}
           </div>
         </div>
