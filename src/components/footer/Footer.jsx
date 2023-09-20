@@ -1,9 +1,9 @@
 import FooterPart1 from "./FooterPart1";
-import VerySmallContainer from "./very samll container";
-import SmiFinalFooter from "./smi final footer";
+import VerySmallContainer from "./FooterPart2";
+import SmiFinalFooter from "./FooterPart3";
 function Footer() {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 mt-10">
       <FooterPart1 />
       <hr />
       <VerySmallContainer />

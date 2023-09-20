@@ -1,4 +1,4 @@
-function SmiFinalFooter() {
+function FooterPart3() {
   let arr1 = [
     "Stores",
     "Brand Ambassador",
@@ -113,4 +113,4 @@ function SmiFinalFooter() {
     </div>
   );
 }
-export default SmiFinalFooter;
+export default FooterPart3;

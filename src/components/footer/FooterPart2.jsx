@@ -1,5 +1,5 @@
 import { useState } from "react";
-function VerySmallContainer() {
+function FooterPart2() {
   let [isClicked, setIsClicked] = useState(null);
   return (
     <div className="flex flex-col justify-center items-center">
@@ -61,4 +61,4 @@ function VerySmallContainer() {
     </div>
   );
 }
-export default VerySmallContainer;
+export default FooterPart2;
