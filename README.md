@@ -40,8 +40,12 @@
 - [ ] collections
 - [ ] appreals
 - [ ] accessories
+
+
 **Adding Functionality**
 - [ ]
+
+
 **Data Collecting**
 - collecting the data from zappos api  (Anas)
 - collecting data from decota website  (Abanoub)
