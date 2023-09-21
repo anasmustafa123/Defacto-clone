@@ -1,18 +1,22 @@
+
 import { useState } from "react";
 import Stars  from "./Stars";
 import {CartContext} from "../../context/Context"
 import React, { useContext } from 'react';
-
-
-function ProductView() {
+import {Link, useNavigate } from "react-router-dom";
+import ProductContainer from "../ProductPageComponents/ProductContainer"
+function ProductView({id = 0, singleData}) {
   const [toggleHeart, setToggleHeart] = useState(false);
   const { addToCart } = useContext(CartContext);
+
+  console.log(singleData)
+  
   return (
-    <div className="w-full">
-      <div className="w-full relative">
+    <Link to= {`/${singleData['productId']}`} key={id}  className="flex flex-col gap-2 cursor-pointer">
+      <div className=" relative">
         <img
-        className="w-full"
-          src="https://i.pinimg.com/564x/34/a4/2f/34a42f3955718d3fe4be880d27f41027.jpg"
+        className="w-60 h-60"
+          src={singleData['url']}
           alt=""
         />
         <div
@@ -35,16 +39,15 @@ function ProductView() {
           <i className="text-2xl bx bx-shopping-bag"></i>
         </div>
       </div>
-      <p className="text-gray-700 text-xs p-1">Standrad Fit Crew Neck</p>
+      <p className="text-gray-700 text-xs p-1">{singleData['productName']}</p>
       <div className="flex items-center gap-2">
-        <Stars starsCount={3} />
-        <span className="text-xs font-light">(1)</span>
+        <Stars starsCount={parseInt(singleData['productRating'])} />
+        <span className="text-xs font-light">({singleData['ratingCount']})</span>
       </div>
       <div className="flex items-center gap-1 pl-1">
-        <p className="font-bold text-gray-800">499 </p>
-        <span className="font-medium text-gray-800 text-xs">EGP </span>
+        <p className="font-bold text-gray-800">{singleData['price']} </p>
       </div>
-    </div>
+    </Link>
   );
 }
 export default ProductView;

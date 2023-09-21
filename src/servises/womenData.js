@@ -1,3 +1,5 @@
+/* let data =  */
+
 let sweaters = [
   {
     sizing: {},
@@ -14050,7 +14052,7 @@ let newSeason = [
   },
 ];
 
-let women = {
+let womenData = {
   sweaters,
   shirtsAndTops,
   dresses,
@@ -14059,13 +14061,18 @@ let women = {
   skirts,
   newSeason,
 };
-Object.values(women).forEach((type) => {
-  type.forEach((item) => {
+
+Object.values(womenData).forEach((type, i) => {
+  type.forEach((item, j) => {
     delete item["thumbnailImageUrl"];
     delete item["animationImages"];
     item["productUrl"] = "";
     item['ratingCount']= 0;
+    let idKey = item['msaImageId']
+    delete item['msaImageId']
+    item['url'] = `https://m.media-amazon.com/images/I/${idKey}.jpg`
+    item['productId'] = j+i*100
   });
 });
 
-export { women };
+export { womenData };

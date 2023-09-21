@@ -1,5 +1,5 @@
 import RightSideBar from "./RightSideBar";
-export default function ProductContainer() {
+export default function ProductContainer({itemId}) {
   let imgUrls = [
     "https://dfcdn.defacto.com.tr/7/Z9072AZ_23SP_WT34_02_01.jpg",
     "https://dfcdn.defacto.com.tr/7/Z9072AZ_23SP_WT34_01_01.jpg",
