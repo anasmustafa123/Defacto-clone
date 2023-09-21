@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { Stars } from "./Stars";
+import Stars from "./Stars";
+import {CartContext} from "../../context/Context"
+import React, { useContext } from 'react';
+
 function ProductView() {
   const [toggleHeart, setToggleHeart] = useState(false);
   const { addToCart } = useContext(CartContext);
