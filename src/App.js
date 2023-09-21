@@ -20,19 +20,7 @@ function App() {
   let [genderChoosed, setGenderChoosed] = useState(0);
   return (
     <>
-      <Header genderChoosed = {genderChoosed} setGenderChoosed ={setGenderChoosed}  />
-        <Routes>
-          <Route path="/" element={<HomePage setGenderChoosed ={setGenderChoosed} />} />
-          <Route
-            path="/women"
-            element={<GenderHomePage genderData={women} />}
-          />
-          <Route path="/men" element={<GenderHomePage genderData={men} />} />
-          <Route path="/kids" element={<GenderHomePage genderData={kids} />} />
-          <Route path="/products" element={<ProductsView />} />
-          <Route path="/cart" element={<ShoppingCart />} />
-        </Routes>
-        <Footer />
+    <Fav/>
     </>
   );
 }

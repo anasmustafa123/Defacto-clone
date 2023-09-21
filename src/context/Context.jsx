@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 
 const UserContext = React.createContext();
-const FavContext = React.createContext();
 
-const userProvider = ({ children }) => {
+const UserProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
   const addToCart = (item) => {
     setCart([...cart, item]);
   };
   const cartSize = cart.length;
-  const [fav, setfav] = useState([]);
+  const [fav, setFav] = useState([]);  
 
   const addToFav = (item) => {
-    setFav([...fav, item]);
+    setFav([...fav, item]); 
   };
   const favSize = fav.length;
 
@@ -26,4 +25,4 @@ const userProvider = ({ children }) => {
 };
 
 
-export { UserContext, userProvider };
+export { UserContext, UserProvider };
