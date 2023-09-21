@@ -4022,7 +4022,7 @@ let dresses = [
     productName: "Short Sleeve Puff Sleeve Scuba Suede Sheath",
     thumbnailImageUrl: null,
     styleId: "6374352",
-    price: "$134.00",
+    price: "$134.0objQuery0",
     msaImageId: "71x9HweGcZL",
     onSale: "false",
     productUrl:
@@ -14061,18 +14061,22 @@ let womenData = {
   skirts,
   newSeason,
 };
-
-Object.values(womenData).forEach((type, i) => {
-  type.forEach((item, j) => {
+let womenFullData = [];
+Object.entries(womenData).forEach((type, i) => {
+  type[1].forEach((item, j) => {
+    item['category'] = type[0];
+    item["key"] = parseInt(Math.random() * 10000);
     delete item["thumbnailImageUrl"];
     delete item["animationImages"];
     item["productUrl"] = "";
-    item['ratingCount']= 0;
-    let idKey = item['msaImageId']
-    delete item['msaImageId']
-    item['url'] = `https://m.media-amazon.com/images/I/${idKey}.jpg`
-    item['productId'] = j+i*100
+    item["ratingCount"] = 0;
+    let idKey = item["msaImageId"];
+    delete item["msaImageId"];
+    item["url"] = `https://m.media-amazon.com/images/I/${idKey}.jpg`;
+    item["productId"] = j + i * 100;
+    item['gender'] = 'w'
+    womenFullData.push(item);
   });
-});
-
-export { womenData };
+}); 
+console.log(womenFullData)
+export { womenFullData };
