@@ -1,4 +1,13 @@
 import React from 'react'
+import { UserContext } from '../context/Context'
+import { useContext } from 'react';
+export  default function ShoppingFav() {
+  const { Fav, favSize } = useContext(UserContext);
+
+  return(
+   <div> <h1 className="text-xl font-semibold">Basket ({favSize})</h1> </div>
+  )
+}
 
 export const Fav = () => {
   

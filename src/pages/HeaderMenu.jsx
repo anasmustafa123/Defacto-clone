@@ -3,7 +3,7 @@ import React from 'react'
 export const HeaderMenu = () => {
 
     return(
-     <div className=' flex'>
+     <div className=' flex bg-white w-full'>
          <div className=' w-52 ml-60 mt-14 p-6'> 
                <div className=' w-5 font-semibold '>TRENDS</div>
                <div className=' flex py-3'>
