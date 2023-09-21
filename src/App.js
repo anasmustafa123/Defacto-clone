@@ -12,6 +12,8 @@ import { useState } from "react";
 import ProductsView from "./components/ProductsView/ProductsView";
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import Man from "./pages/Man";
+import ProductViewPage from "./pages/ProductViewPage";
+import ProductContainer from "./components/ProductPageComponents/ProductContainer";
 function App() {
   let [genderChoosed, setGenderChoosed] = useState(0);
   return (
@@ -25,7 +27,8 @@ function App() {
           />
           <Route path="/men" element={<GenderHomePage genderData={men} />} />
           <Route path="/kids" element={<GenderHomePage genderData={kids} />} />
-          <Route path="/products" element={<ProductsView />} />
+          <Route path="/products/:query" element={<ProductViewPage />} />
+          <Route path= "/:itemId" element ={<ProductContainer />}  />
           <Route path="/cart" element={<ShoppingCart />} />
         </Routes>
         <Footer />
