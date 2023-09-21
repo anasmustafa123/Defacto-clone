@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Register() {
+export default function Register({registerclose}) {
   const days = [];
   for (let i = 1; i < 32; i++) {
     days.push(i);
@@ -20,7 +20,7 @@ export default function Register() {
     //header
     <>
       {/* // social row */}
-      <form className=" w-96">
+      <form className=" w-96 relative z-10 p-5">
         <div className="flex-col h-28  grid">
           <div className="text-center">
             <span className="text-xs">LOG IN WITH SOCIAL ACCOUNT</span>
@@ -29,8 +29,8 @@ export default function Register() {
           <div className="grid justify-items-center ">
             <button>
               <a href="https://www.facebook.com/">
-                <div className=" border-2 p-2  ">
-                  <img src="assets/facebook-icon.png" alt="" width="15px" />
+                <div className=" border-2 p-2 z-20 ">
+                  <img src="facebook-icon.png" alt="" width="15px" />
                 </div>
               </a>
             </button>
@@ -251,10 +251,10 @@ export default function Register() {
 
         <div className="flex mb-8">
           {/* day & month & year */}
-          <div className="mr-2 ml-2">
+          <div className="">
             {/* day */}
             <div className="text-xs text-gray-300 mr-2 pl-1">Day</div>
-            <select className="border-b-2 border-gray-500 h-8 pr-6 w-28">
+            <select className="border-b-2 border-gray-500 h-8 pr-6 w-24">
               <option value>Day</option>
               {days.map((d) => (
                 <option>{d}</option>
@@ -285,11 +285,11 @@ export default function Register() {
         <div className="mb-8 ">Gender</div>
         <div className="flex mb-8">
           {/* select gender */}
-          <div className="ml-2 mr-6 ">
+          <div className="ml-2 mr-2 ">
             <input type="radio" />
             <label className="pl-1">Female</label>
           </div>
-          <div className="mr-6">
+          <div className="mr-3">
             <input type="radio" />
             <label className="pl-1">Male</label>
           </div>
@@ -337,7 +337,7 @@ export default function Register() {
           </div>
         </div>
         {/* button register */}
-        <div div className="mb-8 ">
+        <div div className="mb-8 pr-3 pl-3">
           <button
             type="submit"
             className="w-full bg-neutral-800 text-white px-8 h-8 hover:bg-white hover:text-black hover:border-neutral-800 hover:border-2"

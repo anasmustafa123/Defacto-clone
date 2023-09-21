@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Signin() {
   return (
-    <form className=" w-96">
+    <form className=" w-96 relative z-10 p-5">
       <div className="mb-8 text-xs ">LOG IN WITH E-MAIL ADDRESS</div>
       {/* name */}
       <div className="mb-8 ">
@@ -113,7 +113,7 @@ export default function Signin() {
         <div className="grid justify-items-center ">
           <button>
             <a href="https://www.facebook.com/">
-              <div className=" border-2 p-2  ">
+              <div className=" border-2 p-2 z-20 ">
                 <img src="assets/facebook-icon.png" alt="" width="15px" />
               </div>
             </a>
