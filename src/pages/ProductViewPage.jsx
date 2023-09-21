@@ -4,9 +4,8 @@ import { useState } from "react";
 import { getData } from "../servises/dataCenter";
 export default function ProductViewPage() {
   const { query } = useParams();
-  console.log(getData(query));
-  /* const [] */
   let data = getData(query);
+  
   return (
     <div className="flex items-center flex-col">
       <div className="max-w-5xl">

@@ -1,5 +1,7 @@
 import RightSideBar from "./RightSideBar";
+import { useParams } from "react-router-dom";
 export default function ProductContainer({itemId}) {
+  const { productId } = useParams();
   let imgUrls = [
     "https://dfcdn.defacto.com.tr/7/Z9072AZ_23SP_WT34_02_01.jpg",
     "https://dfcdn.defacto.com.tr/7/Z9072AZ_23SP_WT34_01_01.jpg",
