@@ -13,31 +13,39 @@
 ### 1. Todo
 
 **Pages**
-- [ ] Home Page  (Abdallah)
+- [x] Home Page  (Abdallah)
 - [x] Women Page (Anas)
-- [ ] Men Page
+- [x] Men Page (Anas)
+- [x] kids Page (Anas)
 - [ ] Products Page
 - [x] Product Page  (Anas)
 - [x] Favorites Page (Doha)
 - [ ] Help Page
 - [ ] Admin Page
 - [x] Stores Page (Doha)
+- [ ] Shoppign cart page
 
 **Components**
 - [x] Header (Abanoub / Anas)
-- [ ] Footer (Daghash)
+- [x] Footer (Daghash)
 - [x] Image Slider (Anas)
 - [x] Trends  (Anas)
-- [ ] Collections
-- [ ] Shopping Cart
+- [ ] Collections   (Doha)
+- [x] Shopping Cart dropdown (Anas)
+- [ ] items in cart  (Abdallah)  
 - [ ] Sidebar Filters
 - [ ] Register (Mariam)
-- [ ] Login
+- [ ] Login   (Mariam)
 - [x] Products View Images (Abdallah / Anas)
 - [ ] collections
 - [ ] appreals
 - [ ] accessories
+
+
 **Adding Functionality**
 - [ ]
+
+
 **Data Collecting**
 - collecting the data from zappos api  (Anas)
+- collecting data from decota website  (Abanoub)

@@ -1,7 +1,12 @@
 import { useState } from "react";
-import { Stars } from "./Stars";
+import Stars  from "./Stars";
+import {CartContext} from "../../context/Context"
+import React, { useContext } from 'react';
+
+
 function ProductView() {
   const [toggleHeart, setToggleHeart] = useState(false);
+  const { addToCart } = useContext(CartContext);
   return (
     <div className="w-full">
       <div className="w-full relative">
@@ -22,7 +27,11 @@ function ProductView() {
             }
           ></i>
         </div>
-        <div className="absolute w-8 h-8 inline-flex justify-center items-center bottom-1  right-1  bg-white rounded-full cursor-pointer">
+        <div className="absolute w-8 h-8 inline-flex justify-center items-center bottom-1  right-1  bg-white rounded-full cursor-pointer"
+          onClick={() => {
+            addToCart("item")
+          }}
+        >
           <i className="text-2xl bx bx-shopping-bag"></i>
         </div>
       </div>

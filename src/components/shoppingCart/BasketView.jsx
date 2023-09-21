@@ -1,16 +1,16 @@
 import React from 'react'
 
-export default function BasketView() {
+export default function BasketView({item}) {
   return (
     <>
-    <div className='flex gap-[1%]'>
+    <div className='flex gap-[5%]'>
 
-        <img className=' w-[6%] h-fit' src="https://dfcdn.defacto.com.tr/2/Z7679AZ_23SM_BR344_01_02.jpg" alt="" />
+        <img className=' w-[23%] h-fit' src="https://dfcdn.defacto.com.tr/2/Z7679AZ_23SM_BR344_01_02.jpg" alt="" />
 
         <div className='mt-[0.1%]'>
 
-            <p className='text-xs font-light'>Slim Fit Lined Blazer Jacket</p>
-            <p className='text-sm font-semibold text-slate-950'>1899 EGP</p>
+            <p className='text-base font-light'>{item.productName}</p>
+            <p className='text-sm font-semibold text-slate-950'>{item.price}</p>
               
               
 
