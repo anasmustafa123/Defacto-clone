@@ -2,20 +2,24 @@ let men = {
   slideShow: {
     imgs: [
       {
+        category: "70off",
         name: "img1",
-        url: 'https://dfcdn.defacto.com.tr/df/1920/Mobile/en_man_eg_upto_70_3960x1440-desktop_40c2d09e-2880-4380-b8df-3275adce7be7_dcd93253-2759-468a-9c81-083cbc597b5d_DI_297.jpg',
+        url: "https://dfcdn.defacto.com.tr/df/1920/Mobile/en_man_eg_upto_70_3960x1440-desktop_40c2d09e-2880-4380-b8df-3275adce7be7_dcd93253-2759-468a-9c81-083cbc597b5d_DI_297.jpg",
       },
       {
+        category: "30off",
         name: "img2",
         url: "https://dfcdn.defacto.com.tr/df/1920/Mobile/en_man_eg_upto_30_3960x1440-desktop_6a44e907-8700-46cd-922a-975152d75365_da060c05-4986-4ccb-907a-3d94fe1528bb_DI_297.jpg",
       },
     ],
   },
   newSeason: {
+    category: "newSeason",
     name: "img",
     url: "https://dfcdn.defacto.com.tr/Mobile/en_man_imageor_desktop_dbdc8fdc-9715-4277-a101-f7fef795e66a_6867d94d-fff3-439e-97c0-3ce1bbc3dc77_DI_429.jpg",
   },
   backToCity: {
+    category: "sweaters",
     name: "img1",
     url: "https://dfcdn.defacto.com.tr/Mobile/en_1_imageor_desktop_1e75245a-8b57-4668-a888-b2a166008f6e_5017bb7d-475d-40fa-85cd-c331b0c6f884_DI_429.jpg",
   },
@@ -23,18 +27,22 @@ let men = {
     headerName: "TRENDS",
     imgs: [
       {
+        category: "pants",
         name: "img1",
         url: "https://dfcdn.defacto.com.tr/Mobile/en_denim_1997a66a-c205-40d1-8e4d-e207b74cd110_c74a668e-8656-48c2-b4a7-516bb3bcec9f_DI_365.jpg",
       },
       {
+        category: "",
         name: "img2",
         url: "https://dfcdn.defacto.com.tr/Mobile/en_man_blazer_fee47f45-2937-4f96-8566-3ff541b3fd7f_33c0824f-6b0f-4276-a6a6-1b9e01228bb2_DI_365.jpg",
       },
       {
+        category: "hoodiesAndSweatshirts",
         name: "img3",
         url: "https://dfcdn.defacto.com.tr/Mobile/en_polo-t-shirts_29f9a1b3-09ab-44ee-96c3-d2f9ed1fd24c_f6844958-c9f1-4d88-b236-eaaa32d375bb_DI_365.jpg",
       },
       {
+        category: "",
         name: "img4",
         url: "https://dfcdn.defacto.com.tr/Mobile/en_athlete_2ace5ef9-d82d-4fb1-876d-ba830fcfcb35_7567c237-ba4c-45df-9d2e-5c224e62007a_DI_365.jpg",
       },
@@ -48,18 +56,22 @@ let men = {
     headerName: "BEST PRICES",
     imgs: [
       {
+        category: "shirtsAndTops",
         name: "img1",
         url: "https://dfcdn.defacto.com.tr/Mobile/misir_en_t-shirt_1c51d341-9c90-47b2-8dbe-4b060bcd3556_a1bc54fd-166a-4c20-9e85-fad4c77707de_DI_365.jpg",
       },
       {
+        category: "dresses",
         name: "img2",
         url: "https://dfcdn.defacto.com.tr/Mobile/misir_en_shortsbermudas_42088b36-01d3-44d8-ac0e-f6ac7b8e44a8_7591e813-92b8-4907-8c0c-81629486ffc0_DI_365.jpg",
       },
       {
+        category: "pants",
         name: "img3",
         url: "https://dfcdn.defacto.com.tr/Mobile/misir_en_trousers_5a789150-388b-483d-96c0-6063df988dd9_03986678-245b-4d76-94dd-72de28db3763_DI_365.jpg",
       },
       {
+        category: "shirtsAndTops",
         name: "img4",
         url: "https://dfcdn.defacto.com.tr/Mobile/misir_en_shirt_e536505c-923b-4943-b44b-df91112b2217_816f33e7-a1dd-499c-a0ec-3765c2c508e3_DI_365.jpg",
       },
@@ -95,47 +107,58 @@ let women = {
   slideShow: {
     imgs: [
       {
+        category: "70off",
         name: "img1",
         url: "https://dfcdn.defacto.com.tr/df/1920/Mobile/en_woman_eg_upto_70_3960x1440-desktop_a8dce5ec-0322-4625-835d-6c504005d85d_d27b0fb7-fd46-4cee-acbc-9b9e67eda93b_DI_297.jpg",
       },
       {
+        category: "30off",
         name: "img2",
         url: "https://dfcdn.defacto.com.tr/df/1920/Mobile/en_woman_eg_upto_30_3960x1440-desktop_8843114d-b6c3-4d58-b744-c11766dc42ce_99aac95e-0cfd-4d3c-a34a-c2062e5a0e82_DI_297.jpg",
       },
     ],
   },
   newSeason: {
+    category: "newSeason",
     name: "img",
     url: "https://dfcdn.defacto.com.tr/Mobile/en_new-season_1320x622-desktop_2ab01aa1-b56d-43c8-93cc-f3a617ca25f3_76eade96-252c-440b-b953-b482f21daee5_DI_429.jpg",
   },
   backToCity: {
+    category: "backToCity",
     name: "img1",
     url: "https://dfcdn.defacto.com.tr/Mobile/en_1_imageor_desktop_d3b88bb0-0ef1-447e-84c1-7d6d1550be16_3c6764f8-4804-4b02-8705-7aab5351d003_DI_429.jpg",
   },
   backToCollege: {
+    category: "skirts",
     name: "",
     url: "https://dfcdn.defacto.com.tr/Mobile/en_imageor_desktop_3ffcaa19-5746-42b7-bee5-0a4fcb33fbbc_c5b4d921-dbeb-434a-9678-4885ee6e2621_DI_429.jpg",
   },
   fasion: {
-    img: "",
+    category: "fasion",
+    img: "fasion",
     url: "https://dfcdn.defacto.com.tr/Mobile/en_simple-modest-elegance_1320x622-desktop_909b69e7-cb2b-4eb7-bcd6-a2e1d79d5c7c_db861d7d-6442-42ce-a5bd-d049464b98f1_DI_429.jpg",
   },
   trends: {
     headerName: "TRENDS",
     imgs: [
       {
+        category: "pants",
         name: "img1",
         url: "https://dfcdn.defacto.com.tr/Mobile/en_athlete_ba16818c-9e0a-4fcc-ae14-c10c472d96c5_737174f1-83b7-40cd-81f8-96ffbb5b4706_DI_365.jpg",
       },
       {
+        category: "shirtsAndTops",
         name: "img2",
         url: "https://dfcdn.defacto.com.tr/Mobile/en_denim_cd2697d6-53c7-48a5-9417-a456d0d67c7c_36dc3487-26f9-4dfc-b36f-c8b700ec8e7d_DI_365.jpg",
       },
       {
+        category: "hoodiesAndSweatshirts",
+
         name: "img3",
         url: "https://dfcdn.defacto.com.tr/Mobile/en_tunic_88f02b61-5691-4cb2-afcb-55554f3775dc_da6ebedf-9b0f-4e1a-a4b0-c3be5cf016e1_DI_365.jpg",
       },
       {
+        category: "hoodiesAndSweatshirts",
         name: "img4",
         url: "https://dfcdn.defacto.com.tr/Mobile/en_woman_blazer_0a493e95-9dd7-438a-a5fc-d879b2161a74_485f89c9-07e9-4db6-8514-20c45ed2956e_DI_365.jpg",
       },
@@ -145,18 +168,21 @@ let women = {
     headerName: "BEST PRICES",
     imgs: [
       {
+        category: "shirtsAndTops",
         name: "img1",
         url: "https://dfcdn.defacto.com.tr/Mobile/misir_en_t-shirt_d81a9426-6977-4d88-98d6-e65827808dcb_f15fb16d-bbeb-4b84-8fac-2e06892f1712_DI_365.jpg",
       },
       {
+        category: "dresses",
         name: "img2",
         url: "https://dfcdn.defacto.com.tr/Mobile/misir_en_dress_28afc396-2cb4-4d32-8e1d-34d57101bd55_b488b705-9336-4999-a3e4-a459d5817d17_DI_365.jpg",
       },
       {
+        category: "pants",
         name: "img3",
         url: "https://dfcdn.defacto.com.tr/Mobile/misir_en_trousers_9ccd1da7-99d7-4dbe-b8a9-0c78cb965f4a_425f1f3b-8297-476b-b232-5cd9543c280d_DI_365.jpg",
       },
-      {
+      { category: "shirtsAndTops",
         name: "img4",
         url: "https://dfcdn.defacto.com.tr/Mobile/misir_en_shirt_6de32493-7a9e-4705-9002-6e3a812c793b_cdcab25e-9eda-4e87-895a-95686797a2a7_DI_365.jpg",
       },
@@ -195,7 +221,7 @@ let kids = {
       {
         name: "img2",
         url: "https://dfcdn.defacto.com.tr/df/1920/Mobile/en_kids_eg_upto_30_3960x1440-desktop_98cec0c5-9c2c-45f7-afd0-1ae84a4a9781_e133b512-6910-45b9-b74c-bfa242d57ff6_DI_297.jpg",
-      }
+      },
     ],
   },
   newSeason: {
