@@ -8,7 +8,7 @@ export default function Header({genderChoosed, setGenderChoosed}) {
   const navigate = useNavigate()
   return (
     <>
-      <div className="flex justify-between w-full  p-4 h-20 items-center border-b-2">
+      <div className="flex justify-between w-full  p-4 h-20 items-center border-b-2 mb-6">
         <div onClick={()=>{setGenderChoosed(0)}} className="logo">
           <Link to="/">
             <img

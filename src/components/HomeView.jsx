@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 function HomeView({ setGenderChoosed }) {
   return (
-    <div className="flex flex-col sm:flex-row overflow-hidden mt-6">
+    <div className="flex flex-col sm:flex-row overflow-hidden">
       <Link
         onClick={() => {
           setGenderChoosed(1);
