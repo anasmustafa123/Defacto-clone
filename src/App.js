@@ -9,6 +9,9 @@ import verySmallContainer from "./components/footer/FooterPart2";
 import ImgWithText from "./components/footer/ImgWithText";
 import HomePage from "./pages/HomePage";
 import { useState } from "react";
+import "./App.css";
+import Login from "./components/login/Login";
+
 import ProductsView from "./components/ProductsView/ProductsView";
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import Man from "./pages/Man";
