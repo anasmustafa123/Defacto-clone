@@ -8,6 +8,7 @@ function ProductView() {
   const { addToCart, addToFav } = useContext(UserContext);
   const [isCartClicked ,setIsCartClicked] = useState(false)
   const [isFavClicked ,setIsFavClicked] = useState(false)
+
   return (
     <div className="w-full">
       <div className="w-full relative">
@@ -33,6 +34,7 @@ function ProductView() {
           onClick={() => {
             if(isCartClicked===false) {
               addToCart("item")
+              setIsCartClicked(true);
             }else{
               
             }
