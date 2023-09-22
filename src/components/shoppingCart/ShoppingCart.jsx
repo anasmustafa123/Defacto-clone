@@ -1,6 +1,7 @@
 
 import {UserContext} from "../../context/Context"
 import { useContext } from 'react';
+import BasketView from "./BasketView";
 
 export default function ShoppingCart() {
   const { cart, cartSize } = useContext(UserContext);
@@ -22,10 +23,10 @@ export default function ShoppingCart() {
         you can discover DeFacto with the category links.
       </p></>}
       {/* items */}
-      {cartSize!=0 && <>{cart.map(i=><div className="w-32 h-32 bg-zinc-300 rounded-md shadow-md hover:scale-105 m-6 hover:duration-75 duration-75 hover:ease-out ease-in-out">{i}</div>)}</>}
+      {cartSize!=0 && <>{cart.map(item=><BasketView item={item}/> )}</>}
 
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 mt-12">
         <button className=" border-2 border-gray-600 pt-3 pb-3 rounded-lg">OUR SELECTION FOR YOU</button>
         <button className=" border-2 border-gray-600 pt-3 pb-3 rounded-lg">SEASON SALE</button>
         <button className=" border-2 border-gray-600 pt-3 pb-3 rounded-lg">START SHOPPING</button>
