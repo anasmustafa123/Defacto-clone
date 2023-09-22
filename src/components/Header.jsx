@@ -1,25 +1,16 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { CartContext } from "../context/Context";
-import React, { useContext, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom'
-import BasketView from "./shoppingCart/BasketView";
-import ShoppingCart from "./shoppingCart/ShoppingCart";
-
+import Login from "./login/Login";
 export default function Header({genderChoosed, setGenderChoosed}) {
-  const { cartSize } = useContext(CartContext);
-  const navigate = useNavigate()
-  
-  
-  const [CartMenu, SetCartMenu] = useState(false);
- 
-  const ToggleCartMenu = (x) => SetCartMenu(x);
-
-
-  
   return (
     <>
       <div className="flex justify-between w-full  p-4 h-20 items-center border-b-2">
-        <div onClick={()=>{setGenderChoosed(0)}} className="logo">
+        <div
+          onClick={() => {
+            setGenderChoosed(0);
+          }}
+          className="logo"
+        >
           <Link to="/">
             <img
               src="https://dfcdn.defacto.com.tr/AssetsV2/dist/img/de-facto-logo-light-v2.svg"
@@ -98,12 +89,12 @@ export default function Header({genderChoosed, setGenderChoosed}) {
         <div className="">
           <nav className="defacto-nav">
             <ul className="p-0 m-0 flex gap-6">
-              <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black  hover:text-gray-400 hover:border-gray-300">
-                <i class="bx bx-user"></i>
-                <a href="#" className=" text-base hover:text-gray-400">
-                  Login
-                </a>
-              </li>
+              <div className="group read-only:">
+                <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black  hover:text-gray-400 hover:border-gray-300">
+                  <i class="bx bx-user"></i>
+                  <div className="text-base hover:text-gray-400">Login</div>
+                </li>
+              </div>
 
               <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
                 <i class="bx bx-heart"></i>
@@ -123,7 +114,6 @@ export default function Header({genderChoosed, setGenderChoosed}) {
           </nav>
         </div>
       </div>
-    {CartMenu && <><ShoppingCart carttoggle={ToggleCartMenu}/></>}
     </>
   );
 }

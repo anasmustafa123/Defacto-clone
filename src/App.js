@@ -76,8 +76,13 @@ import ImgWithText from "./components/footer/ImgWithText";
 import HomePage from "./pages/HomePage";
 import { useState } from "react";
 import ProductsView from "./components/ProductsView/ProductsView";
+// <<<<<<< HEAD
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
-import Man from "./pages/Man";
+import Man from "./pages/Man"
+import "./App.css";
+import Login from "./components/login/Login";
+
+// >>>>>>> 78bcedca6a31f3dea78b1d441017e114b7b3aa15
 function App() {
   let [genderChoosed, setGenderChoosed] = useState(0);
   return (
