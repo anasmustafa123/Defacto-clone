@@ -1,6 +1,6 @@
 import Stars from "../ProductsView/Stars";
 import { useState } from "react";
-export default function RightSideBar() {
+export default function RightSideBar({productData}) {
   let [toggleHeart, setToggleHeart] = useState(false);
   let sizes = ["XS", "S", "M", "L", "XL", "XXL"];
   return (
@@ -11,7 +11,7 @@ export default function RightSideBar() {
         }}
         className="flex justify-between items-center"
       >
-        <p className="text-base">Regular Fit Printed Crew Neck Undershirt</p>
+        <p className="text-base">{productData.productName}</p>
         <i
           class={
             "text-2xl bx bx-heart cursor-pointer" +
@@ -21,11 +21,11 @@ export default function RightSideBar() {
         ></i>
       </div>
       <div>
-        <p className="text-base font-semibold">149 EG</p>
+        <p className="text-base font-semibold"> {productData.price} </p>
       </div>
       <div className="flex justify-between items-center">
         <p className="text-xs font-medium text-gray-400">
-          Product Code: A6294AXRD87
+          Product Code: {productData.productId}
         </p>
         <a href="#">
           <i class="text-2xl bx bx-share-alt"></i>
@@ -33,7 +33,7 @@ export default function RightSideBar() {
       </div>
       <div>
         <p>Rate</p>
-        <Stars starsCount={4} />
+        <Stars starsCount={productData.productRating} />
       </div>
       <div className="flex justify-between items-center">
         <p>Size Options</p>

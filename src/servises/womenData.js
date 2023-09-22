@@ -19,7 +19,7 @@ let sweaters = [
     productUrl:
       "https://www.zappos.com/p/madewell-mockneck-crop-sweater-heather-dark-forest/product/9911932/color/1060946",
     animationImages: [],
-    productRating: 0,
+    productRating: 1,
   },
   {
     sizing: {},

@@ -9,7 +9,7 @@ function ProductView({ id = 0, singleData }) {
   const { addToCart } = useContext(CartContext);
 
   return (
-    <Link key={id} className="flex flex-col gap-2 cursor-pointer">
+    <div key={id} className="flex flex-col gap-2 cursor-pointer">
       <div className=" relative">
         <Link to={`/${singleData["productId"]}`}>
           <img className="w-60 h-60" src={singleData["url"]} alt="" />
@@ -45,7 +45,7 @@ function ProductView({ id = 0, singleData }) {
       <div className="flex items-center gap-1 pl-1">
         <p className="font-bold text-gray-800">{singleData["price"]} </p>
       </div>
-    </Link>
+    </div>
   );
 }
 export default ProductView;
