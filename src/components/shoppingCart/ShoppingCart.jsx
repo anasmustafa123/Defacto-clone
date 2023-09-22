@@ -1,9 +1,9 @@
 
-import {CartContext} from "../../context/Context"
+import {UserContext} from "../../context/Context"
 import { useContext } from 'react';
 
 export default function ShoppingCart() {
-  const { cart, cartSize } = useContext(CartContext);
+  const { cart, cartSize } = useContext(UserContext);
 
   return (
     <div className="p-3 max-w-md bg-white min-h-screen">

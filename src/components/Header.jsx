@@ -2,9 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Login from "./login/Login";
 import Register from "./login/Register/Register";
-import { CartContext } from "../context/Context";
+import { UserContext } from "../context/Context";
 import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { HeaderMenu } from "../pages/HeaderMenu";
 
 export default function Header({ genderChoosed, setGenderChoosed }) {
   const [loginOpened, setLoginOpened] = useState(false);
@@ -59,7 +60,7 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
       </div>
     );
   }
-  const { cartSize } = useContext(CartContext);
+  const { cartSize } = useContext(UserContext);
   const navigate = useNavigate();
   return (
     <>
@@ -171,8 +172,16 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
               </li>
             </ul>
           </nav>
+          
         </div>
       </div>
+
+      <span className="">Accesories and Shoes</span>
+      <div className=" relative w-full">
+            <div className="hidden absolute left-0 z-10 w-full">
+              <HeaderMenu/>
+            </div>
+          </div>
       {loginOpened && (
         <div className="absolute z-10 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
           <div className="w-full flex justify-end animate-slide">

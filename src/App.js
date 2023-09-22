@@ -1,4 +1,9 @@
-import "./App.css";
+import './App.css';
+import { Fav } from './pages/Fav';
+import { HeaderMenu } from './pages/HeaderMenu';
+import { Sto } from './pages/Sto';
+
+import "./App.css"
 import GenderHomePage from "./pages/GenderHomePage";
 import { women, men, kids } from "./servises/mainpage";
 import Header from "./components/Header";
