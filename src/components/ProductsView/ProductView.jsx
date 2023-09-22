@@ -9,13 +9,11 @@ function ProductView({ id = 0, singleData }) {
   const { addToCart } = useContext(CartContext);
 
   return (
-    <Link
-      to={`/${singleData["productId"]}`}
-      key={id}
-      className="flex flex-col gap-2 cursor-pointer"
-    >
+    <Link key={id} className="flex flex-col gap-2 cursor-pointer">
       <div className=" relative">
-        <img className="w-60 h-60" src={singleData["url"]} alt="" />
+        <Link to={`/${singleData["productId"]}`}>
+          <img className="w-60 h-60" src={singleData["url"]} alt="" />
+        </Link>
         <div
           onClick={() => {
             setToggleHeart(!toggleHeart);
