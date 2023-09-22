@@ -1,7 +1,22 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import Login from "./login/Login";
+import Login from "./login/Login"; 
+import { CartContext } from "../context/Context";
+import ShoppingCart from "./shoppingCart/ShoppingCart";
 export default function Header({genderChoosed, setGenderChoosed}) {
+
+  const {cartSize} = useContext (
+                                  CartContext
+  )
+  const [loginOpened, setLoginOpened] = useState(false);
+  const [CartMenu, SetCartMenu] = useState(false);
+
+  const ToggleCartMenu = (y) => {SetCartMenu(y)}
+
+  const logintoggle = (x) => {
+    setLoginOpened(x);}
+
+  
   return (
     <>
       <div className="flex justify-between w-full  p-4 h-20 items-center border-b-2">
@@ -92,7 +107,7 @@ export default function Header({genderChoosed, setGenderChoosed}) {
               <div className="group read-only:">
                 <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black  hover:text-gray-400 hover:border-gray-300">
                   <i class="bx bx-user"></i>
-                  <div className="text-base hover:text-gray-400">Login</div>
+                  <div className="text-base hover:text-gray-400" onClick={() => logintoggle(true)}>Login</div>
                 </li>
               </div>
 
@@ -106,7 +121,7 @@ export default function Header({genderChoosed, setGenderChoosed}) {
                 <i class="bx bx-shopping-bag"></i>
                 
             <button to={'/cart'} className="text-base hover:text-gray-400" onClick={() => ToggleCartMenu(true)}>
-                  shopping cart <span>{cartSize}</span>
+                  Shopping Cart<span>{cartSize}</span>
                 </button>
 
               </li>
@@ -114,8 +129,6 @@ export default function Header({genderChoosed, setGenderChoosed}) {
           </nav>
         </div>
       </div>
-<<<<<<< HEAD
-=======
       {loginOpened && (
         <div className="absolute z-10 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
           <div className="w-full flex justify-end animate-slide">
@@ -123,7 +136,13 @@ export default function Header({genderChoosed, setGenderChoosed}) {
           </div>
         </div>
       )}
->>>>>>> ded8ed0fbd359852b1adddba82ba4e45c2a2216b
+      {CartMenu && (
+        <div className="absolute z-10 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
+          <div className="w-full flex justify-end animate-slide">
+            <ShoppingCart carttoggle={ToggleCartMenu} />
+          </div>
+        </div>
+      )}
     </>
   );
 }
