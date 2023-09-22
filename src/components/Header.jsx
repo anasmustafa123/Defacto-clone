@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import Login from "./login/Login";
 import Register from "./login/Register/Register";
 import { UserContext } from "../context/Context";
 import React, { useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import { HeaderMenu } from "../pages/HeaderMenu";
 
 export default function Header({ genderChoosed, setGenderChoosed }) {
@@ -157,12 +156,12 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
                 {LoginMenu()}
               </div>
 
-              <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
+              <Link to={'/favorites'} className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
                 <i class="bx bx-heart"></i>
                 <a href="#" className="text-base hover:text-gray-400">
                   Favorites
                 </a>
-              </li>
+              </Link>
               <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
                 <i class="bx bx-shopping-bag"></i>
 
