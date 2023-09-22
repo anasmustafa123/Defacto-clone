@@ -114,6 +114,16 @@ export default function Header({genderChoosed, setGenderChoosed}) {
           </nav>
         </div>
       </div>
+<<<<<<< HEAD
+=======
+      {loginOpened && (
+        <div className="absolute z-10 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
+          <div className="w-full flex justify-end animate-slide">
+            <Login loginclose={logintoggle} />
+          </div>
+        </div>
+      )}
+>>>>>>> ded8ed0fbd359852b1adddba82ba4e45c2a2216b
     </>
   );
 }

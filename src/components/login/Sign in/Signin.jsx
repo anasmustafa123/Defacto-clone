@@ -114,7 +114,7 @@ export default function Signin() {
           <button>
             <a href="https://www.facebook.com/">
               <div className=" border-2 p-2 z-20 ">
-                <img src="assets/facebook-icon.png" alt="" width="15px" />
+                <img src="facebook-icon.png" alt="" width="15px" />
               </div>
             </a>
           </button>
