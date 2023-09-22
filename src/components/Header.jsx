@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Login from "./login/Login";
 import Register from "./login/Register/Register";
 export default function Header({ genderChoosed, setGenderChoosed }) {
   const [loginOpened, setLoginOpened] = useState(false);
+  const [registerBtn, setRegisterBtn] = useState(false);
 
   const logintoggle = (x) => {
     console.log(x);
-    setLoginOpened(x);}
+    setLoginOpened(x);
+  };
+
+  useEffect(() => {
+    if (loginOpened) {
+      document.body.classList.add("login-opened");
+    } else {
+      document.body.classList.remove("login-opened");
+    }
+  }, [loginOpened]);
 
   function LoginMenu() {
     return (
@@ -15,7 +25,10 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
         <div className="p-3">
           <div className="mb-3">
             <button
-              onClick={() => logintoggle(true)}
+              onClick={() => {
+                logintoggle(true);
+                setRegisterBtn(false);
+              }}
               className="w-full bg-black text-center text-white h-11 hover:bg-white hover:text-black hover:border-neutral-800 hover:border-2"
             >
               sign in
@@ -27,9 +40,12 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
                 Not a Member?
               </p>
             </div>
-            <div>
+            <div className="flex">
               <button
-                onClick={() => logintoggle(true)}
+                onClick={() => {
+                  logintoggle(true);
+                  setRegisterBtn(true);
+                }}
                 className="font-bold text-sm "
               >
                 register
@@ -161,7 +177,11 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
       {loginOpened && (
         <div className="absolute z-10 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
           <div className="w-full flex justify-end animate-slide">
-            <Login loginclose={logintoggle} />
+            <Login
+              loginclose={logintoggle}
+              registerBtn={registerBtn}
+              setRegisterBtn={setRegisterBtn}
+            />
           </div>
         </div>
       )}
