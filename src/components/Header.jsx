@@ -63,13 +63,8 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
   const navigate = useNavigate();
   return (
     <>
-      <div className="flex justify-between w-full  p-4 h-20 items-center border-b-2 mb-6">
-        <div
-          onClick={() => {
-            setGenderChoosed(0);
-          }}
-          className="logo"
-        >
+      <div className="flex justify-between w-full  p-4 h-20 items-center border-b-2">
+        <div onClick={()=>{setGenderChoosed('none')}} className="logo">
           <Link to="/">
             <img
               src="https://dfcdn.defacto.com.tr/AssetsV2/dist/img/de-facto-logo-light-v2.svg"
@@ -83,48 +78,48 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
           <ul className="p-0 m-0 flex ">
             <li
               onClick={() => {
-                setGenderChoosed(1);
+                setGenderChoosed('w');
               }}
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == 1 && "font-semibold underline")
+                (genderChoosed == 'w' && "font-semibold underline")
               }
             >
               <Link to="/women">WOMEN</Link>
             </li>
             <li
               onClick={() => {
-                setGenderChoosed(2);
+                setGenderChoosed('m');
               }}
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == 2 && "font-semibold underline")
+                (genderChoosed == 'm' && "font-semibold underline")
               }
             >
               <Link to="/men">MEN</Link>
             </li>
             <li
               onClick={() => {
-                setGenderChoosed(3);
+                setGenderChoosed('k');
               }}
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == 3 && "font-semibold underline")
+                (genderChoosed == 'k' && "font-semibold underline")
               }
             >
               <Link to="/kids">KIDS</Link>
             </li>
             <li
               onClick={() => {
-                setGenderChoosed(4);
+                setGenderChoosed('s');
               }}
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == 4 && "font-semibold underline")
+                (genderChoosed == 's' && "font-semibold underline")
               }
             >
               <Link

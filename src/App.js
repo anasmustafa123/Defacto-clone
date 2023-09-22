@@ -14,28 +14,28 @@ import "./App.css";
 import ProductsView from "./components/ProductsView/ProductsView";
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import Man from "./pages/Man";
+import ProductViewPage from "./pages/ProductViewPage";
+import ProductContainer from "./components/ProductPageComponents/ProductContainer";
 function App() {
-  let [genderChoosed, setGenderChoosed] = useState(0);
+  let [genderChoosed, setGenderChoosed] = useState('w');
   return (
     <>
-      <Header
-        genderChoosed={genderChoosed}
-        setGenderChoosed={setGenderChoosed}
-      />
-      <Routes>
-        <Route
-          path="/"
-          element={<HomePage setGenderChoosed={setGenderChoosed} />}
-        />
-        <Route path="/women" element={<GenderHomePage genderData={women} />} />
-        <Route path="/men" element={<GenderHomePage genderData={men} />} />
-        <Route path="/kids" element={<GenderHomePage genderData={kids} />} />
-        <Route path="/stores" element={<Sto />} />
-        <Route path="/favorites" element={<Fav />} />
-        <Route path="/products" element={<ProductsView />} />
-        <Route path="/cart" element={<ShoppingCart />} />
-      </Routes>
-      <Footer />
+      <Header genderChoosed = {genderChoosed} setGenderChoosed ={setGenderChoosed}  />
+        <Routes>
+          <Route path="/" element={<HomePage setGenderChoosed ={setGenderChoosed} />} />
+          <Route
+            element={<GenderHomePage gender={genderChoosed}  genderData={women} />}
+            path="/women"
+          />
+          <Route path="/men" element={<GenderHomePage gender={genderChoosed}  genderData={men} />} />
+          <Route path="/kids" element={<GenderHomePage gender={genderChoosed} genderData={kids} />} />
+          <Route path="/products/:query" element={<ProductViewPage />} />
+          <Route path= "/:itemId" element ={<ProductContainer />}/>
+             <Route path="/stores" element={<Sto />} />
+             <Route path="/favorites" element={<Fav />} /> 
+          <Route path="/cart" element={<ShoppingCart />} />
+        </Routes>
+        <Footer />
     </>
   );
 }
