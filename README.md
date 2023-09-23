@@ -54,3 +54,4 @@
 **Data Collecting**
 - collecting the data from zappos api  (Anas)
 - collecting data from decota website  (Abanoub)
+- collecting data from defacto     (Daghash)
