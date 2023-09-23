@@ -4,13 +4,13 @@ import { useState } from "react";
 import { getData } from "../servises/dataCenter";
 export default function ProductViewPage() {
   const { query } = useParams();
-  console.log(getData(query));
-  /* const [] */
+  console.log(query);
   let data = getData(query);
+
   return (
     <div className="flex items-center flex-col">
       <div className="max-w-5xl">
-        <ProductsView data={data} gridCol={4} />
+      <ProductsView data={data} gridCol={4} />
       </div>
     </div>
   );

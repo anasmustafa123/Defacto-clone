@@ -37,6 +37,10 @@ function getData(query) {
   console.log(x)
   return x;
 }
+const searchById = (id) => {
+  return womenFullData.find((e)=>{
+    return e.productId == id;
+  })
+}
 
-
-export { getData };
+export { getData, searchById };
