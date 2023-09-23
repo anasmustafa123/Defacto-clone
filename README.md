@@ -1,6 +1,7 @@
 # Defacto Clone
 ## Team Leader
 - Fatma yasser
+- Walaa Gaber
 
 ## Team Members
 - Mariam
