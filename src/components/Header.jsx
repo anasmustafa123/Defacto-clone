@@ -1,19 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
 import Login from "./login/Login";
 import Register from "./login/Register/Register";
 import { UserContext } from "../context/Context";
-import React, { useContext } from "react";
-import { NavLink, useNavigate, Link } from "react-router-dom";
 import { HeaderMenu } from "../pages/HeaderMenu";
 
 export default function Header({ genderChoosed, setGenderChoosed }) {
   const [loginOpened, setLoginOpened] = useState(false);
   const [registerBtn, setRegisterBtn] = useState(false);
+  const { cartSize } = useContext(UserContext);
 
   const logintoggle = (x) => {
     console.log(x);
     setLoginOpened(x);
   };
+
+  useEffect(() => {
+    if (loginOpened) {
+      document.body.classList.add("login-opened");
+    } else {
+      document.body.classList.remove("login-opened");
+    }
+  }, [loginOpened]);
 
   function LoginMenu() {
     return (
@@ -22,8 +30,8 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
           <div className="mb-3">
             <button
               onClick={() => {
-                logintoggle(true)
-                setRegisterBtn(false)
+                logintoggle(true);
+                setRegisterBtn(false);
               }}
               className="w-full bg-black text-center text-white h-11 hover:bg-white hover:text-black hover:border-neutral-800 hover:border-2"
             >
@@ -36,11 +44,11 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
                 Not a Member?
               </p>
             </div>
-            <div>
+            <div className="flex">
               <button
                 onClick={() => {
-                  logintoggle(true)
-                  setRegisterBtn(true)
+                  logintoggle(true);
+                  setRegisterBtn(true);
                 }}
                 className="font-bold text-sm "
               >
@@ -59,8 +67,6 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
       </div>
     );
   }
-  const { cartSize } = useContext(UserContext);
-  const navigate = useNavigate();
   return (
     <>
       <div className="flex justify-between w-full  p-4 h-20 items-center border-b-2">
@@ -169,13 +175,6 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
           
         </div>
       </div>
-
-      <span className="">Accesories and Shoes</span>
-      <div className=" relative w-full">
-            <div className="hidden absolute left-0 z-10 w-full">
-              <HeaderMenu/>
-            </div>
-          </div>
       {loginOpened && (
         <div className="absolute z-10 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
           <div className="w-full flex justify-end animate-slide">

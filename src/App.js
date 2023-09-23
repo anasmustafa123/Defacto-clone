@@ -11,6 +11,9 @@ import Footer from "./components/footer/Footer";
 import HomePage from "./pages/HomePage";
 import { useState } from "react";
 import "./App.css";
+import Login from "./components/login/Login";
+
+import "./App.css";
 import ProductsView from "./components/ProductsView/ProductsView";
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import Man from "./pages/Man";
