@@ -1,39 +1,64 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import Login from "./login/Login"; 
-import { CartContext } from "../context/Context";
-import ShoppingCart from "./shoppingCart/ShoppingCart";
-export default function Header({genderChoosed, setGenderChoosed}) {
+import Login from "../login/Login"; 
+import { CartContext } from "../../context/Context";
+import ShoppingCart from "../shoppingCart/ShoppingCart";
+import PhoneMenu from "./PhoneMenu";
+export default function Header({genderChoosed, setGenderChoosed,DarkModeprops, isDarkTheme}) {
 
   const {cartSize} = useContext (
                                   CartContext
   )
   const [loginOpened, setLoginOpened] = useState(false);
   const [CartMenu, SetCartMenu] = useState(false);
+  const [PhoneState, SetPhoneMenu] =useState(false)
+
+  
 
   const ToggleCartMenu = (y) => {SetCartMenu(y)}
 
   const logintoggle = (x) => {
-    setLoginOpened(x);}
-
-  
+    setLoginOpened(x);
+  }  
   return (
     <>
-      <div className="flex justify-between w-full  p-4 h-20 items-center border-b-2 ">
+      <div className="flex  justify-between w-full  p-4 h-20 items-center border-b-2 dark:border-none dark:bg-stone-900 dark:text-white ">
+        
+        <div className="flex items-center gap-9 " >
         <div
           onClick={() => {
             setGenderChoosed(0);
           }}
-          className="logo"
+          className="logo flex gap-5"
         >
           <Link to="/">
-            <img
+            <img className=""
               src="https://dfcdn.defacto.com.tr/AssetsV2/dist/img/de-facto-logo-light-v2.svg"
               alt=""
               width="141"
             />
           </Link>
+          
+          <div>
+          <button onClick={() => {
+            DarkModeprops(!isDarkTheme)}
+            } className="text-4xl">
+        <i class='' ></i>
+        
+          <i  className = {"text-4xl " +
+             (isDarkTheme ? 'bx bxs-toggle-right  text-stone-500 ' : "bx bx-toggle-left")
+            }
+          ></i>
+
+              </button>
+                </div>
+
         </div>
+        
+        
+        
+        </div>
+       
 
         <nav className="defacto-nav">
           <ul className="p-0 m-0  hidden sm:flex">
@@ -93,10 +118,10 @@ export default function Header({genderChoosed, setGenderChoosed}) {
           </ul>
         </nav>
 
-        <div className=" border border-black hidden sm:flex items-center gap-2 pl-3 pr-3 pt-1 pb-1 w-1/3">
+        <div className=" border border-black hidden sm:flex items-center gap-2 pl-3 pr-3 pt-1 pb-1 w-1/3 dark:bg-stone-700 dark:text-white">
           <i class="text-2xl bx bx-search"></i>
           <input
-            className=" sm:text-xs md:text-sm"
+            className=" sm:text-xs md:text-sm bg-transparent outline-none w-full"
             type="text"
             placeholder="Search: Jean Pants, Basic Body. Moder Fit Shirt Track Suit"
           />
@@ -117,7 +142,7 @@ export default function Header({genderChoosed, setGenderChoosed}) {
                   Favorites
                 </a>
               </li>
-              <li onClick={() => ToggleCartMenu(true)} className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
+              <li onClick={() => ToggleCartMenu(true)} className=" flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
                 <i class="bx bx-shopping-bag"></i>
                 
             <button to={'/cart'} className="hidden sm:inline text-base hover:text-gray-400 " >
@@ -127,9 +152,9 @@ export default function Header({genderChoosed, setGenderChoosed}) {
               </li>
             </ul>
 
-          <div className="md:hidden">
+          <div className="md:hidden text-4xl">
             
-            <i class='bx bx-menu'></i>
+            <i onClick={() => SetPhoneMenu(true)} class='bx bx-menu'></i>
 
 
 
@@ -139,16 +164,24 @@ export default function Header({genderChoosed, setGenderChoosed}) {
         </div>
       </div>
       {loginOpened && (
-        <div className="absolute z-10 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
+        <div className="absolute z-20 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
           <div className="w-full flex justify-end animate-slide">
             <Login loginclose={logintoggle} />
           </div>
         </div>
       )}
       {CartMenu && (
-        <div className="absolute z-10 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
+        <div className="absolute z-20 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
           <div className="w-full flex justify-end animate-slide">
             <ShoppingCart carttoggle={ToggleCartMenu} />
+          </div>
+        </div>
+      )}
+
+{PhoneState && (
+        <div className="absolute z-10 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
+          <div className="w-full flex justify-end animate-slide">
+            <PhoneMenu Phoneprops={SetPhoneMenu} logintoggle={logintoggle} carttoggle={SetCartMenu} />
           </div>
         </div>
       )}

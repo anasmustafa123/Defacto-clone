@@ -67,14 +67,14 @@
 import "./App.css";
 import GenderHomePage from "./pages/GenderHomePage";
 import { women, men, kids } from "./servises/mainpage";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import smiFinalFooter from "./components/footer/FooterPart3";
 import verySmallContainer from "./components/footer/FooterPart2";
 import ImgWithText from "./components/footer/ImgWithText";
 import HomePage from "./pages/HomePage";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import ProductsView from "./components/ProductsView/ProductsView";
 // <<<<<<< HEAD
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
@@ -85,9 +85,31 @@ import Login from "./components/login/Login";
 // >>>>>>> 78bcedca6a31f3dea78b1d441017e114b7b3aa15
 function App() {
   let [genderChoosed, setGenderChoosed] = useState(0);
+  
+  const [DarkTheme, setDarkTheme] = useState(localStorage.getItem("Dark") ? true : false )
+
+  const element = document.documentElement
+
+
+  useEffect(() => { if (DarkTheme)
+                    {
+                      localStorage.setItem("Dark", true)  
+                      element.classList.add("dark")
+                    }
+                    else
+                    {
+                      localStorage.removeItem("Dark")
+                      element.classList.remove("dark")
+                    }
+
+
+                  }, [DarkTheme])
+  
+  
+
   return (
     <>
-      <Header genderChoosed = {genderChoosed} setGenderChoosed ={setGenderChoosed}  />
+      <Header genderChoosed = {genderChoosed} setGenderChoosed ={setGenderChoosed} DarkModeprops = {setDarkTheme} isDarkTheme = {DarkTheme} />
         <Routes>
           <Route path="/" element={<HomePage setGenderChoosed ={setGenderChoosed} />} />
           <Route

@@ -3,7 +3,7 @@ import Trends from "../components/clothes-page/Trends";
 export default function GenderHomePage({genderData}) {
   console.log(genderData)
   return (
-    <div className="flex flex-col gap-12 pt-12">
+    <div className="flex flex-col gap-12 pt-12 dark:bg-stone-900">
       <ImageSlider data = {genderData["slideShow"]} />
       <div className="flex justify-center">
         <img
@@ -12,7 +12,7 @@ export default function GenderHomePage({genderData}) {
           alt=""
         />
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center  dark:bg-stone-900">
         <img
           className="w-4/5"
           src={genderData['backToCity']['url']}
