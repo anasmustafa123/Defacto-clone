@@ -4,24 +4,29 @@ import Login from "./login/Login";
 import Register from "./login/Register/Register";
 import { UserContext } from "../context/Context";
 import { HeaderMenu } from "../pages/HeaderMenu";
+import ShoppingCart from "./shoppingCart/ShoppingCart";
 
 export default function Header({ genderChoosed, setGenderChoosed }) {
   const [loginOpened, setLoginOpened] = useState(false);
   const [registerBtn, setRegisterBtn] = useState(false);
   const { cartSize } = useContext(UserContext);
+  const [CartMenu, SetCartMenu] = useState(false);
 
   const logintoggle = (x) => {
     console.log(x);
     setLoginOpened(x);
   };
 
+  const ToggleCartMenu = (y) => {SetCartMenu(y)}
+
+
   useEffect(() => {
-    if (loginOpened) {
+    if (loginOpened||CartMenu) {
       document.body.classList.add("login-opened");
     } else {
       document.body.classList.remove("login-opened");
     }
-  }, [loginOpened]);
+  }, [loginOpened, CartMenu]);
 
   function LoginMenu() {
     return (
@@ -152,9 +157,8 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
               <div className="group read-only:">
                 <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black  hover:text-gray-400 hover:border-gray-300">
                   <i class="bx bx-user"></i>
-                  <div className="text-base hover:text-gray-400">Login</div>
+                  <div className="text-base hover:text-gray-400" onClick={() => logintoggle(true)}>Login</div>
                 </li>
-                {LoginMenu()}
               </div>
 
               <Link to={'/favorites'} className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
@@ -166,9 +170,11 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
               <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
                 <i class="bx bx-shopping-bag"></i>
 
-                <NavLink to={"/cart"} className="text-base hover:text-gray-400">
+                <button className="text-base hover:text-gray-400" onClick={() => ToggleCartMenu(true)
+      
+                }>
                   shopping cart <span>{cartSize}</span>
-                </NavLink>
+                </button>
               </li>
             </ul>
           </nav>
@@ -183,6 +189,13 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
               registerBtn={registerBtn}
               setRegisterBtn={setRegisterBtn}
             />
+          </div>
+        </div>
+      )}
+      {CartMenu && (
+        <div className="absolute z-10 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
+          <div className="w-full flex justify-end animate-slide">
+            <ShoppingCart carttoggle={ToggleCartMenu} />
           </div>
         </div>
       )}
