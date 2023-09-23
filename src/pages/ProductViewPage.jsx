@@ -10,7 +10,7 @@ export default function ProductViewPage() {
   return (
     <div className="flex items-center flex-col">
       <div className="max-w-5xl">
-        query={query} <ProductsView data={data} gridCol={4} />
+      <ProductsView data={data} gridCol={4} />
       </div>
     </div>
   );

@@ -6,10 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 import ProductContainer from "../ProductPageComponents/ProductContainer";
 function ProductView({ id = 0, singleData }) {
   const [toggleHeart, setToggleHeart] = useState(false);
-  const { addToCart, addToFav } = useContext(UserContext);
-  const [isCartClicked ,setIsCartClicked] = useState(false)
-  const [isFavClicked ,setIsFavClicked] = useState(false)
-
+  const { addToCart, addToFav, checkIfExist } = useContext(UserContext);
+  const [isCartClicked, setIsCartClicked] = useState(false);
+  const [isFavClicked, setIsFavClicked] = useState(false);
+  const [selectedQuantity, setSelectedQuantity] = useState(0);
   return (
     <div key={id} className="flex flex-col gap-2 cursor-pointer">
       <div className=" relative">
@@ -18,7 +18,7 @@ function ProductView({ id = 0, singleData }) {
         </Link>
         <div
           onClick={() => {
-            addToFav("fgvggg") 
+            addToFav("fgvggg");
             setToggleHeart(!toggleHeart);
           }}
           className="absolute w-8 h-8 inline-flex justify-center items-center top-1 right-1 bg-white rounded-full cursor-pointer"
@@ -32,13 +32,11 @@ function ProductView({ id = 0, singleData }) {
         <div
           className="absolute w-8 h-8 inline-flex justify-center items-center bottom-1  right-1  bg-white rounded-full cursor-pointer"
           onClick={() => {
-            if(isCartClicked===false) {
-              addToCart("item")
+        
+              addToCart({ quantity: 1,v: singleData});
+/*               console.log(checkIfExist(singleData));*/ 
               setIsCartClicked(true);
-            }else{
-              
-            }
-
+            
           }}
         >
           <i className="text-2xl bx bx-shopping-bag"></i>
