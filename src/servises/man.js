@@ -300,45 +300,6 @@ category:"shirt",
 productName:"Regular Fit Flanel Long Sleeve Shirt"
 },
 
-{url:"",
-category:"",
-productName:""
-},
-
-{url:"",
-category:"",
-productName:""
-},
-
-{url:"",
-category:"",
-productName:""
-},
-
-{url:"",
-category:"",
-productName:""
-},
-
-{url:"",
-category:"",
-productName:""
-},
-
-{url:"",
-category:"",
-productName:""
-},
-
-{url:"",
-category:"",
-productName:""
-},
-
-{url:"",
-category:"",
-productName:""
-},
 
 
 ]

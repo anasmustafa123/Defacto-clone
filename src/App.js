@@ -12,23 +12,12 @@ import { useState } from "react";
 import ProductsView from "./components/ProductsView/ProductsView";
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import Man from "./pages/Man";
+import CheckOut from "./components/checkout/CheckOut"
 function App() {
   return (
-    <>
-      <Header genderChoosed = {genderChoosed} setGenderChoosed ={setGenderChoosed}  />
-        <Routes>
-          <Route path="/" element={<HomePage setGenderChoosed ={setGenderChoosed} />} />
-          <Route
-            path="/women"
-            element={<GenderHomePage genderData={women} />}
-          />
-          <Route path="/men" element={<GenderHomePage genderData={men} />} />
-          <Route path="/kids" element={<GenderHomePage genderData={kids} />} />
-          <Route path="/products" element={<ProductsView />} />
-          <Route path="/cart" element={<ShoppingCart />} />
-        </Routes>
-        <Footer />
-    </>
-  );
+    
+    <CheckOut />
+    
+    );
 }
 export default App;
