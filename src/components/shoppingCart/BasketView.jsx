@@ -22,7 +22,7 @@ export default function BasketView({}) {
         <div className='mt-[0.1%]'>
 
             <p className='text-base font-light'>{item.productName}</p>
-            <p className='text-sm font-semibold text-slate-950'>{item.price}</p>
+            <p className='text-sm font-semibold text-slate-950'>{item.price} EGP</p>
               
               
 

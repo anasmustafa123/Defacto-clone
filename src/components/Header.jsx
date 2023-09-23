@@ -19,7 +19,7 @@ export default function Header({genderChoosed, setGenderChoosed}) {
   
   return (
     <>
-      <div className="flex justify-between w-full  p-4 h-20 items-center border-b-2">
+      <div className="flex justify-between w-full  p-4 h-20 items-center border-b-2 ">
         <div
           onClick={() => {
             setGenderChoosed(0);
@@ -36,7 +36,7 @@ export default function Header({genderChoosed, setGenderChoosed}) {
         </div>
 
         <nav className="defacto-nav">
-          <ul className="p-0 m-0 flex ">
+          <ul className="p-0 m-0  hidden sm:flex">
             <li
               onClick={() => {
                 setGenderChoosed(1);
@@ -93,39 +93,48 @@ export default function Header({genderChoosed, setGenderChoosed}) {
           </ul>
         </nav>
 
-        <div className=" border border-black flex items-center gap-2 pl-3 pr-3 pt-1 pb-1">
+        <div className=" border border-black hidden sm:flex items-center gap-2 pl-3 pr-3 pt-1 pb-1 w-1/3">
           <i class="text-2xl bx bx-search"></i>
           <input
-            className="w-96"
+            className=" sm:text-xs md:text-sm"
             type="text"
             placeholder="Search: Jean Pants, Basic Body. Moder Fit Shirt Track Suit"
           />
         </div>
         <div className="">
           <nav className="defacto-nav">
-            <ul className="p-0 m-0 flex gap-6">
-              <div className="group read-only:">
+            <ul className="p-0 m-0 gap-6 md:flex hidden">
+              <div className="group read-only:" onClick={() => logintoggle(true)}>
                 <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black  hover:text-gray-400 hover:border-gray-300">
                   <i class="bx bx-user"></i>
-                  <div className="text-base hover:text-gray-400" onClick={() => logintoggle(true)}>Login</div>
+                  <span className="text-sm hover:text-gray-400 hidden sm:inline" >Login</span>
                 </li>
               </div>
 
               <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
                 <i class="bx bx-heart"></i>
-                <a href="#" className="text-base hover:text-gray-400">
+                <a href="#" className=" hidden sm:inline text-base hover:text-gray-400">
                   Favorites
                 </a>
               </li>
-              <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
+              <li onClick={() => ToggleCartMenu(true)} className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
                 <i class="bx bx-shopping-bag"></i>
                 
-            <button to={'/cart'} className="text-base hover:text-gray-400" onClick={() => ToggleCartMenu(true)}>
-                  Shopping Cart<span>{cartSize}</span>
+            <button to={'/cart'} className="hidden sm:inline text-base hover:text-gray-400 " >
+                  Shopping Cart <span>({cartSize})</span>
                 </button>
 
               </li>
             </ul>
+
+          <div className="md:hidden">
+            
+            <i class='bx bx-menu'></i>
+
+
+
+          </div>
+
           </nav>
         </div>
       </div>

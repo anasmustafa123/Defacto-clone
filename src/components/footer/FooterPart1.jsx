@@ -54,19 +54,32 @@ let info = [
       arrayData: [],
     },
 ];
+
 function FooterPart1() {
   return (
     <div className="flex gap-14 justify-between p-3 max-w-7xl m-auto flex-col">
-      <div className="grid grid-cols-4">
+      <div className="flex flex-col items-start justify-center m-auto gap-4 md:flex-row md:items-center">
         {[...Array(4)].map((v, i) => (
           <ImgWithText singleData={imgWithText[i]} id={i} />
         ))}
       </div>
-      <div className="grid grid-cols-4">
+      <div className="flex flex-col items-start justify-center m-auto gap-4 lg:gap-12 lg:flex-row  md:items-start">
         {[...Array(4)].map((v, i) => (
           <Info singleData={info[i]} id={i} />
         ))}
       </div>
+      
+      
+
+      {/* <div className="flex flex-col items-start justify-center m-auto gap-4 md:items-start">
+        {[...Array(4)].map((v, i) => (
+          <Info singleData={info[i]} id={i} />
+        ))}
+      </div> */}
+      
+
+    
+
     </div>
   );
 }
