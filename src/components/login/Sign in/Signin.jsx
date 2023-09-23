@@ -1,14 +1,37 @@
 import React from "react";
+import { useState } from "react";
+import {  isUser } from "../../../servises/backend";
 
 export default function Signin() {
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+  const changeValue = (e) => {
+    let { name, value } = e.target;
+    let cloneUserData = { ...userData };
+    cloneUserData[name] = value;
+    setUserData(cloneUserData);
+  };
   return (
-    <form className=" w-96 relative z-10 p-5">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        let result = isUser(userData);
+        alert(result.message);
+      }}
+      className=" w-96 relative z-10 p-5"
+    >
       <div className="mb-8 text-xs ">LOG IN WITH E-MAIL ADDRESS</div>
       {/* name */}
       <div className="mb-8 ">
         {/* email */}
         <div className="relative">
           <input
+            onChange={(e) => {
+              changeValue(e);
+            }}
+            name="email"
             type="email"
             required
             placeholder=" "
@@ -46,6 +69,10 @@ export default function Signin() {
         {/* email */}
         <div className="relative">
           <input
+            onChange={(e) => {
+              changeValue(e);
+            }}
+            name="password"
             type="password"
             required
             placeholder=" "

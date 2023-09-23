@@ -1,6 +1,23 @@
 import React from "react";
-
-export default function Register({registerclose}) {
+import { useState } from "react";
+import {  addUser } from "../../../servises/backend";
+export default function Register({ registerclose }) {
+  const [userData, setUserData] = useState({
+    name: "",
+    lName: "",
+    email: "",
+    password: "",
+    date: "",
+    gender: "",
+    phoneType: "",
+    pNum: "",
+  });
+  const changeValue = (e) => {
+    let { name, value } = e.target;
+    let cloneUserData = { ...userData };
+    cloneUserData[name] = value;
+    setUserData(cloneUserData);
+  };
   const days = [];
   for (let i = 1; i < 32; i++) {
     days.push(i);
@@ -20,7 +37,16 @@ export default function Register({registerclose}) {
     //header
     <>
       {/* // social row */}
-      <form className=" w-96 relative z-10 p-5">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          let result = addUser(userData)
+
+            alert(result.message)
+        
+        }}
+        className=" w-96 relative z-10 p-5"
+      >
         <div className="flex-col h-28  grid">
           <div className="text-center">
             <span className="text-xs">LOG IN WITH SOCIAL ACCOUNT</span>
@@ -43,6 +69,11 @@ export default function Register({registerclose}) {
           <div className="flex ">
             <div>
               <input
+                onChange={(e) => {
+                  changeValue(e);
+                }}
+                name="name"
+                value={userData["name"]}
                 type="text"
                 required
                 placeholder=" "
@@ -78,6 +109,11 @@ export default function Register({registerclose}) {
             <div className="mb-8 pl-3 flex relative">
               <div>
                 <input
+                  onChange={(e) => {
+                    changeValue(e);
+                  }}
+                  name="lName"
+                  value={userData["lName"]}
                   type="text"
                   required
                   placeholder=" "
@@ -118,6 +154,11 @@ export default function Register({registerclose}) {
           {/* email */}
           <div className="relative flex-col">
             <input
+              onChange={(e) => {
+                changeValue(e);
+              }}
+              name="email"
+              value={userData["email"]}
               type="email"
               required
               placeholder=" "
@@ -166,7 +207,14 @@ export default function Register({registerclose}) {
           </div>
           <div className="mb-8 pl-2 pr-2 w-1/4">
             <div>
-              <select className="border-b-2 border-gray-500 h-10 w-20">
+              <select
+                onChange={(e) => {
+                  changeValue(e);
+                }}
+                name="phoneType"
+                className="border-b-2 border-gray-500 h-10 w-20"
+                required
+              >
                 <option value="select">select</option>
                 <option value="10">10</option>
                 <option value="11">11</option>
@@ -178,6 +226,11 @@ export default function Register({registerclose}) {
           <div className="mb-4 pl-2 w-3/4">
             <div className="relative flex-col">
               <input
+                onChange={(e) => {
+                  changeValue(e);
+                }}
+                name="pNum"
+                value={userData["{pNum}"]}
                 type="text"
                 required
                 placeholder=" "
@@ -215,6 +268,11 @@ export default function Register({registerclose}) {
           {/* password */}
           <div className="relative flex-col">
             <input
+              onChange={(e) => {
+                changeValue(e);
+              }}
+              name="password"
+              value={userData["password"]}
               type="password"
               required
               placeholder=" "
@@ -256,8 +314,8 @@ export default function Register({registerclose}) {
             <div className="text-xs text-gray-300 mr-2 pl-1">Day</div>
             <select className="border-b-2 border-gray-500 h-8 pr-6 w-24">
               <option value>Day</option>
-              {days.map((d) => (
-                <option>{d}</option>
+              {days.map((d, index) => (
+                <option key={index}>{d}</option>
               ))}
             </select>
           </div>
@@ -266,8 +324,8 @@ export default function Register({registerclose}) {
             <div className="text-xs text-gray-300 mr-2 pl-1">Month</div>
             <select className="border-b-2 border-gray-500 h-8 pr-6 w-28">
               <option value>Month</option>
-              {months.map((m) => (
-                <option>{m}</option>
+              {months.map((m, index) => (
+                <option key={index}>{m}</option>
               ))}
             </select>
           </div>
@@ -276,8 +334,8 @@ export default function Register({registerclose}) {
             <div className="text-xs text-gray-300 mr-2 pl-1">Year</div>
             <select className="border-b-2 border-gray-500 h-8 pr-6 w-28">
               <option value>Year</option>
-              {years.map((y) => (
-                <option>{y}</option>
+              {years.map((y, index) => (
+                <option key={index}>{y}</option>
               ))}
             </select>
           </div>
