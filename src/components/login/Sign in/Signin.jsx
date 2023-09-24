@@ -44,7 +44,7 @@ export default function Signin() {
       {/* password */}
       <div className="mb-8 ">
         {/* email */}
-        <div className="relative">
+        <div className="relative ">
           <input
             type="password"
             required

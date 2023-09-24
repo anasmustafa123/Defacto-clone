@@ -5,22 +5,43 @@ import { Sto } from "./pages/Sto";
 import "./App.css";
 import GenderHomePage from "./pages/GenderHomePage";
 import { women, men, kids } from "./servises/mainpage";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import HomePage from "./pages/HomePage";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import ShoppingCart from "./components/shoppingCart/ShoppingCart"
 import ProductContainer from "./components/ProductPageComponents/ProductContainer";
 import ProductViewPage from './pages/ProductViewPage'
-import "./App.css";
 import Login from "./components/login/Login";
 
 function App() {
-  let [genderChoosed, setGenderChoosed] = useState('w');
+  let [genderChoosed, setGenderChoosed] = useState(0);
+  
+  const [DarkTheme, setDarkTheme] = useState(localStorage.getItem("Dark") ? true : false )
+
+  const element = document.documentElement
+
+
+  useEffect(() => { if (DarkTheme)
+                    {
+                      localStorage.setItem("Dark", true)  
+                      element.classList.add("dark")
+                    }
+                    else
+                    {
+                      localStorage.removeItem("Dark")
+                      element.classList.remove("dark")
+                    }
+
+
+                  }, [DarkTheme])
+  
+  
+
   return (
-    <>
-      <Header genderChoosed = {genderChoosed} setGenderChoosed ={setGenderChoosed}  />
+    <div className="dark:bg-zinc-900">
+      <Header genderChoosed = {genderChoosed} setGenderChoosed ={setGenderChoosed} DarkModeprops = {setDarkTheme} isDarkTheme = {DarkTheme} />
         <Routes>
           <Route path="/" element={<HomePage setGenderChoosed ={setGenderChoosed} />} />
           <Route
@@ -36,7 +57,7 @@ function App() {
           <Route path="/cart" element={<ShoppingCart />} />
         </Routes>
         <Footer />
-    </>
+    </div>
   );
 }
 export default App;

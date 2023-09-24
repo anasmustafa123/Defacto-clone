@@ -10,11 +10,8 @@ export default function Login({ loginclose, registerBtn, setRegisterBtn }) {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-96 bg-white h-full">
-        <div className="p-4 flex w-full">
-          <h5 className="w-80 font-medium ">
-            <span className="w-24 pr-2 pl-2">LOGIN</span>
-          </h5>
+      <div className=" flex flex-col items-center justify-center w-96 p-5 bg-white h-full dark:bg-stone-800 dark:text-white"> 
+        <div className="w-full flex justify-end">
           <button
             onClick={() => {
               loginclose(false);
