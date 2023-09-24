@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {  addUser } from "../../../servises/backend";
 
 export default function Register({ registerclose }) {
   const [name, setName] = useState("");
@@ -11,6 +12,23 @@ export default function Register({ registerclose }) {
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
+
+  const [userData, setUserData] = useState({
+    name: "",
+    lName: "",
+    email: "",
+    password: "",
+    date: "",
+    gender: "",
+    phoneType: "",
+    pNum: "",
+  });
+  const changeValue = (e) => {
+    let { name, value } = e.target;
+    let cloneUserData = { ...userData };
+    cloneUserData[name] = value;
+    setUserData(cloneUserData);
+  };
 
   function validateName() {
     if (name === "") {
@@ -75,7 +93,15 @@ export default function Register({ registerclose }) {
     //header
     <>
       {/* // social row */}
-      <form className=" w-96 relative z-10 p-5 ">
+      <form className=" w-96 relative z-10 p-5 "
+        onSubmit={(e) => {
+          e.preventDefault();
+          let result = addUser(userData)
+
+            alert(result.message)
+        
+        }}
+      >
         <div className="flex-col h-28  grid">
           <div className="text-center">
             <span className="text-xs">LOG IN WITH SOCIAL ACCOUNT</span>
@@ -112,7 +138,10 @@ export default function Register({ registerclose }) {
                   h-8
                   pt-2 peer`}
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    setName(e.target.value)
+                    changeValue(e);
+                  }}
                   onBlur={() => validateName()}
                 />
                 <label
@@ -154,7 +183,10 @@ export default function Register({ registerclose }) {
                     h-8
                     pt-2 peer`}
                   value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
+                  onChange={(e) => {
+                    setLastName(e.target.value)
+                    changeValue(e);
+                  }}
                   onBlur={() => validateLastName()}
                 />
                 <label
@@ -196,7 +228,11 @@ export default function Register({ registerclose }) {
             h-8
             pt-2 peer`}
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value)
+                changeValue(e);
+              }
+              }
               onBlur={() => validateEmail()}
             />
             <label
@@ -262,7 +298,10 @@ export default function Register({ registerclose }) {
             peer
               `}
                 value={mobile}
-                onChange={(e) => setMobile(e.target.value)}
+                onChange={(e) => {
+                  setMobile(e.target.value)
+                  changeValue(e);
+                }}
                 onBlur={() => validateMobile()}
               />
               <label
@@ -309,7 +348,10 @@ export default function Register({ registerclose }) {
                     
                     `}
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                changeValue(e);
+              }}
               onBlur={() => validatePassword()}
             />
             <label

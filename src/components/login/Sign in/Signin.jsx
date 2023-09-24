@@ -1,10 +1,22 @@
 import React, { useState } from "react";
+import {  isUser } from "../../../servises/backend";
 
 export default function Signin() {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
+
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+  const changeValue = (e) => {
+    let { name, value } = e.target;
+    let cloneUserData = { ...userData };
+    cloneUserData[name] = value;
+    setUserData(cloneUserData);
+  };
 
   function validateEmail() {
     if (email === "") {
@@ -23,7 +35,12 @@ export default function Signin() {
   }
 
   return (
-    <form className=" w-96 relative z-10 p-5">
+    <form className=" w-96 relative z-10 p-5"
+    onSubmit={(e) => {
+      e.preventDefault()
+      let result = isUser(userData);
+      alert(result.message);
+    }}>
       <div className="mb-8 text-xs ">LOG IN WITH E-MAIL ADDRESS</div>
       <div className="mb-8 ">
         {/* email */}
@@ -41,7 +58,10 @@ export default function Signin() {
             h-10
             pt-2 peer `}
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value)
+              changeValue(e);
+            }}
             onBlur={() => validateEmail()}
           />
           <label
@@ -82,7 +102,10 @@ export default function Signin() {
             pt-2 peer
               `}
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) =>{ 
+              setPassword(e.target.value)
+              changeValue(e);
+            }}
             onBlur={() => validatePassword()}
           />
 
