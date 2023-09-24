@@ -5,7 +5,6 @@ export default function Signin() {
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [visable, setVisable] = useState(false);
 
   function validateEmail() {
     if (email === "") {
@@ -86,18 +85,6 @@ export default function Signin() {
             onChange={(e) => setPassword(e.target.value)}
             onBlur={() => validatePassword()}
           />
-          <div>
-            <button
-              className="absolute top-0 right-0 w-6 h-6"
-              onClick={() => setVisable(!visable)}
-            >
-              {visable ? (
-                <i className="bxs bxs-show"></i>
-              ) : (
-                <i className="bxs bxs-low-vision text-red-500"></i>
-              )}
-            </button>
-          </div>
 
           <label
             className="peer-focus:font-medium

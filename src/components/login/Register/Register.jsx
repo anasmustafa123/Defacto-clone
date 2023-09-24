@@ -11,7 +11,6 @@ export default function Register({ registerclose }) {
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [visable, setVisable] = useState(false);
 
   function validateName() {
     if (name === "") {
