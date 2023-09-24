@@ -9,7 +9,7 @@ export default function ProductViewPage() {
 
   return (
     <div className="flex items-center flex-col">
-      <div className="max-w-5xl">
+      <div className="w-[1300px]">
       <ProductsView data={data} gridCol={4} />
       </div>
     </div>

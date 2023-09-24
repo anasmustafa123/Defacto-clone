@@ -1,14 +1,23 @@
 import { womenFullData } from "./womenData";
-//import {manFullData} from "./manData";
-//import {kidsFullData} from "./kidsData";
-
-let check = "gender:man,women;category:skirts";
+import { man } from "./man";
+import { kids } from "./kids";
 
 let data = []
 
-/* womenFullData.sort((a, b) => {
+const fillItems = (items) => {
+  items.forEach(sindleItem => {
+    data.push(sindleItem)
+    sindleItem['productId'] = data.length
+  });
+}
+fillItems(womenFullData)
+fillItems(man)
+fillItems(kids)
+console.log(data)
+
+data.sort((a, b) => {
   return a["key"] > b["key"] ? 1 : -1;
-}); */
+});
 
 function ifExist(data, key, valueArray){
   return valueArray.reduce((a, b)=>{
@@ -29,7 +38,7 @@ function toObj(inputQuery) {
 }
 function getData(query) {
   let objQuery = toObj(query);
-  let x =  womenFullData.filter((d)=>{
+  let x =  data.filter((d)=>{
     return objQuery.reduce((a, b)=>{
       return a && ifExist(d, b[0], b[1])
     },true)
@@ -38,7 +47,7 @@ function getData(query) {
   return x;
 }
 const searchById = (id) => {
-  return womenFullData.find((e)=>{
+  return data.find((e)=>{
     return e.productId == id;
   })
 }

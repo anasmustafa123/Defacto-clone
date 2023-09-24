@@ -5,7 +5,7 @@ export default function ProductsView({ gridCol, id = 0, data }) {
     <div
       key={id}
       className={
-        "grid justify-items-center justify-center w-full gap-1" +
+        "grid justify-items-center justify-center  gap-1" +
         " " +
         gridColsNum
       }
