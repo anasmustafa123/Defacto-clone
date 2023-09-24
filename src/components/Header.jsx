@@ -178,7 +178,7 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
         <div className="absolute z-10 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
           <div className="w-full flex justify-end animate-slide">
             <Login
-              loginclose={logintoggle}
+              loginclose={setLoginOpened}
               registerBtn={registerBtn}
               setRegisterBtn={setRegisterBtn}
             />
