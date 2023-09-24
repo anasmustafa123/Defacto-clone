@@ -14,7 +14,7 @@ function ProductView({ id = 0, singleData }) {
     <div key={id} className="flex flex-col gap-2 cursor-pointer">
       <div className=" relative">
         <Link to={`/${singleData["productId"]}`}>
-          <img className="w-60 h-60" src={singleData["url"]} alt="" />
+          <img className="w-full h-full" src={singleData["url"]} alt="" />
         </Link>
         <div
           onClick={() => {
