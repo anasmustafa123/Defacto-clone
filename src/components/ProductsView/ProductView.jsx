@@ -34,9 +34,7 @@ function ProductView({ id = 0, singleData }) {
           onClick={() => {
         
               addToCart({ quantity: 1,v: singleData});
-/*               console.log(checkIfExist(singleData));*/ 
               setIsCartClicked(true);
-            
           }}
         >
           <i className="text-2xl bx bx-shopping-bag"></i>
