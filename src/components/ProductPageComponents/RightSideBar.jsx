@@ -4,7 +4,7 @@ export default function RightSideBar({productData}) {
   let [toggleHeart, setToggleHeart] = useState(false);
   let sizes = ["XS", "S", "M", "L", "XL", "XXL"];
   return (
-    <div className="flex flex-col gap-2 min-w-max">
+    <div className="flex flex-col gap-2  max-w-[400px]">
       <div
         onClick={() => {
           setToggleHeart(!toggleHeart);
@@ -55,7 +55,7 @@ export default function RightSideBar({productData}) {
       >
         ADD TO CART
       </button>
-      <div className="text-center flex flex-col gap-4 pt-2 pb-2 border rounded-e-2xl border-dashed border-black mt-3 mb-3">
+      <div className="text-center flex flex-col gap-4 pt-2 pb-2 border rounded-2xl border-dashed border-black mt-3 mb-3">
         <p className="leading-none">Discover Payment Options</p>
         <div className="flex justify-center gap-12">
           <img
@@ -72,7 +72,7 @@ export default function RightSideBar({productData}) {
           />
         </div>
       </div>
-      <div className="flex gap-4 border rounded-2xl border-black border-dashed  pt-1 pb-1 items-center justify-center">
+      <div className="flex gap-4 border rounded-lg border-black border-dashed  pt-1 pb-1 items-center justify-center">
         <p className="text-sm">Pay With Credit Card Save %5</p>
         <i class="bx bx-credit-card-front text-xl"></i>
       </div>
