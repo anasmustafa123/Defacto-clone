@@ -1,27 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Signin() {
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  function validateEmail() {
+    if (email === "") {
+      setEmailError("this field is required");
+    } else if (!email.includes("@") || !email.includes(".com")) {
+      setEmailError("wrong format");
+    } else setEmailError("");
+  }
+
+  function validatePassword() {
+    if (password === "") {
+      setPasswordError("this field is required");
+    } else if (!password.length < 8 && password.length < 15) {
+      setEmailError("wrong format");
+    } else setEmailError("");
+  }
+
   return (
     <form className=" w-96 relative z-10 p-5">
       <div className="mb-8 text-xs ">LOG IN WITH E-MAIL ADDRESS</div>
-      {/* name */}
       <div className="mb-8 ">
         {/* email */}
         <div className="relative">
           <input
             type="email"
-            required
             placeholder=" "
-            className="
+            className={`
             relative
             border-0
-            border-b-2 border-gray-500 
+            border-b-2 ${emailError ? "border-red-600" : "border-gray-500 "} 
             w-full
             bg-transparent 
             outline-none
             h-10
-            pt-2 peer
-              "
+            pt-2 peer `}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onBlur={() => validateEmail()}
           />
           <label
             className="peer-focus:font-medium
@@ -39,27 +60,32 @@ export default function Signin() {
           >
             E-mail Address
           </label>
+          {emailError && (
+            <label className="text-red-700 text-xs">{emailError}</label>
+          )}
         </div>
       </div>
       {/* password */}
-      <div className="mb-8 ">
-        {/* email */}
+      <div className="mb-8">
         <div className="relative ">
           <input
             type="password"
-            required
             placeholder=" "
-            className="
+            className={`
             relative
-            border-0
-            border-b-2 border-gray-500 
-            w-full
             bg-transparent 
+            border-0
+            border-b-2 ${passwordError ? "border-red-600" : "border-gray-500 "} 
+            w-full 
             outline-none
             h-10
             pt-2 peer
-              "
+              `}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            onBlur={() => validatePassword()}
           />
+
           <label
             className="peer-focus:font-medium
                 absolute text-sm duration-500
@@ -76,6 +102,9 @@ export default function Signin() {
           >
             Password
           </label>
+          {passwordError && (
+            <label className="text-red-700 text-xs">{passwordError}</label>
+          )}
         </div>
       </div>
       {/* checkbox and forgot password */}
