@@ -29,7 +29,7 @@ export const Fav = () => {
             </div>
           </div>
         )}
-        {favSize !== 0 && fav.map((valu, index) => <ProductView />)}
+        {favSize !== 0 && fav.map((valu, index) => <ProductView singleData={valu} />)}
       </div>
     </div>
   );

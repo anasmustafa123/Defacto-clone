@@ -21,7 +21,8 @@ export default function Login({ loginclose, registerBtn, setRegisterBtn }) {
             }}
             className="w-10"
           >
-            <span className="w-24 pr-2 pl-2">X</span>
+            <span className="w-24 pr-2 pl-2">
+            <i class="text-4xl bx bx-x"></i></span>
           </button>
         </div>
         <div className="w-full">
@@ -56,7 +57,7 @@ export default function Login({ loginclose, registerBtn, setRegisterBtn }) {
                   setRegisterBtn(true);
                 }}
               >
-                Registe
+                Register
               </button>
             </div>
           </div>

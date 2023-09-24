@@ -38,7 +38,7 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
                 logintoggle(true);
                 setRegisterBtn(false);
               }}
-              className="w-full bg-black text-center text-white h-11 hover:bg-white hover:text-black hover:border-neutral-800 hover:border-2"
+              className="w-full bg-black text-center text-white h-11 hover:bg-white hover:text-black hover:border-neutral-800 hover:border-2 group"
             >
               sign in
             </button>
@@ -74,7 +74,7 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
   }
   return (
     <>
-      <div className="flex justify-between w-full  p-4 h-20 items-center border-b-2">
+      <div className="flex justify-between w-full  p-4 h-20 items-center ">
         <div onClick={()=>{setGenderChoosed('none')}} className="logo">
           <Link to="/">
             <img
@@ -146,7 +146,7 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
         <div className=" border border-black flex items-center gap-2 pl-3 pr-3 pt-1 pb-1">
           <i class="text-2xl bx bx-search"></i>
           <input
-            className="w-96"
+            className="w-96 outline-none"
             type="text"
             placeholder="Search: Jean Pants, Basic Body. Moder Fit Shirt Track Suit"
           />
@@ -157,8 +157,9 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
               <div className="group read-only:">
                 <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black  hover:text-gray-400 hover:border-gray-300">
                   <i class="bx bx-user"></i>
-                  <div className="text-base hover:text-gray-400" onClick={() => logintoggle(true)}>Login</div>
+                  <div className="text-base hover:text-gray-400 group">Login</div>
                 </li>
+                {LoginMenu()}
               </div>
 
               <Link to={'/favorites'} className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
@@ -195,10 +196,19 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
       {CartMenu && (
         <div className="absolute z-10 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
           <div className="w-full flex justify-end animate-slide">
-            <ShoppingCart carttoggle={ToggleCartMenu} />
+            <ShoppingCart carttoggle={ToggleCartMenu}/>
           </div>
         </div>
       )}
+
+      <div className="border-b-2 realtive w-full">
+        <div className="group w-44">
+          <span className="ml-3">
+            Accesorise & shoes
+          </span>
+          <div className="absolute z-10 "><HeaderMenu/></div>
+        </div>
+      </div>
     </>
   );
 }

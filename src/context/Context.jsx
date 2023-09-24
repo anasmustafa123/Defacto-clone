@@ -68,6 +68,17 @@ const UserProvider = ({ children }) => {
   const addToFav = (item) => {
     setFav([...fav, item]);
   };
+
+  const removeFromFav = (item) => {
+    let newFav = [...fav]
+    newFav.forEach((i, index)=>{
+      if (i['productId']===item['productId']) {
+        newFav.splice(index,1);
+      }
+    })
+    setFav(newFav);
+  };
+
   const favSize = fav.length;
 
   return (
@@ -82,7 +93,8 @@ const UserProvider = ({ children }) => {
         checkIfExist,
         incrementCart,
         decrementCart,
-        removeOneItem
+        removeOneItem, 
+        removeFromFav
       }}
     >
       {children}
