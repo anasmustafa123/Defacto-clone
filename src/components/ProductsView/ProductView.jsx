@@ -32,9 +32,8 @@ function ProductView({ id = 0, singleData }) {
         <div
           className="absolute w-8 h-8 inline-flex justify-center items-center bottom-1  right-1  bg-white rounded-full cursor-pointer"
           onClick={() => {
-        
-              addToCart({ quantity: 1,v: singleData});
-              setIsCartClicked(true);
+            addToCart({ quantity: 1, v: singleData });
+            setIsCartClicked(true);
           }}
         >
           <i className="text-2xl bx bx-shopping-bag"></i>
