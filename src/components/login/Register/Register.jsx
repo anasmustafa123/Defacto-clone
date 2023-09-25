@@ -15,7 +15,7 @@ export default function Register({ registerclose }) {
   function validateName() {
     if (name === "") {
       setNameError("Please enter your last name");
-    } else if (name.length < 2) {
+    } else if (name.length <= 2) {
       setNameError("your last name must be at least 2 characters");
     } else setNameError("");
   }
@@ -38,7 +38,7 @@ export default function Register({ registerclose }) {
   function validateMobile() {
     if (mobile === "") {
       setMobileError("this field is required");
-    } else if (mobile.length < 10) {
+    } else if (mobile.length <= 10) {
       setMobileError("This field is required");
     } else setMobileError("");
   }
@@ -46,10 +46,7 @@ export default function Register({ registerclose }) {
   function validatePassword() {
     if (password === "") {
       setPasswordError("Please enter your password");
-    } else if (
-      password.length < 8 ||
-      password.length < 15 
-    ) {
+    } else if (password.length >= 8 && password.length <= 15) {
       setPasswordError(
         "Your password must be in the range of 8-15 characters "
       );
@@ -100,7 +97,7 @@ export default function Register({ registerclose }) {
               <div>
                 <input
                   type="text"
-                  placeholder=" "
+                  placeholder=""
                   className={`relative
                   border-0
                   border-b-2 ${
@@ -141,8 +138,9 @@ export default function Register({ registerclose }) {
             <div className="mb-10 pl-3 w-1/2 flex relative">
               <div>
                 <input
+                  minLength={3}
                   type="text"
-                  placeholder=" "
+                  placeholder=""
                   className={`relative
                     border-0
                     border-b-2 ${
@@ -427,7 +425,7 @@ export default function Register({ registerclose }) {
         <div div className="mb-8 pr-3 pl-3">
           <button
             type="submit"
-            className="w-full bg-neutral-800 text-white px-8 h-8 hover:bg-white hover:text-black hover:border-neutral-800 hover:border-2"
+            className="w-full bg-neutral-800 text-white px-8 h-8 hover:bg-white hover:text-black hover:border-neutral-800 hover:border-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
           >
             <span className="text-xs content-center">Register</span>
           </button>

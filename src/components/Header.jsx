@@ -53,10 +53,10 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
             </div>
           </div>
           <hr className="mb-3" />
-          <div className="mb-3 text-gray-500  text-sm font-extralight">
+          <div className="mb-3 text-gray-500  text-sm font-extralight cursor-pointer">
             Order Tracking
           </div>
-          <div className="mb-3 text-gray-500  text-sm font-extralight">
+          <div className="mb-3 text-gray-500  text-sm font-extralight cursor-pointer">
             Help
           </div>
         </div>

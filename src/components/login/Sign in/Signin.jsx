@@ -119,17 +119,18 @@ export default function Signin() {
           Forget Password
         </div>
       </div>
-      <div div className="mb-8">
+      {/* button */}
+      <div div className="mb-8 pr-3 pl-3">
         <button
           type="submit"
-          className="w-full bg-neutral-800 text-white px-8 h-10 hover:bg-white hover:text-black hover:border-neutral-800 hover:border-2"
+          className="w-full bg-neutral-800 text-white px-8 h-8 hover:bg-white hover:text-black hover:border-neutral-800 hover:border-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
         >
           <span className="text-sm content-center">Sign in</span>
         </button>
       </div>
       <div className="mb-8">
         <button type="submit" className="w-full underline text-zinc-950">
-          <span className=" text-xs content-center  cursor-pointer">
+          <span className=" text-xs content-center cursor-pointer">
             Continue as a guest
           </span>
         </button>
