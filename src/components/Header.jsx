@@ -9,7 +9,7 @@ import ShoppingCart from "./shoppingCart/ShoppingCart";
 export default function Header({ genderChoosed, setGenderChoosed }) {
   const [loginOpened, setLoginOpened] = useState(false);
   const [registerBtn, setRegisterBtn] = useState(false);
-  const { cartSize } = useContext(UserContext);
+  const { cartSize, isUserGuest } = useContext(UserContext);
   const [CartMenu, SetCartMenu] = useState(false);
 
   const logintoggle = (x) => {
@@ -17,11 +17,12 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
     setLoginOpened(x);
   };
 
-  const ToggleCartMenu = (y) => {SetCartMenu(y)}
-
+  const ToggleCartMenu = (y) => {
+    SetCartMenu(y);
+  };
 
   useEffect(() => {
-    if (loginOpened||CartMenu) {
+    if (loginOpened || CartMenu) {
       document.body.classList.add("login-opened");
     } else {
       document.body.classList.remove("login-opened");
@@ -75,7 +76,12 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
   return (
     <>
       <div className="flex justify-between w-full  p-4 h-20 items-center ">
-        <div onClick={()=>{setGenderChoosed('none')}} className="logo">
+        <div
+          onClick={() => {
+            setGenderChoosed("none");
+          }}
+          className="logo"
+        >
           <Link to="/">
             <img
               src="https://dfcdn.defacto.com.tr/AssetsV2/dist/img/de-facto-logo-light-v2.svg"
@@ -89,48 +95,48 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
           <ul className="p-0 m-0 flex ">
             <li
               onClick={() => {
-                setGenderChoosed('w');
+                setGenderChoosed("w");
               }}
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == 'w' && "font-semibold underline")
+                (genderChoosed == "w" && "font-semibold underline")
               }
             >
               <Link to="/women">WOMEN</Link>
             </li>
             <li
               onClick={() => {
-                setGenderChoosed('m');
+                setGenderChoosed("m");
               }}
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == 'm' && "font-semibold underline")
+                (genderChoosed == "m" && "font-semibold underline")
               }
             >
               <Link to="/men">MEN</Link>
             </li>
             <li
               onClick={() => {
-                setGenderChoosed('k');
+                setGenderChoosed("k");
               }}
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == 'k' && "font-semibold underline")
+                (genderChoosed == "k" && "font-semibold underline")
               }
             >
               <Link to="/kids">KIDS</Link>
             </li>
             <li
               onClick={() => {
-                setGenderChoosed('s');
+                setGenderChoosed("s");
               }}
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == 's' && "font-semibold underline")
+                (genderChoosed == "s" && "font-semibold underline")
               }
             >
               <Link
@@ -157,12 +163,17 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
               <div className="group read-only:">
                 <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black  hover:text-gray-400 hover:border-gray-300">
                   <i class="bx bx-user"></i>
-                  <div className="text-base hover:text-gray-400 group">Login</div>
+                  <div className="text-base hover:text-gray-400 group">
+                    Login
+                  </div>
                 </li>
                 {LoginMenu()}
               </div>
 
-              <Link to={'/favorites'} className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
+              <Link
+                to={"/favorites"}
+                className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300"
+              >
                 <i class="bx bx-heart"></i>
                 <a href="#" className="text-base hover:text-gray-400">
                   Favorites
@@ -171,15 +182,15 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
               <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
                 <i class="bx bx-shopping-bag"></i>
 
-                <button className="text-base hover:text-gray-400" onClick={() => ToggleCartMenu(true)
-      
-                }>
+                <button
+                  className="text-base hover:text-gray-400"
+                  onClick={() => ToggleCartMenu(true)}
+                >
                   shopping cart <span>{cartSize}</span>
                 </button>
               </li>
             </ul>
           </nav>
-          
         </div>
       </div>
       {loginOpened && (
@@ -196,17 +207,17 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
       {CartMenu && (
         <div className="absolute z-10 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
           <div className="w-full flex justify-end animate-slide">
-            <ShoppingCart carttoggle={ToggleCartMenu}/>
+            <ShoppingCart carttoggle={ToggleCartMenu} />
           </div>
         </div>
       )}
 
       <div className="border-b-2 dark:border-none realtive w-full">
         <div className="group w-44">
-          <span className="ml-3">
-            Accesorise & shoes
-          </span>
-          <div className="absolute z-10 "><HeaderMenu/></div>
+          <span className="ml-3">Accesorise & shoes</span>
+          <div className="absolute z-10 ">
+            <HeaderMenu />
+          </div>
         </div>
       </div>
     </>

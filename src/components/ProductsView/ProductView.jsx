@@ -4,36 +4,41 @@ import { UserContext } from "../../context/Context";
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ProductContainer from "../ProductPageComponents/ProductContainer";
-
-
+import { isGuest, isUser } from "../../servises/backend";
 function ProductView({ id = 0, singleData }) {
   const [toggleHeart, setToggleHeart] = useState(false);
-  const { addToCart, addToFav, checkIfExist, removeFromFav } = useContext(UserContext);
+  const { addToCart, addToFav, checkIfExist, removeFromFav, isUserGuest } =
+    useContext(UserContext);
   const [isCartClicked, setIsCartClicked] = useState(false);
   const [isFavClicked, setIsFavClicked] = useState(false);
-  const [selectedQuantity, setSelectedQuantity] = useState(0);
-
-
   return (
     <div key={id} className="flex flex-col gap-2 cursor-pointer">
       <div className=" relative">
         <Link to={`/${singleData["productId"]}`}>
-          <img className="w-full h-full" src={singleData["url"]} alt="" />
+          <img className="min-h-[470px] max-h-[470px]" src={singleData["url"]} alt="" />
         </Link>
         <div
           onClick={() => {
-            setToggleHeart(!toggleHeart);
-            if(!isFavClicked){
-              console.log('here');
-              addToFav(singleData);
-              setIsFavClicked(true)
-            }
-            else if(isFavClicked) {
-              removeFromFav(singleData)
-              setIsFavClicked(false)
+            if (isGuest()) {
+              alert('log in first')
+            }else{
+              setToggleHeart(!toggleHeart);
+              if (!isFavClicked) {
+                console.log("here");
+                addToFav(singleData);
+                setIsFavClicked(true);
+              } else if (isFavClicked) {
+                removeFromFav(singleData);
+                setIsFavClicked(false);
+              }
             }
           }}
-          className="absolute w-8 h-8 inline-flex justify-center items-center top-1 right-1 bg-white rounded-full cursor-pointer"
+          className={
+            (isUserGuest
+              ? "bg-gray-400 text-gray-300 cursor-not-allowed"
+              : "bg-gray-200 text-red-600 ") +
+            " absolute w-8 h-8 inline-flex justify-center items-center top-1 right-1 rounded-full"
+          }
         >
           <i
             className={
@@ -42,12 +47,20 @@ function ProductView({ id = 0, singleData }) {
           ></i>
         </div>
         <div
-          className="absolute w-8 h-8 inline-flex justify-center items-center bottom-1  right-1  bg-white rounded-full cursor-pointer"
+          className={
+            (isUserGuest
+              ? "bg-gray-400 text-gray-300 cursor-not-allowed"
+              : "bg-gray-200  ") +
+            "  absolute w-8 h-8 inline-flex justify-center items-center bottom-1  right-1   rounded-full cursor-pointer"
+          }
           onClick={() => {
-        
-              addToCart({ quantity: 1,v: singleData});
+            if (isGuest()) {
+              alert("log in first");
+            } else {
+              alert("add to cart");
+              addToCart({ quantity: 1, v: singleData });
               setIsCartClicked(true);
-            
+            }
           }}
         >
           <i className="text-2xl bx bx-shopping-bag"></i>
