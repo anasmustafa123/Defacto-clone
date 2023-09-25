@@ -10,7 +10,7 @@ export default function Login({ loginclose, registerBtn, setRegisterBtn }) {
 
   return (
     <>
-      <div className=" flex flex-col items-center justify-center w-96 p-5 bg-white h-full dark:bg-stone-800 dark:text-white"> 
+      <div className=" flex flex-col  items-center justify-center w-96 p-5 bg-white h-full dark:bg-stone-800 dark:text-white"> 
         <div className="w-full flex justify-end">
           <button
             onClick={() => {

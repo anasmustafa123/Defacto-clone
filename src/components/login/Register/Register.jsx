@@ -1,18 +1,12 @@
 import React, { useState } from "react";
-import {  addUser } from "../../../servises/backend";
+import { addUser } from "../../../servises/backend";
 
 export default function Register({ registerclose }) {
-  const [name, setName] = useState("");
   const [nameError, setNameError] = useState("");
-  const [lastName, setLastName] = useState("");
   const [lastNameError, setLastNameError] = useState("");
-  const [mobile, setMobile] = useState("");
   const [mobileError, setMobileError] = useState("");
-  const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
   const [userData, setUserData] = useState({
     name: "",
     lName: "",
@@ -31,47 +25,78 @@ export default function Register({ registerclose }) {
   };
 
   function validateName() {
-    if (name === "") {
+    if (userData["name"] === "") {
       setNameError("Please enter your last name");
-    } else if (name.length < 2) {
+      return false;
+    } else if (userData["name"].length < 2) {
       setNameError("your last name must be at least 2 characters");
-    } else setNameError("");
+      return false;
+    } else {
+      setNameError("");
+      return true;
+    }
   }
   function validateLastName() {
-    if (lastName === "") {
+    if (userData["lName"] === "") {
       setLastNameError("Please enter your last name");
-    } else if (lastName.length < 2) {
+      return false;
+    } else if (userData["lName"].length < 2) {
       setLastNameError("your name must be at least 2 characters");
-    } else setLastNameError("");
+      return false;
+    } else {
+      setLastNameError("");
+      return true;
+    }
   }
 
   function validateEmail() {
-    if (email === "") {
+    if (userData["email"] === "") {
       setEmailError("this field is required");
-    } else if (!email.includes("@") || !email.includes(".com")) {
+      return false;
+    } else if (
+      !userData["email"].includes("@") ||
+      !userData["email"].includes(".com")
+    ) {
       setEmailError("wrong format");
-    } else setEmailError("");
+      return false;
+    } else {
+      setEmailError("");
+      return true;
+    }
   }
 
   function validateMobile() {
-    if (mobile === "") {
+    if (userData["pNum"] === "") {
       setMobileError("this field is required");
-    } else if (mobile.length < 10) {
-      setMobileError("This field is required");
-    } else setMobileError("");
+      return false;
+    } else if (!parseInt(userData["pNum"])) {
+      setMobileError("Not a valid Phone Number");
+      return false;
+    } else if (userData["pNum"].length < 10) {
+      setMobileError("Enter full phone number");
+      return false;
+    } else {
+      setMobileError("");
+      return true;
+    }
   }
 
   function validatePassword() {
-    if (password === "") {
+    if (userData["password"] === "") {
       setPasswordError("Please enter your password");
+      return false;
     } else if (
-      password.length < 8 ||
-      password.length < 15 
+      userData["password"].length < 8 ||
+      userData["password"].length > 20
     ) {
       setPasswordError(
         "Your password must be in the range of 8-15 characters "
       );
-    } else setPasswordError("");
+      return false;
+    } else {
+      setPasswordError("");
+      return true;
+    }
   }
 
   const days = [];
@@ -93,13 +118,20 @@ export default function Register({ registerclose }) {
     //header
     <>
       {/* // social row */}
-      <form className=" w-96 relative z-10 p-5 "
+      <form
+        className=" w-96 relative z-10 p-5 "
         onSubmit={(e) => {
           e.preventDefault();
-          let result = addUser(userData)
-
-            alert(result.message)
-        
+          let res1= validateEmail();
+          let res2 = validateLastName();
+          let res3= validatePassword();
+          let res4= validateName();
+          let res5 = validateMobile();
+          
+          if (res1 && res2 && res3 && res4 && res5) {
+            let result = addUser(userData);
+            alert(result.message);
+          }
         }}
       >
         <div className="flex-col h-28  grid">
@@ -137,9 +169,9 @@ export default function Register({ registerclose }) {
                   outline-none
                   h-8
                   pt-2 peer`}
-                  value={name}
+                  name="name"
+                  value={userData["name"]}
                   onChange={(e) => {
-                    setName(e.target.value)
                     changeValue(e);
                   }}
                   onBlur={() => validateName()}
@@ -182,9 +214,9 @@ export default function Register({ registerclose }) {
                     outline-none
                     h-8
                     pt-2 peer`}
-                  value={lastName}
+                  name="lName"
+                  value={userData["lName"]}
                   onChange={(e) => {
-                    setLastName(e.target.value)
                     changeValue(e);
                   }}
                   onBlur={() => validateLastName()}
@@ -227,12 +259,11 @@ export default function Register({ registerclose }) {
             outline-none
             h-8
             pt-2 peer`}
-              value={email}
+              name="email"
+              value={userData["email"]}
               onChange={(e) => {
-                setEmail(e.target.value)
                 changeValue(e);
-              }
-              }
+              }}
               onBlur={() => validateEmail()}
             />
             <label
@@ -297,9 +328,9 @@ export default function Register({ registerclose }) {
             h-8
             peer
               `}
-                value={mobile}
+                name="pNum"
+                value={userData["{pNum}"]}
                 onChange={(e) => {
-                  setMobile(e.target.value)
                   changeValue(e);
                 }}
                 onBlur={() => validateMobile()}
@@ -347,9 +378,9 @@ export default function Register({ registerclose }) {
                     px-2 peer
                     
                     `}
-              value={password}
+              name="password"
+              value={userData["password"]}
               onChange={(e) => {
-                setPassword(e.target.value);
                 changeValue(e);
               }}
               onBlur={() => validatePassword()}

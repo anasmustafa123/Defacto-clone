@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import {  isUser } from "../../../servises/backend";
-
+import { signIn, getUserItems } from "../../../servises/backend";
+import { UserContext } from "../../../context/Context";
+import { useContext } from "react";
 export default function Signin() {
-  const [email, setEmail] = useState("");
+  const { setIsUserGuest, setCart, setFav  } = useContext(UserContext);
   const [emailError, setEmailError] = useState("");
-  const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -19,28 +18,51 @@ export default function Signin() {
   };
 
   function validateEmail() {
-    if (email === "") {
+    if (userData["email"] === "") {
       setEmailError("this field is required");
-    } else if (!email.includes("@") || !email.includes(".com")) {
+      return false;
+      /*??  || !userData['email'].includes(".com") */
+    } else if (!userData["email"].includes("@")) {
       setEmailError("wrong format");
-    } else setEmailError("");
+      return false;
+    } else {
+      setEmailError("");
+      return true;
+    }
   }
 
   function validatePassword() {
-    if (password === "") {
+    if (userData["password"] === "") {
       setPasswordError("this field is required");
-    } else if (!password.length < 8 && password.length < 15) {
-      setEmailError("wrong format");
-    } else setEmailError("");
+      return false;
+    } else if (
+      userData["password"].length < 8 &&
+      userData["password"].length > 20
+    ) {
+      setPasswordError("wrong format");
+      return false;
+    } else {
+      setPasswordError("");
+      return true;
+    }
   }
 
   return (
-    <form className=" w-96 relative z-10 p-5"
-    onSubmit={(e) => {
-      e.preventDefault()
-      let result = isUser(userData);
-      alert(result.message);
-    }}>
+    <form
+      className=" w-96 relative z-10 p-5"
+      onSubmit={(e) => {
+        e.preventDefault();
+        let res1 = validatePassword();
+        let res2 = validateEmail();
+        if (res1 && res2) {
+          let result = signIn(userData);
+          if (result.success) setIsUserGuest(false);
+          alert(result.message);
+          setCart(getUserItems('cart'))
+          setFav(getUserItems('favorites'))
+        }
+      }}
+    >
       <div className="mb-8 text-xs ">LOG IN WITH E-MAIL ADDRESS</div>
       <div className="mb-8 ">
         {/* email */}
@@ -57,9 +79,9 @@ export default function Signin() {
             outline-none
             h-10
             pt-2 peer `}
-            value={email}
+            name="email"
+            value={userData["email"]}
             onChange={(e) => {
-              setEmail(e.target.value)
               changeValue(e);
             }}
             onBlur={() => validateEmail()}
@@ -101,9 +123,9 @@ export default function Signin() {
             h-10
             pt-2 peer
               `}
-            value={password}
-            onChange={(e) =>{ 
-              setPassword(e.target.value)
+            name="password"
+            value={userData["password"]}
+            onChange={(e) => {
               changeValue(e);
             }}
             onBlur={() => validatePassword()}

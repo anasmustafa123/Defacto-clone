@@ -8,8 +8,8 @@ export default function ProductViewPage() {
   let data = getData(query);
 
   return (
-    <div className="flex items-center flex-col">
-      <div className="w-[1300px]">
+    <div className="flex justify-center gap-6 ">
+      <div className="w-[1300px] relative">
       <ProductsView data={data} gridCol={4} />
       </div>
     </div>

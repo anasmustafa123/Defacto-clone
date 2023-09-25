@@ -29,7 +29,10 @@ export const Fav = () => {
             </div>
           </div>
         )}
-        {favSize !== 0 && fav.map((valu, index) => <ProductView singleData={valu} />)}
+        <div className="grid justify-items-center justify-center  gap-1 grid-cols-4">
+          {favSize !== 0 &&
+            fav.map((valu, index) => <ProductView singleData={valu} />)}
+        </div>
       </div>
     </div>
   );
