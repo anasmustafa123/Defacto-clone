@@ -1,6 +1,4 @@
 const addUser = (userDetails) => {
-  console.log(userDetails);
-  console.log(JSON.parse(localStorage.getItem("users")));
   if (isUser(userDetails).success) {
     return { success: false, message: "this email is already used" };
   } else {
@@ -15,8 +13,10 @@ const addUser = (userDetails) => {
 const isUser = (user) => {
   let allUsers = JSON.parse(localStorage.getItem("users"));
   console.log(allUsers);
+  console.log(user)
   if (allUsers) {
     let result = allUsers.reduce((a, b) => {
+      console.log({b})
       return (
         a ||
         (b["userDetails"]["email"] === user["email"] &&
@@ -40,9 +40,10 @@ const signIn = (userDetails) => {
 };
 const getUserItems = (name) => {
   let cUserEmail = localStorage.getItem("cUser");
-  return JSON.parse(localStorage.getItem("users")).find((user) => {
+  let user =  JSON.parse(localStorage.getItem("users")).find((user) => {
     return user["userDetails"]["email"] === cUserEmail;
-  })[name];
+  });
+  return (user)? user[name] : [];
 };
 const changeUser = (user, name ,items) => {
   let newUser = {...user}

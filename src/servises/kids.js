@@ -298,7 +298,7 @@ const getRandomDiscount = () => {
 };
 
 kids.forEach((item) => {
-  item["gender"] = "k";
+  item["gender"] = "kids";
   item["productRating"] = getRandomRating();
   item["originalPrice"] = getRandomPrice();
   item["percentOff"] = getRandomDiscount();

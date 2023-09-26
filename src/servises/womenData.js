@@ -14076,7 +14076,7 @@ Object.entries(womenData).forEach((type, i) => {
     delete item["msaImageId"];
     item["url"] = `https://m.media-amazon.com/images/I/${idKey}.jpg`;
     item["productId"] = j + i * 100;
-    item['gender'] = 'w'
+    item['gender'] = 'women'
     womenFullData.push(item);
   });
 }); 

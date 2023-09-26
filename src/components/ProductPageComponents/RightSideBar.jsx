@@ -1,22 +1,32 @@
 import Stars from "../ProductsView/Stars";
-import { useState } from "react";
-export default function RightSideBar({productData}) {
-  let [toggleHeart, setToggleHeart] = useState(false);
+import { useState, useContext } from "react";
+import { UserContext } from "../../context/Context";
+
+export default function RightSideBar({ productData }) {
+  const { isHearted, addToFav, removeFromFav, isUserGuest } =
+    useContext(UserContext);
   let sizes = ["XS", "S", "M", "L", "XL", "XXL"];
   return (
     <div className="flex flex-col gap-2  max-w-[400px]">
       <div
         onClick={() => {
-          setToggleHeart(!toggleHeart);
+          if (isHearted) {
+            addToFav(productData);
+          } else {
+            removeFromFav(productData);
+          }
         }}
         className="flex justify-between items-center"
       >
         <p className="text-base">{productData.productName}</p>
         <i
           class={
-            "text-2xl bx bx-heart cursor-pointer" +
+            (isUserGuest
+              ? "text-gray-300 cursor-not-allowed"
+              : "text-red-600 ") +
+            "text-2xl bx bx-heart cursor-pointer rounded-full" +
             " " +
-            (toggleHeart ? "bxs-heart" : "bx-heart")
+            (isHearted(productData) ? "bxs-heart" : "bx-heart")
           }
         ></i>
       </div>

@@ -2,12 +2,11 @@ import { useState } from "react";
 import Stars from "./Stars";
 import { UserContext } from "../../context/Context";
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import ProductContainer from "../ProductPageComponents/ProductContainer";
+import { Link } from "react-router-dom";
 import { isGuest, isUser } from "../../servises/backend";
 function ProductView({ id = 0, singleData }) {
   const [toggleHeart, setToggleHeart] = useState(false);
-  const { addToCart, addToFav, checkIfExist, removeFromFav, isUserGuest } =
+  const { addToCart, addToFav, checkIfExist, removeFromFav, isUserGuest, isHearted } =
     useContext(UserContext);
   const [isCartClicked, setIsCartClicked] = useState(false);
   const [isFavClicked, setIsFavClicked] = useState(false);
@@ -23,11 +22,11 @@ function ProductView({ id = 0, singleData }) {
               alert('log in first')
             }else{
               setToggleHeart(!toggleHeart);
-              if (!isFavClicked) {
+              if (!isHearted(singleData)) {
                 console.log("here");
                 addToFav(singleData);
                 setIsFavClicked(true);
-              } else if (isFavClicked) {
+              } else {
                 removeFromFav(singleData);
                 setIsFavClicked(false);
               }
@@ -42,7 +41,7 @@ function ProductView({ id = 0, singleData }) {
         >
           <i
             className={
-              "text-2xl bx" + " " + (toggleHeart ? "bxs-heart" : "bx-heart")
+              "text-2xl bx" + " " + (isHearted(singleData) ? "bxs-heart" : "bx-heart")
             }
           ></i>
         </div>
