@@ -1,6 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
+import {  addUser } from "../../../servises/backend";
 
-export default function Register({registerclose}) {
+export default function Register({ registerclose }) {
+  const [name, setName] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [mobileError, setMobileError] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const [userData, setUserData] = useState({
+    name: "",
+    lName: "",
+    email: "",
+    password: "",
+    date: "",
+    gender: "",
+    phoneType: "",
+    pNum: "",
+  });
+  const changeValue = (e) => {
+    let { name, value } = e.target;
+    let cloneUserData = { ...userData };
+    cloneUserData[name] = value;
+    setUserData(cloneUserData);
+  };
+
+  function validateName() {
+    if (name === "") {
+      setNameError("Please enter your last name");
+    } else if (name.length < 2) {
+      setNameError("your last name must be at least 2 characters");
+    } else setNameError("");
+  }
+  function validateLastName() {
+    if (lastName === "") {
+      setLastNameError("Please enter your last name");
+    } else if (lastName.length < 2) {
+      setLastNameError("your name must be at least 2 characters");
+    } else setLastNameError("");
+  }
+
+  function validateEmail() {
+    if (email === "") {
+      setEmailError("this field is required");
+    } else if (!email.includes("@") || !email.includes(".com")) {
+      setEmailError("wrong format");
+    } else setEmailError("");
+  }
+
+  function validateMobile() {
+    if (mobile === "") {
+      setMobileError("this field is required");
+    } else if (mobile.length < 10) {
+      setMobileError("This field is required");
+    } else setMobileError("");
+  }
+
+  function validatePassword() {
+    if (password === "") {
+      setPasswordError("Please enter your password");
+    } else if (
+      password.length < 8 ||
+      password.length < 15 
+    ) {
+      setPasswordError(
+        "Your password must be in the range of 8-15 characters "
+      );
+    } else setPasswordError("");
+  }
+
   const days = [];
   for (let i = 1; i < 32; i++) {
     days.push(i);
@@ -20,7 +93,15 @@ export default function Register({registerclose}) {
     //header
     <>
       {/* // social row */}
-      <form className=" w-96 relative z-10 p-5">
+      <form className=" w-96 relative z-10 p-5 "
+        onSubmit={(e) => {
+          e.preventDefault();
+          let result = addUser(userData)
+
+            alert(result.message)
+        
+        }}
+      >
         <div className="flex-col h-28  grid">
           <div className="text-center">
             <span className="text-xs">LOG IN WITH SOCIAL ACCOUNT</span>
@@ -38,126 +119,151 @@ export default function Register({registerclose}) {
         </div>
         <div className="mb-3 text-xs ">SUBSCRIBE WITH YOUR EMAIL ADDRESS</div>
         {/* //name &last name */}
-        <div className="relative flex mt-4 w-full justify-stretch ">
+        <div className="relative flex w-full justify-stretch ">
           {/* name */}
           <div className="flex ">
-            <div>
-              <input
-                type="text"
-                required
-                placeholder=" "
-                className="
-            relative
-            border-0
-            border-b-2 border-gray-500 
-            w-full
-            bg-transparent 
-            outline-none
-            h-10
-            pt-2 peer"
-              />
-              <label
-                className="peer-focus:font-medium
+            <div className="mb-10 w-1/2 flex relative">
+              <div>
+                <input
+                  type="text"
+                  placeholder=" "
+                  className={`relative
+                  border-0
+                  border-b-2 ${
+                    nameError ? "border-red-600" : "border-gray-500 "
+                  } 
+                  w-full
+                  bg-transparent 
+                  outline-none
+                  h-8
+                  pt-2 peer`}
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value)
+                    changeValue(e);
+                  }}
+                  onBlur={() => validateName()}
+                />
+                <label
+                  for="name"
+                  className="peer-focus:font-medium
                 absolute text-sm duration-500
-                transform -translate-y-8 scale-75
+                transform -translate-y-4 scale-75
                 top-0 left-0 -z-10 origin-[0]
                 peer-focus:left-0
-                peer-focus:text-slate-700 text-slate-500
+                peer-focus:text-slate-500 text-slate-500
                 peer-placeholder-shown:scale-100
                 peer-placeholder-shown:-translate-y-0
                 peer-placeholder-shown:text-slate-950
                 peer-focus:scale-75
-                peer-focus:-translate-y-4
-            
-            "
-              >
-                Name
-              </label>
+                peer-focus:-translate-y-4 dark:peer-placeholder-shown:text-slate-50 dark:peer-focus:text-slate-300
+                  "
+                >
+                  Name
+                </label>
+                {nameError && (
+                  <label className="text-red-700 text-xs ">{nameError}</label>
+                )}
+              </div>
             </div>
             {/* last name */}
-            <div className="mb-8 pl-3 flex relative">
+            <div className="mb-10 pl-3 w-1/2 flex relative">
               <div>
                 <input
                   type="text"
-                  required
                   placeholder=" "
-                  className="
-              relative
-              border-0
-              border-b-2 border-gray-500 
-              w-full
-              bg-transparent 
-              outline-none
-              h-10
-              pt-2 peer
-                
-                "
+                  className={`relative
+                    border-0
+                    border-b-2 ${
+                      lastNameError ? "border-red-600" : "border-gray-500 "
+                    } 
+                    w-full
+                    bg-transparent 
+                    outline-none
+                    h-8
+                    pt-2 peer`}
+                  value={lastName}
+                  onChange={(e) => {
+                    setLastName(e.target.value)
+                    changeValue(e);
+                  }}
+                  onBlur={() => validateLastName()}
                 />
                 <label
                   className="peer-focus:font-medium
                 absolute text-sm duration-500
-                transform -translate-y-8 scale-75
+                transform -translate-y-4 scale-75
                 top-0 left-0 -z-10 origin-[0]
                 peer-focus:left-0
-                peer-focus:text-slate-700 text-slate-500
+                peer-focus:text-slate-500 text-slate-500
                 peer-placeholder-shown:scale-100
                 peer-placeholder-shown:-translate-y-0
                 peer-placeholder-shown:text-slate-950
                 peer-focus:scale-75
-                peer-focus:-translate-y-4
+                peer-focus:-translate-y-4 dark:peer-placeholder-shown:text-slate-50 dark:peer-focus:text-slate-300
                 ml-3
                 "
                 >
                   Last name
                 </label>
+                {lastNameError && (
+                  <span className=" text-red-700 text-xs">{lastNameError}</span>
+                )}
               </div>
             </div>
           </div>
         </div>
-        <div className="mb-8 ">
+        <div className="mb-10 ">
           {/* email */}
           <div className="relative flex-col">
             <input
               type="email"
-              required
               placeholder=" "
-              className="
-            relative
+              className={`relative
             border-0
-            border-b-2 border-gray-500 
+            border-b-2 ${emailError ? "border-red-600" : "border-gray-500 "}
             w-full
             bg-transparent 
             outline-none
-            h-10
-            pt-2 peer
-              "
+            h-8
+            pt-2 peer`}
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value)
+                changeValue(e);
+              }
+              }
+              onBlur={() => validateEmail()}
             />
             <label
               className="peer-focus:font-medium
                 absolute text-sm duration-500
-                transform -translate-y-8 scale-75
+                transform -translate-y-4 scale-75
                 top-0 left-0 -z-10 origin-[0]
                 peer-focus:left-0
-                peer-focus:text-slate-700 text-slate-500
+                peer-focus:text-slate-500 text-slate-500
                 peer-placeholder-shown:scale-100
                 peer-placeholder-shown:-translate-y-0
                 peer-placeholder-shown:text-slate-950
                 peer-focus:scale-75
-                peer-focus:-translate-y-4
+                peer-focus:-translate-y-4  dark:peer-placeholder-shown:text-slate-50 dark:peer-focus:text-slate-300 
             "
             >
               E-mail Address
             </label>
+            {emailError && (
+              <label className="text-red-700 text-xs">{emailError}</label>
+            )}
           </div>
         </div>
         <div className="flex">
-          <div className="mb-8 pr-2 w-1/4">
+          <div className="mb-10 pr-2 w-1/4">
             <div>
-              <select disabled className="border-b-2 border-gray-500 h-10 w-20">
+              <select disabled className="border-b-2 border-gray-500 h-8 w-20 dark:bg-stone-700 dark:text-white">
                 <option
                   value="20"
                   selected="selected"
-                  className="border-b-black"
+                  className="border-b-black dark:bg-slate-700 dark:text-white"
                 >
                   +20
                 </option>
@@ -166,7 +272,7 @@ export default function Register({registerclose}) {
           </div>
           <div className="mb-8 pl-2 pr-2 w-1/4">
             <div>
-              <select className="border-b-2 border-gray-500 h-10 w-20">
+              <select className="border-b-2 border-gray-500 h-8 w-20 dark:bg-stone-700 dark:text-white">
                 <option value="select">select</option>
                 <option value="10">10</option>
                 <option value="11">11</option>
@@ -175,86 +281,109 @@ export default function Register({registerclose}) {
               </select>
             </div>
           </div>
-          <div className="mb-4 pl-2 w-3/4">
+          {/* mobile */}
+          <div className="mb-4 pl-2 w-1/2">
             <div className="relative flex-col">
               <input
                 type="text"
-                required
                 placeholder=" "
-                className="
+                className={`
             relative
             border-0
-            border-b-2 border-gray-500 
+            border-b-2 ${mobileError ? "border-red-600" : "border-gray-500 "}
             w-full
             bg-transparent 
             outline-none
-            h-10
+            h-8
             peer
-              "
+              `}
+                value={mobile}
+                onChange={(e) => {
+                  setMobile(e.target.value)
+                  changeValue(e);
+                }}
+                onBlur={() => validateMobile()}
               />
               <label
                 className="peer-focus:font-medium
                 absolute text-sm duration-500
-                transform -translate-y-8 scale-75
+                transform -translate-y-4 scale-75
                 top-0 left-0 -z-10 origin-[0]
                 peer-focus:left-0
-                peer-focus:text-slate-700 text-slate-500
+                peer-focus:text-slate-500 text-slate-500
                 peer-placeholder-shown:scale-100
                 peer-placeholder-shown:-translate-y-0
                 peer-placeholder-shown:text-slate-950
                 peer-focus:scale-75
-                peer-focus:-translate-y-4
+                peer-focus:-translate-y-4 dark:peer-placeholder-shown:text-slate-50 dark:peer-focus:text-slate-300
             "
               >
                 Mobile phone
               </label>
+              {mobileError && (
+                <label className="text-red-700 text-xs">{mobileError}</label>
+              )}
             </div>
           </div>
         </div>
-        <div className="mb-8  ">
+        {/* passwors */}
+        <div className="mb-10  ">
           {/* password */}
           <div className="relative flex-col">
             <input
               type="password"
               required
-              placeholder=" "
-              className="
-            relative
-            border-0
-            border-b-2 border-gray-500 
-            w-full
-            bg-transparent 
-            outline-none
-            h-10
-            px-2 peer
-              "
+              placeholder=""
+              className={`
+                    relative
+                    border-0
+                    border-b-2 ${
+                      passwordError ? "border-red-600" : "border-gray-500 "
+                    }
+                    w-full
+                    bg-transparent 
+                    outline-none
+                    h-8
+                    px-2 peer
+                    
+                    `}
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                changeValue(e);
+              }}
+              onBlur={() => validatePassword()}
             />
             <label
               className="peer-focus:font-medium
                 absolute text-sm duration-500
-                transform -translate-y-8 scale-75
+                transform -translate-y-4 scale-75
                 top-0 left-0 -z-10 origin-[0]
                 peer-focus:left-0
-                peer-focus:text-slate-700 text-slate-500
+                peer-focus:text-slate-500 text-slate-500
                 peer-placeholder-shown:scale-100
                 peer-placeholder-shown:-translate-y-0
                 peer-placeholder-shown:text-slate-950
                 peer-focus:scale-75
-                peer-focus:-translate-y-4
-            "
+                peer-focus:-translate-y-4 dark:peer-placeholder-shown:text-slate-50 dark:peer-focus:text-slate-300
+                "
             >
               Password
             </label>
+            {passwordError && (
+              <span className=" text-red-700 text-xs">{passwordError}</span>
+            )}
           </div>
         </div>
-        <div className="mb-8">Date of Birth</div>
+
+        <div className="mb-8 ">Date of Birth</div>
 
         <div className="flex mb-8">
           {/* day & month & year */}
           <div className="">
             {/* day */}
             <div className="text-xs text-gray-300 mr-2 pl-1">Day</div>
-            <select className="border-b-2 border-gray-500 h-8 pr-6 w-24">
+            <select className="border-b-2 border-gray-500 h-8 pr-6 w-24 dark:bg-stone-700 dark:text-white">
               <option value>Day</option>
               {days.map((d) => (
                 <option>{d}</option>
@@ -264,7 +393,7 @@ export default function Register({registerclose}) {
           <div className="mr-2 ml-2">
             {/* month */}
             <div className="text-xs text-gray-300 mr-2 pl-1">Month</div>
-            <select className="border-b-2 border-gray-500 h-8 pr-6 w-28">
+            <select className="border-b-2 border-gray-500 h-8 pr-6 w-28 dark:bg-stone-700 dark:text-white">
               <option value>Month</option>
               {months.map((m) => (
                 <option>{m}</option>
@@ -274,7 +403,7 @@ export default function Register({registerclose}) {
           <div className="mr-2 ml-2">
             {/* year */}
             <div className="text-xs text-gray-300 mr-2 pl-1">Year</div>
-            <select className="border-b-2 border-gray-500 h-8 pr-6 w-28">
+            <select className="border-b-2 border-gray-500 h-8 pr-6 w-28 dark:bg-stone-700 dark:text-white">
               <option value>Year</option>
               {years.map((y) => (
                 <option>{y}</option>

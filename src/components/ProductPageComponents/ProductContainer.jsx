@@ -1,23 +1,19 @@
 import RightSideBar from "./RightSideBar";
-export default function ProductContainer() {
-  let imgUrls = [
-    "https://dfcdn.defacto.com.tr/7/Z9072AZ_23SP_WT34_02_01.jpg",
-    "https://dfcdn.defacto.com.tr/7/Z9072AZ_23SP_WT34_01_01.jpg",
-    "https://dfcdn.defacto.com.tr/7/Z9072AZ_23SP_WT34_03_01.jpg",
-    "https://dfcdn.defacto.com.tr/7/Z9072AZ_23SP_WT34_04_01.jpg",
-    "https://dfcdn.defacto.com.tr/7/Z9072AZ_23SP_WT34_05_01.jpg",
-    "https://dfcdn.defacto.com.tr/7/Z9072AZ_23SP_WT34_06_01.jpg",
-    "https://dfcdn.defacto.com.tr/7/Z9072AZ_23SP_WT34_07_01.jpg",
-    "https://dfcdn.defacto.com.tr/7/Z9072AZ_23SP_WT34_08_01.jpg"
-  ];
+import { useParams } from "react-router-dom";
+import { searchById } from "../../servises/dataCenter";
+export default function ProductContainer({}) {
+  const { itemId } = useParams();
+  console.log(itemId)
+  let currentProduct = searchById(itemId);
+  let imgUrls = [currentProduct.url]
   return (
-    <div className="flex gap-5">
-      <div className="grid grid-cols-2 gap-1">
+    <div className="flex justify-center gap-5  dark:bg-stone-900 dark:text-white">
+      <div className="grid grid-cols-1 gap-1  dark:bg-stone-900 dark:text-white">
         {imgUrls.map((url, index)=>(
-            <img key={index} src={url} alt="" />
+            <img className="max-w-[500px]" key={index} src={url} alt="" />
         ))}
       </div>
-      <RightSideBar />
+      <RightSideBar productData = {currentProduct} />
     </div>
   );
 }

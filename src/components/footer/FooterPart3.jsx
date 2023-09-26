@@ -45,7 +45,7 @@ function FooterPart3() {
     <div>
       <div className="max-w-5xl m-auto">
         <h2 className="mb-8 ml-3">TOP CATEGORIES</h2>
-        <div className="flex justify-around font-light mb-10">
+        <div className="flex justify-around font-light mb-10 sm:text-base text-sm ">
           <div className="flex flex-col gap-2">
             {arr1.map((v, index) => (
               <p

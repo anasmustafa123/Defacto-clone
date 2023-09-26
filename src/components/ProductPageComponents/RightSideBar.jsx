@@ -1,17 +1,17 @@
 import Stars from "../ProductsView/Stars";
 import { useState } from "react";
-export default function RightSideBar() {
+export default function RightSideBar({productData}) {
   let [toggleHeart, setToggleHeart] = useState(false);
   let sizes = ["XS", "S", "M", "L", "XL", "XXL"];
   return (
-    <div className="flex flex-col gap-2 min-w-max">
+    <div className="flex flex-col gap-2  max-w-[400px]  dark:bg-stone-900 dark:text-white">
       <div
         onClick={() => {
           setToggleHeart(!toggleHeart);
         }}
         className="flex justify-between items-center"
       >
-        <p className="text-base">Regular Fit Printed Crew Neck Undershirt</p>
+        <p className="text-base">{productData.productName}</p>
         <i
           class={
             "text-2xl bx bx-heart cursor-pointer" +
@@ -21,19 +21,19 @@ export default function RightSideBar() {
         ></i>
       </div>
       <div>
-        <p className="text-base font-semibold">149 EG</p>
+        <p className="text-base font-semibold  dark:bg-stone-900 dark:text-white"> {productData.price} </p>
       </div>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center  dark:bg-stone-900 dark:text-white">
         <p className="text-xs font-medium text-gray-400">
-          Product Code: A6294AXRD87
+          Product Code: {productData.productId}
         </p>
         <a href="#">
           <i class="text-2xl bx bx-share-alt"></i>
         </a>
       </div>
-      <div>
+      <div className=" dark:bg-stone-900 dark:text-white">
         <p>Rate</p>
-        <Stars starsCount={4} />
+        <Stars starsCount={productData.productRating} />
       </div>
       <div className="flex justify-between items-center">
         <p>Size Options</p>
@@ -50,12 +50,12 @@ export default function RightSideBar() {
         ))}
       </div>
       <button
-        className="bg-gray-500 text-white pt-2 pb-2 rounded"
+        className="bg-gray-500 text-white pt-2 pb-2 rounded  dark:bg-stone-600 dark:text-white"
         type="button"
       >
         ADD TO CART
       </button>
-      <div className="text-center flex flex-col gap-4 pt-2 pb-2 border rounded-e-2xl border-dashed border-black mt-3 mb-3">
+      <div className="text-center flex flex-col gap-4 pt-2 pb-2 border rounded-2xl border-dashed border-black mt-3 mb-3 dark:border-white">
         <p className="leading-none">Discover Payment Options</p>
         <div className="flex justify-center gap-12">
           <img
@@ -72,7 +72,7 @@ export default function RightSideBar() {
           />
         </div>
       </div>
-      <div className="flex gap-4 border rounded-2xl border-black border-dashed  pt-1 pb-1 items-center justify-center">
+      <div className="flex gap-4 border rounded-lg border-black border-dashed dark:border-white pt-1 pb-1 items-center justify-center">
         <p className="text-sm">Pay With Credit Card Save %5</p>
         <i class="bx bx-credit-card-front text-xl"></i>
       </div>

@@ -1,40 +1,104 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-const CartContext = React.createContext();
+const UserContext = React.createContext();
 
-const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([{
-    sizing: {},
-    brandName: "Madewell",
-    productId: "9911932",
-    originalPrice: "$88.00",
-    colorId: 1060946,
-    percentOff: "0%",
-    isNew: "true",
-    reviewRating: 0.0,
-    productName: "Mockneck Crop Sweater",
-    thumbnailImageUrl: null,
-    styleId: "6312046",
-    price: "$88.00",
-    msaImageId: "81tH+aNnW-L",
-    onSale: "false",
-    productUrl:
-      "https://www.zappos.com/p/madewell-mockneck-crop-sweater-heather-dark-forest/product/9911932/color/1060946",
-    animationImages: [],
-    productRating: 0,
-  }]);
-
-  const addToCart = (item) => {
-    setCart([...cart, item]);
+const UserProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
+  const checkIfExist = (item) => {
+    return cart.find((v) => {
+      if (v["v"]["productId"] === item["v"]["productId"]) {
+        return true;
+      } else {
+        return false;
+      }
+    });
   };
+  const deleteItem = (item) => {
+    let tempCart = [...cart];
+    let itemIndex = tempCart.findIndex((v) => {
+      if (v["v"]["productId"] === item["v"]["productId"]) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    tempCart.splice(itemIndex, 1);
+    return tempCart;
+  };
+  const addToCart = (item) => {
+    let returnedItem = checkIfExist(item);
+    if (!returnedItem) {
+      setCart( [...cart, item]);
+    } else {
+      returnedItem["quantity"] += 1;
+      let tempCart = deleteItem(returnedItem);
+      setCart([...tempCart, returnedItem]);
+    }
+  };
+  function incrementCart(item){
+    let temp = cart.map((v)=>{
+      if(v['v']['productId'] === item['v']['productId'] ){
+        let newItem = v;
+        newItem['quantity'] += 1
+        return newItem;
+      }else return v
+    })
+    setCart(temp)
+  }
+  function decrementCart(item){
+    let temp = cart.map((v)=>{
+      if(v['v']['productId'] === item['v']['productId'] ){
+        let newItem = v;
+        newItem['quantity'] -= 1
+        return newItem;
+      }else return v
+    })
+    setCart(temp)
+  }
+  function removeOneItem(item){
+    console.log(cart)
+    let tempCart = deleteItem(item)
+    console.log(tempCart)
+    setCart(tempCart)
+  }
 
   const cartSize = cart.length;
+  const [fav, setFav] = useState([]);
+
+  const addToFav = (item) => {
+    setFav([...fav, item]);
+  };
+
+  const removeFromFav = (item) => {
+    let newFav = [...fav]
+    newFav.forEach((i, index)=>{
+      if (i['productId']===item['productId']) {
+        newFav.splice(index,1);
+      }
+    })
+    setFav(newFav);
+  };
+
+  const favSize = fav.length;
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, cartSize }}>
+    <UserContext.Provider
+      value={{
+        cart,
+        addToCart,
+        cartSize,
+        fav,
+        addToFav,
+        favSize,
+        checkIfExist,
+        incrementCart,
+        decrementCart,
+        removeOneItem, 
+        removeFromFav
+      }}
+    >
       {children}
-    </CartContext.Provider>
+    </UserContext.Provider>
   );
 };
-
-export { CartContext, CartProvider };
+export { UserContext, UserProvider };
