@@ -37,19 +37,19 @@ let men = {
         url: "https://dfcdn.defacto.com.tr/Mobile/en_man_blazer_fee47f45-2937-4f96-8566-3ff541b3fd7f_33c0824f-6b0f-4276-a6a6-1b9e01228bb2_DI_365.jpg",
       },
       {
-        category: "T-shirt",
+        category: "t-shirt",
         name: "img3",
         url: "https://dfcdn.defacto.com.tr/Mobile/en_polo-t-shirts_29f9a1b3-09ab-44ee-96c3-d2f9ed1fd24c_f6844958-c9f1-4d88-b236-eaaa32d375bb_DI_365.jpg",
       },
       {
-        category: "T-shirt",
+        category: "t-shirt",
         name: "img4",
         url: "https://dfcdn.defacto.com.tr/Mobile/en_athlete_2ace5ef9-d82d-4fb1-876d-ba830fcfcb35_7567c237-ba4c-45df-9d2e-5c224e62007a_DI_365.jpg",
       },
     ],
   },
   backToCollege: {
-    category: "T-shirt,shirt,pullover,vest",
+    category: "t-shirt,shirt,pullover,vest",
     name: "",
     url: "https://dfcdn.defacto.com.tr/Mobile/en_imageor_desktop_0ca89b49-54ea-4a00-be62-12ccfdc2c3a4_5d3b743f-96fe-4dd5-bc0c-6b6b108ac7d1_DI_429.jpg",
   },
@@ -57,12 +57,12 @@ let men = {
     headerName: "BEST PRICES",
     imgs: [
       {
-        category: "T-shirt",
+        category: "t-shirt",
         name: "img1",
         url: "https://dfcdn.defacto.com.tr/Mobile/misir_en_t-shirt_1c51d341-9c90-47b2-8dbe-4b060bcd3556_a1bc54fd-166a-4c20-9e85-fad4c77707de_DI_365.jpg",
       },
       {
-        category: "T-shirt",
+        category: "t-shirt",
         name: "img2",
         url: "https://dfcdn.defacto.com.tr/Mobile/misir_en_shortsbermudas_42088b36-01d3-44d8-ac0e-f6ac7b8e44a8_7591e813-92b8-4907-8c0c-81629486ffc0_DI_365.jpg",
       },
@@ -233,7 +233,7 @@ let kids = {
     url: "https://dfcdn.defacto.com.tr/Mobile/en_kids_imageor_desktop_baf56c50-245d-459e-929e-5060e14bc636_613384c3-c18c-4485-adf8-4875cd1f6aed_DI_429.jpg",
   },
   backToCollege: {
-    category: "skirt,T-shirt,short,shirt,dress",
+    category: "skirt,t-shirt,short,shirt,dress",
     name: "img1",
     url: "https://dfcdn.defacto.com.tr/Mobile/en_back-to-school_imageor_desktop_f7b7d37a-7c45-4ea4-8624-a57b9992c154_097e52a8-59a6-4f70-be21-556cf30e1e3a_DI_429.jpg",
   },
@@ -242,7 +242,7 @@ let kids = {
     headerName: "TRENDS",
     imgs: [
       {
-        category: "T-shirt",
+        category: "t-shirt",
         name: "img1",
         url: "https://dfcdn.defacto.com.tr/Mobile/m-s-r_en_t-shirt_a2a55355-ccb3-420a-b6f7-87e8fd009083_8afe5f02-95b3-4b2e-b8b5-856d5cfb5c9e_DI_365.jpg",
       },
@@ -272,7 +272,7 @@ let kids = {
     headerName: "BEST PRICES",
     imgs: [
       {
-        category: "T-shirt",
+        category: "t-shirt",
         name: "img1",
         url: "https://dfcdn.defacto.com.tr/Mobile/msr_en_t-shirt_697421f1-5456-44d3-b062-636a40bd8e9c_ccfc7d29-bf4b-4155-a5d5-2f3fcf20ab54_DI_365.jpg",
       },

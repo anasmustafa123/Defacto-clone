@@ -14073,6 +14073,9 @@ Object.entries(womenData).forEach((type, i) => {
     item["ratingCount"] = 0;
     let idKey = item["msaImageId"];
     delete item["msaImageId"];
+    delete item["isNew"];
+    delete item["styleId"];
+    delete item["reviewRating"];
     item["url"] = `https://m.media-amazon.com/images/I/${idKey}.jpg`;
     item["productId"] = j + i * 100;
     item['gender'] = 'women'
