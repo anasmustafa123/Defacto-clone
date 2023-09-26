@@ -287,14 +287,16 @@ let kids = [
     productName: "Boy's Striped Short Sleeve Shirt",
   },
 ];
+var myrng = new Math.seedrandom('hello.');
+
 const getRandomRating = () => {
-  return parseInt(Math.random() * 5);
+  return parseInt(myrng() * 5);
 };
 const getRandomPrice = () => {
-  return `$${parseInt(70 + Math.random() * 300)} `;
+  return `$${parseInt(70 + myrng() * 300)} `;
 };
 const getRandomDiscount = () => {
-  return `${parseInt(Math.random() * 100)}%`;
+  return `${parseInt(myrng() * 100)}%`;
 };
 
 kids.forEach((item) => {
@@ -303,7 +305,7 @@ kids.forEach((item) => {
   item["originalPrice"] = getRandomPrice();
   item["percentOff"] = getRandomDiscount();
   item["price"] = item["originalPrice"];
-  item["key"] = parseInt(Math.random() * 10000);
+  item["key"] = parseInt(myrng() * 10000);
 });
 
 export { kids };

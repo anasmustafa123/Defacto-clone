@@ -1,30 +1,14 @@
-import { womenFullData } from "./womenData";
-import { man } from "./man";
-import { kids } from "./kids";
+import { data } from "./fullData";
 
-let data = []
-
-const fillItems = (items) => {
-  items.forEach(sindleItem => {
-    data.push(sindleItem)
-    sindleItem['productId'] = data.length
-  });
-}
-
-fillItems(womenFullData)
-fillItems(man)
-fillItems(kids)
-console.log(data)
-
-data.sort((a, b) => {
+/* data.sort((a, b) => {
   return a["key"] > b["key"] ? 1 : -1;
-});
-
-function ifExist(data, key, valueArray){
-  return valueArray.reduce((a, b)=>{
-    console.log({a, b})
+}); */
+  localStorage.setItem('dataloaded', 'true')
+function ifExist(data, key, valueArray) {
+  return valueArray.reduce((a, b) => {
+    console.log({ a, b });
     return a || data[key] === b;
-  }, false)
+  }, false);
 }
 
 function toObj(inputQuery) {
@@ -37,20 +21,22 @@ function toObj(inputQuery) {
       return [v2[0], v2[1].split(",")];
     });
 }
+
 function getData(query) {
   let objQuery = toObj(query);
-  let requesteData =  data.filter((d)=>{
-    return objQuery.reduce((a, b)=>{
-      return a && ifExist(d, b[0], b[1])
-    },true)
-  })
-  console.log(requesteData)
+  let requesteData = data.filter((d) => {
+    return objQuery.reduce((a, b) => {
+      return a && ifExist(d, b[0], b[1]);
+    }, true);
+  });
+  console.log(requesteData);
   return requesteData;
 }
+
 const searchById = (id) => {
-  return data.find((e)=>{
+  return data.find((e) => {
     return e.productId == id;
-  })
-}
+  });
+};
 
 export { getData, searchById };

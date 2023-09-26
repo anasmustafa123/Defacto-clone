@@ -14062,7 +14062,6 @@ let womenData = {
   newSeason,
 };
 
-
 let womenFullData = [];
 Object.entries(womenData).forEach((type, i) => {
   type[1].forEach((item, j) => {
