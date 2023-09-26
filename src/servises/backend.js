@@ -12,8 +12,6 @@ const addUser = (userDetails) => {
 };
 const isUser = (user) => {
   let allUsers = JSON.parse(localStorage.getItem("users"));
-  console.log(allUsers);
-  console.log(user);
   if (allUsers) {
     let result = allUsers.reduce((a, b) => {
       console.log({ b });
@@ -65,7 +63,6 @@ const updateLocalStorage = (name, items) => {
       ? changeUser(user, name, items)
       : user;
   });
-  console.log(newUsers);
   localStorage.setItem("users", JSON.stringify(newUsers));
 };
 

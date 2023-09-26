@@ -1,26 +1,12 @@
 import { data } from "./fullData";
 
-/* data.sort((a, b) => {
-  return a["key"] > b["key"] ? 1 : -1;
-}); */
-  localStorage.setItem('dataloaded', 'true')
+localStorage.setItem("dataloaded", "true");
 function ifExist(data, key, valueArray) {
   return valueArray.reduce((a, b) => {
     console.log({ a, b });
     return a || data[key] === b;
   }, false);
 }
-
-/* function toObj(inputQuery) {
-  return inputQuery
-    .split(";")
-    .map((x) => {
-      return x.split(":");
-    })
-    .map((v2) => {
-      return [v2[0], v2[1].split(",")];
-    });
-} */
 function toObj(inputQuery) {
   return inputQuery
     .split(";")
@@ -28,7 +14,7 @@ function toObj(inputQuery) {
       return x.split(":");
     })
     .map((v2) => {
-      if(v2.length != 2) return v2
+      if (v2.length != 2) return v2;
       return [v2[0], v2[1].split(",")];
     });
 }

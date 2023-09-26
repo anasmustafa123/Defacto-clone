@@ -14,7 +14,6 @@ export default function Register({ registerclose }) {
     password: "",
     date: "",
     gender: "",
-    phoneType: "",
     pNum: "",
   });
   const changeValue = (e) => {
@@ -122,12 +121,12 @@ export default function Register({ registerclose }) {
         className=" w-96 relative z-10 p-5 "
         onSubmit={(e) => {
           e.preventDefault();
-          let res1= validateEmail();
+          let res1 = validateEmail();
           let res2 = validateLastName();
-          let res3= validatePassword();
-          let res4= validateName();
+          let res3 = validatePassword();
+          let res4 = validateName();
           let res5 = validateMobile();
-          
+
           if (res1 && res2 && res3 && res4 && res5) {
             let result = addUser(userData);
             alert(result.message);
@@ -287,33 +286,16 @@ export default function Register({ registerclose }) {
             )}
           </div>
         </div>
-        <div className="flex">
-          <div className="mb-10 pr-2 w-1/4">
-            <div>
-              <select disabled className="border-b-2 border-gray-500 h-8 w-20">
-                <option
-                  value="20"
-                  selected="selected"
-                  className="border-b-black"
-                >
-                  +20
-                </option>
-              </select>
-            </div>
-          </div>
-          <div className="mb-8 pl-2 pr-2 w-1/4">
-            <div>
-              <select className="border-b-2 border-gray-500 h-8 w-20">
-                <option value="select">select</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="15">15</option>
-              </select>
-            </div>
+        <div className="flex gap-3">
+          <div className="mb-10">
+            <select disabled className="border-b-2 border-gray-500 h-8 w-20">
+              <option value="20" selected="selected" className="border-b-black">
+                +20
+              </option>
+            </select>
           </div>
           {/* mobile */}
-          <div className="mb-4 pl-2 w-1/2">
+          <div className="mb-4">
             <div className="relative flex-col">
               <input
                 type="text"
@@ -446,15 +428,26 @@ export default function Register({ registerclose }) {
         <div className="flex mb-8">
           {/* select gender */}
           <div className="ml-2 mr-2 ">
-            <input type="radio" />
+            <input
+              type="radio"
+              id="female"
+              name="gender"
+              value="Female"
+              required
+            />
             <label className="pl-1">Female</label>
           </div>
           <div className="mr-3">
-            <input type="radio" />
+            <input type="radio" id="male" value="Male" name="gender" />
             <label className="pl-1">Male</label>
           </div>
           <div>
-            <input type="radio" />
+            <input
+              type="radio"
+              id="other"
+              value="not specified"
+              name="gender"
+            />
             <label className="pl-1">I do not want to specify</label>
           </div>
         </div>
@@ -464,6 +457,7 @@ export default function Register({ registerclose }) {
             <input
               type="checkbox"
               className="pl-4 checked:bg-black-500 relative top-5"
+              required
             />
             <label>
               <p className="pl-4 text-xs">
@@ -480,6 +474,7 @@ export default function Register({ registerclose }) {
             <input
               type="checkbox"
               className="pl-4 checked:bg-black-500 relative top-5"
+              required
             />
             <label>
               <p className="pl-4 text-xs">
