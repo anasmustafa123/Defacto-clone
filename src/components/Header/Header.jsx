@@ -111,36 +111,36 @@ export default function Header({genderChoosed, setGenderChoosed,DarkModeprops, i
           <ul className="p-0 m-0  hidden sm:flex">
             <li
               onClick={() => {
-                setGenderChoosed('w');
+                setGenderChoosed('women');
               }}
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == 'w' && "font-semibold underline")
+                (genderChoosed === 'women' && "font-semibold underline")
               }
             >
               <Link to="/women">WOMEN</Link>
             </li>
             <li
               onClick={() => {
-                setGenderChoosed('m');
+                setGenderChoosed('men');
               }}
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == 'm' && "font-semibold underline")
+                (genderChoosed === 'men' && "font-semibold underline")
               }
             >
               <Link to="/men">MEN</Link>
             </li>
             <li
               onClick={() => {
-                setGenderChoosed('k');
+                setGenderChoosed('kids');
               }}
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == 'k' && "font-semibold underline")
+                (genderChoosed === 'kids' && "font-semibold underline")
               }
             >
               <Link to="/kids">KIDS</Link>
@@ -152,7 +152,7 @@ export default function Header({genderChoosed, setGenderChoosed,DarkModeprops, i
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == 's' && "font-semibold underline")
+                (genderChoosed === 's' && "font-semibold underline")
               }
             >
               <Link
