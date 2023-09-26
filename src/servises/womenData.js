@@ -1,3 +1,5 @@
+/* let data =  */
+
 let sweaters = [
   {
     sizing: {},
@@ -17,7 +19,7 @@ let sweaters = [
     productUrl:
       "https://www.zappos.com/p/madewell-mockneck-crop-sweater-heather-dark-forest/product/9911932/color/1060946",
     animationImages: [],
-    productRating: 0,
+    productRating: 1,
   },
   {
     sizing: {},
@@ -4020,7 +4022,7 @@ let dresses = [
     productName: "Short Sleeve Puff Sleeve Scuba Suede Sheath",
     thumbnailImageUrl: null,
     styleId: "6374352",
-    price: "$134.00",
+    price: "$134.0objQuery0",
     msaImageId: "71x9HweGcZL",
     onSale: "false",
     productUrl:
@@ -14050,7 +14052,7 @@ let newSeason = [
   },
 ];
 
-let women = {
+let womenData = {
   sweaters,
   shirtsAndTops,
   dresses,
@@ -14059,13 +14061,24 @@ let women = {
   skirts,
   newSeason,
 };
-Object.values(women).forEach((type) => {
-  type.forEach((item) => {
+
+
+let womenFullData = [];
+Object.entries(womenData).forEach((type, i) => {
+  type[1].forEach((item, j) => {
+    item['category'] = type[0];
+    item["key"] = parseInt(Math.random() * 10000);
     delete item["thumbnailImageUrl"];
     delete item["animationImages"];
     item["productUrl"] = "";
-    item['ratingCount']= 0;
+    item["ratingCount"] = 0;
+    let idKey = item["msaImageId"];
+    delete item["msaImageId"];
+    item["url"] = `https://m.media-amazon.com/images/I/${idKey}.jpg`;
+    item["productId"] = j + i * 100;
+    item['gender'] = 'w'
+    womenFullData.push(item);
   });
-});
-
-export { women };
+}); 
+console.log(womenFullData)
+export { womenFullData };

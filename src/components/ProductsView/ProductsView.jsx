@@ -1,14 +1,20 @@
-import ProductView from "./ProductView"
-export default function ProductsView({ProductsView}){
-    return (
-        <div className="grid grid-cols-4 justify-items-center gap-0 w-3/5 justify-center">
-            <ProductView />
-            <ProductView />
-            <ProductView />
-            <ProductView />
-            <ProductView />
-            <ProductView />
-            <ProductView />
-        </div>
-    )
+import ProductView from "./ProductView";
+export default function ProductsView({ gridCol, id = 0, data }) {
+  let gridColsNum = `grid-cols-${gridCol}`;
+  return (
+    <div
+      key={id}
+      className={
+        "grid justify-items-center justify-center  gap-1" +
+        " " +
+        gridColsNum
+      }
+    >
+      {data.map((singleData, index) => (
+        <>
+          <ProductView singleData={singleData} id={index} />
+        </>
+      ))}
+    </div>
+  );
 }
