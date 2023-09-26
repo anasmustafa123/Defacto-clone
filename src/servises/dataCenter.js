@@ -11,7 +11,7 @@ function ifExist(data, key, valueArray) {
   }, false);
 }
 
-function toObj(inputQuery) {
+/* function toObj(inputQuery) {
   return inputQuery
     .split(";")
     .map((x) => {
@@ -20,8 +20,18 @@ function toObj(inputQuery) {
     .map((v2) => {
       return [v2[0], v2[1].split(",")];
     });
+} */
+function toObj(inputQuery) {
+  return inputQuery
+    .split(";")
+    .map((x) => {
+      return x.split(":");
+    })
+    .map((v2) => {
+      if(v2.length != 2) return v2
+      return [v2[0], v2[1].split(",")];
+    });
 }
-
 function getData(query) {
   let objQuery = toObj(query);
   let requesteData = data.filter((d) => {
