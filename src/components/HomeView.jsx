@@ -4,7 +4,7 @@ function HomeView({ setGenderChoosed }) {
     <div className="flex flex-col sm:flex-row overflow-hidden mt-6  dark:bg-stone-900 dark:text-white ">
       <Link
         onClick={() => {
-          setGenderChoosed('w');
+          setGenderChoosed('women');
         }}
         to="/women"
         className="relative group  cursor-pointer w-full overflow-hidden"
@@ -31,7 +31,7 @@ function HomeView({ setGenderChoosed }) {
 
       <Link
         onClick={() => {
-          setGenderChoosed('m');
+          setGenderChoosed('men');
         }}
         to="/men"
         className="relative group cursor-pointer w-full overflow-hidden"
@@ -59,7 +59,7 @@ function HomeView({ setGenderChoosed }) {
 
       <Link
         onClick={() => {
-          setGenderChoosed('k');
+          setGenderChoosed('kids');
         }}
         to="/kids"
         className="relative group cursor-pointer w-full overflow-hidden"

@@ -1,7 +1,7 @@
 let man = [
   {
     url: "https://dfcdn.defacto.com.tr/480/M7666AZ_23AU_BK81_04_01.jpg",
-    category: "T-shirt",
+    category: "t-shirt",
     productName: "Regular Fit T-Shirt",
   },
 
@@ -370,7 +370,7 @@ const getRandomDiscount = () => {
 };
 
 man.forEach((item) => {
-  item["gender"] = "m";
+  item["gender"] = "men";
   item["productRating"] = getRandomRating();
   item["originalPrice"] = getRandomPrice();
   item["percentOff"] = getRandomDiscount();

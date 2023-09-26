@@ -10,6 +10,7 @@ const fillItems = (items) => {
     sindleItem['productId'] = data.length
   });
 }
+
 fillItems(womenFullData)
 fillItems(man)
 fillItems(kids)
@@ -38,13 +39,13 @@ function toObj(inputQuery) {
 }
 function getData(query) {
   let objQuery = toObj(query);
-  let x =  data.filter((d)=>{
+  let requesteData =  data.filter((d)=>{
     return objQuery.reduce((a, b)=>{
       return a && ifExist(d, b[0], b[1])
     },true)
   })
-  console.log(x)
-  return x;
+  console.log(requesteData)
+  return requesteData;
 }
 const searchById = (id) => {
   return data.find((e)=>{

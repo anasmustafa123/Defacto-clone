@@ -68,10 +68,6 @@ export default function Signin() {
         {/* email */}
         <div className="relative">
           <input
-            onChange={(e) => {
-              changeValue(e);
-            }}
-            name="email"
             type="email"
             placeholder=" "
             className={`
@@ -115,10 +111,6 @@ export default function Signin() {
       <div className="mb-8">
         <div className="relative ">
           <input
-            onChange={(e) => {
-              changeValue(e);
-            }}
-            name="password"
             type="password"
             placeholder=" "
             className={`

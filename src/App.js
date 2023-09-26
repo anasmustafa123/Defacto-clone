@@ -13,7 +13,7 @@ import { useState, useEffect } from "react";
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import ProductContainer from "./components/ProductPageComponents/ProductContainer";
 import ProductViewPage from "./pages/ProductViewPage";
-import Login from "./components/login/Login";
+import ScrollToTop from "./components/utilities/ScrollToTop";
 function App() {
   let [genderChoosed, setGenderChoosed] = useState(0);
   const [DarkTheme, setDarkTheme] = useState(
@@ -32,38 +32,44 @@ function App() {
   }, [DarkTheme]);
 
   return (
-    <div className="dark:bg-zinc-900">
-      <Header
-        genderChoosed={genderChoosed}
-        setGenderChoosed={setGenderChoosed}
-        DarkModeprops={setDarkTheme}
-        isDarkTheme={DarkTheme}
-      />
-      <Routes>
-        <Route
-          path="/"
-          element={<HomePage setGenderChoosed={setGenderChoosed} />}
+    <ScrollToTop>
+      <div className="dark:bg-zinc-900">
+        <Header
+          genderChoosed={genderChoosed}
+          setGenderChoosed={setGenderChoosed}
+          DarkModeprops={setDarkTheme}
+          isDarkTheme={DarkTheme}
         />
-        <Route
-          element={<GenderHomePage gender={genderChoosed} genderData={women} />}
-          path="/women"
-        />
-        <Route
-          path="/men"
-          element={<GenderHomePage gender={genderChoosed} genderData={men} />}
-        />
-        <Route
-          path="/kids"
-          element={<GenderHomePage gender={genderChoosed} genderData={kids} />}
-        />
-        <Route path="/products/:query" element={<ProductViewPage />} />
-        <Route path="/:itemId" element={<ProductContainer />} />
-        <Route path="/stores" element={<Sto />} />
-        <Route path="/favorites" element={<Fav />} />
-        <Route path="/cart" element={<ShoppingCart />} />
-      </Routes>
-      <Footer />
-    </div>
+        <Routes>
+          <Route
+            path="/"
+            element={<HomePage setGenderChoosed={setGenderChoosed} />}
+          />
+          <Route
+            element={
+              <GenderHomePage gender={genderChoosed} genderData={women} />
+            }
+            path="/women"
+          />
+          <Route
+            path="/men"
+            element={<GenderHomePage gender={genderChoosed} genderData={men} />}
+          />
+          <Route
+            path="/kids"
+            element={
+              <GenderHomePage gender={genderChoosed} genderData={kids} />
+            }
+          />
+          <Route path="/products/:query" element={<ProductViewPage />} />
+          <Route path="/:itemId" element={<ProductContainer />} />
+          <Route path="/stores" element={<Sto />} />
+          <Route path="/favorites" element={<Fav />} />
+          <Route path="/cart" element={<ShoppingCart />} />
+        </Routes>
+        <Footer />
+      </div>
+    </ScrollToTop>
   );
 }
 export default App;

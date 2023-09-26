@@ -202,11 +202,6 @@ export default function Register({ registerclose }) {
             <div className="mb-10 pl-3 w-1/2 flex relative">
               <div>
                 <input
-                  onChange={(e) => {
-                    changeValue(e);
-                  }}
-                  name="lName"
-                  value={userData["lName"]}
                   type="text"
                   placeholder=" "
                   className={`relative
@@ -254,11 +249,6 @@ export default function Register({ registerclose }) {
           {/* email */}
           <div className="relative flex-col">
             <input
-              onChange={(e) => {
-                changeValue(e);
-              }}
-              name="email"
-              value={userData["email"]}
               type="email"
               placeholder=" "
               className={`relative
@@ -326,11 +316,6 @@ export default function Register({ registerclose }) {
           <div className="mb-4 pl-2 w-1/2">
             <div className="relative flex-col">
               <input
-                onChange={(e) => {
-                  changeValue(e);
-                }}
-                name="pNum"
-                value={userData["{pNum}"]}
                 type="text"
                 placeholder=" "
                 className={`
@@ -377,11 +362,6 @@ export default function Register({ registerclose }) {
           {/* password */}
           <div className="relative flex-col">
             <input
-              onChange={(e) => {
-                changeValue(e);
-              }}
-              name="password"
-              value={userData["password"]}
               type="password"
               required
               placeholder=""
@@ -436,8 +416,8 @@ export default function Register({ registerclose }) {
             <div className="text-xs text-gray-300 mr-2 pl-1">Day</div>
             <select className="border-b-2 border-gray-500 h-8 pr-6 w-24">
               <option value>Day</option>
-              {days.map((d, index) => (
-                <option key={index}>{d}</option>
+              {days.map((d) => (
+                <option>{d}</option>
               ))}
             </select>
           </div>
@@ -446,8 +426,8 @@ export default function Register({ registerclose }) {
             <div className="text-xs text-gray-300 mr-2 pl-1">Month</div>
             <select className="border-b-2 border-gray-500 h-8 pr-6 w-28">
               <option value>Month</option>
-              {months.map((m, index) => (
-                <option key={index}>{m}</option>
+              {months.map((m) => (
+                <option>{m}</option>
               ))}
             </select>
           </div>
@@ -456,8 +436,8 @@ export default function Register({ registerclose }) {
             <div className="text-xs text-gray-300 mr-2 pl-1">Year</div>
             <select className="border-b-2 border-gray-500 h-8 pr-6 w-28">
               <option value>Year</option>
-              {years.map((y, index) => (
-                <option key={index}>{y}</option>
+              {years.map((y) => (
+                <option>{y}</option>
               ))}
             </select>
           </div>
