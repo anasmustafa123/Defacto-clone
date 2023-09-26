@@ -1,11 +1,13 @@
 import Stars from "../ProductsView/Stars";
 import { useState, useContext } from "react";
-import { UserContext } from "../../context/Context";
+    import { isGuest, isUser } from "../../servises/backend";
+    import { UserContext } from "../../context/Context";
 
 export default function RightSideBar({ productData }) {
-  const { isHearted, addToFav, removeFromFav, isUserGuest } =
+  const { isHearted, addToFav, removeFromFav, addToCart } =
     useContext(UserContext);
   let sizes = ["XS", "S", "M", "L", "XL", "XXL"];
+  
   return (
     <div className="flex flex-col gap-2  max-w-[400px]">
       <div
@@ -21,7 +23,7 @@ export default function RightSideBar({ productData }) {
         <p className="text-base">{productData.productName}</p>
         <i
           class={
-            (isUserGuest
+            (isGuest()
               ? "text-gray-300 cursor-not-allowed"
               : "text-red-600 ") +
             "text-2xl bx bx-heart cursor-pointer rounded-full" +
@@ -62,6 +64,14 @@ export default function RightSideBar({ productData }) {
       <button
         className="bg-gray-500 text-white pt-2 pb-2 rounded"
         type="button"
+        onClick={() => {
+          if (isGuest()) {
+            alert("log in first");
+          } else {
+            alert("add to cart");
+            addToCart({ quantity: 1, v: productData });
+          }
+        }}
       >
         ADD TO CART
       </button>

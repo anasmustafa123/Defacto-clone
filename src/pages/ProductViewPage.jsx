@@ -10,15 +10,15 @@ export default function ProductViewPage({searchField}) {
 
   if (searchField!="") {
     data = getSearchData(searchField)
-  }else{
+  }else {
     console.log(query);
     data = getData(query);
   }
-  
+
   return (
     <div className="flex justify-center gap-6 ">
       <SideBar className="" />
-      <div className="relative w-full h-screen overflow-scroll">
+      <div className="relative w-full h-screen overflow-y-scroll will-change-scroll">
         <ProductsView data={data} gridCol={4} />
       </div>
     </div>

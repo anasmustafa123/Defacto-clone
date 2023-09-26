@@ -60,8 +60,10 @@ function getSearchData(query) {
 
 const searchById = (id) => {
   return data.find((e)=>{
-    return e.productId == id;
+    return e.productId===id;
   })
+
 }
 
-export { getData, searchById, getSearchData };
+
+export { getData, searchById, getSearchData, data };

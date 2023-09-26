@@ -14,11 +14,14 @@ import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import ProductContainer from "./components/ProductPageComponents/ProductContainer";
 import ProductViewPage from "./pages/ProductViewPage";
 import ScrollToTop from "./components/utilities/ScrollToTop";
+
+
 function App() {
   const [genderChoosed, setGenderChoosed] = useState(0);
   const [DarkTheme, setDarkTheme] = useState(
     localStorage.getItem("Dark") ? true : false
   );
+
   const [searchField, setSearchField] = useState("")
   const element = document.documentElement;
 

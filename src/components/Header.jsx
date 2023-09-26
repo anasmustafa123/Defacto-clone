@@ -100,7 +100,7 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == "w" && "font-semibold underline")
+                (genderChoosed==="w" && "font-semibold underline")
               }
             >
               <Link to="/women">WOMEN</Link>
@@ -112,7 +112,7 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == "m" && "font-semibold underline")
+                (genderChoosed==="m" && "font-semibold underline")
               }
             >
               <Link to="/men">MEN</Link>
@@ -124,7 +124,7 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == "k" && "font-semibold underline")
+                (genderChoosed==="k" && "font-semibold underline")
               }
             >
               <Link to="/kids">KIDS</Link>
@@ -136,7 +136,7 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed == "s" && "font-semibold underline")
+                (genderChoosed==="s" && "font-semibold underline")
               }
             >
               <Link

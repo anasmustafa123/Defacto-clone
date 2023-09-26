@@ -4,12 +4,16 @@ import { UserContext } from "../../context/Context";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { isGuest, isUser } from "../../servises/backend";
+
+
 function ProductView({ id = 0, singleData }) {
+  
   const [toggleHeart, setToggleHeart] = useState(false);
-  const { addToCart, addToFav, checkIfExist, removeFromFav, isUserGuest, isHearted } =
-    useContext(UserContext);
+  const { addToCart, addToFav, checkIfExist, removeFromFav, isUserGuest, isHearted } = useContext(UserContext);
   const [isCartClicked, setIsCartClicked] = useState(false);
   const [isFavClicked, setIsFavClicked] = useState(false);
+
+
   return (
     <div key={id} className="flex flex-col gap-2 cursor-pointer">
       <div className=" relative">

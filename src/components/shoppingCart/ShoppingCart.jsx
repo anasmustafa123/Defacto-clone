@@ -29,7 +29,7 @@ export default function ShoppingCart({carttoggle}) {
         </>
       )}
       {/* items */}
-      {cartSize != 0 && (
+      {cartSize!== 0 && (
         <>
           {cart.map((item) => (
             <BasketView item={item} />

@@ -17,7 +17,7 @@ function FooterPart2() {
             className={
               " p-2 font-normal border-2" +
               " " +
-              (isClicked == "f" && "bg-black text-white")
+              (isClicked==="f" && "bg-black text-white")
             }
           >
             Female
@@ -29,7 +29,7 @@ function FooterPart2() {
             className={
               "p-2 font-normal border-2" +
               " " +
-              (isClicked == "m" && "bg-black text-white")
+              (isClicked==="m" && "bg-black text-white")
             }
           >
             Male
@@ -41,7 +41,7 @@ function FooterPart2() {
             className={
               "p-2 font-normal border-2" +
               " " +
-              (isClicked == "k" && "bg-black text-white")
+              (isClicked==="k" && "bg-black text-white")
             }
           >
             Kids

@@ -39,10 +39,11 @@ export default function SideBar({ className }) {
 
   const [selectedGender, setSelectedGender] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState([]);
+
   return (
     <form
       action="#"
-      className={className + " " + "bg-zinc-200 p-3 rounded-pants2xl"}
+      className={className + " " + "bg-zinc-100 p-3 rounded-pants2xl"}
     >
       <div className="ml-5 ">
         {arr4.map((v, index) => (
@@ -61,10 +62,12 @@ export default function SideBar({ className }) {
                   }
                 }}
                 type="checkbox"
+                id="checkboxDefault" 
+                className="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
               />
-              <p className="ml-2" key={index}>
+              <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300" key={index}>
                 {v['value']}
-              </p>
+              </label>
             </div>
           </>
         ))}
