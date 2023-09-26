@@ -14,6 +14,7 @@ import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import ProductContainer from "./components/ProductPageComponents/ProductContainer";
 import ProductViewPage from "./pages/ProductViewPage";
 import ScrollToTop from "./components/utilities/ScrollToTop";
+import NotFound from "./pages/routeNotFound/NotFound";
 function App() {
   let [genderChoosed, setGenderChoosed] = useState(0);
   const [DarkTheme, setDarkTheme] = useState(
@@ -62,10 +63,11 @@ function App() {
             }
           />
           <Route path="/products/:query" element={<ProductViewPage />} />
-          <Route path="/:itemId" element={<ProductContainer />} />
+          <Route path="/item/:itemId" element={<ProductContainer />} />
           <Route path="/stores" element={<Sto />} />
           <Route path="/favorites" element={<Fav />} />
           <Route path="/cart" element={<ShoppingCart />} />
+          <Route path="/*" element={<NotFound />}></Route>
         </Routes>
         <Footer />
       </div>

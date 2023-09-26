@@ -13,7 +13,7 @@ function ProductView({ id = 0, singleData }) {
   return (
     <div key={id} className="flex flex-col gap-2 cursor-pointer">
       <div className=" relative">
-        <Link to={`/${singleData["productId"]}`}>
+        <Link to={`/item/${singleData["productId"]}`}>
           <img className="min-h-[470px] max-h-[470px]" src={singleData["url"]} alt="" />
         </Link>
         <div

@@ -1,0 +1,78 @@
+.empty{
+    width: 100%;
+    height: 500px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    color: #4d0606;
+}
+
+
+.spann{
+    color: rgb(226, 43, 43);
+}
+
+
+
+.nt{
+    font-size: 90px;
+    font-weight: 700;
+}
+
+.antoin{
+    height: 100px;
+    width: 100px;
+    background:none;
+    animation-name: square;
+    animation-duration: 4s;
+    animation-delay: 0.5s;
+    animation-fill-mode: backwards;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-play-state: running;
+    border-radius: 20px;
+    font-size: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -15px;
+
+}
+
+@keyframes square {
+    0%{
+        translate: 0 0;
+        background:none;
+        rotate: 0;
+    }
+
+    25%{
+        translate: 0 220px;
+        background: rgb(7, 27, 209);
+        rotate: 90deg ;
+    }
+
+    50%{
+        translate:  260px 220px;
+        background: rgb(140, 0, 255);
+        rotate: 180deg;
+    }
+    75%{
+        translate:  260px 0px;
+        background: rgb(255, 0, 0);
+        rotate: 270deg;
+
+    }
+    100%{
+        translate:  0px 0px;
+        background: none;
+        rotate: 360deg;
+        
+    }
+}
+
+
+
