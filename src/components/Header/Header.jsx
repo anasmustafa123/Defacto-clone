@@ -29,13 +29,13 @@ export default function Header({genderChoosed, setGenderChoosed,DarkModeprops, i
   const ToggleCartMenu = (y) => {SetCartMenu(y)}
 
 
-  useEffect(() => {
-    if (loginOpened||CartMenu || PhoneState) {
-      document.body.classList.add("login-opened");
-    } else {
-      document.body.classList.remove("login-opened");
-    }
-  }, [loginOpened, CartMenu, PhoneState]);
+  // useEffect(() => {
+  //   if (loginOpened||CartMenu || PhoneState) {
+  //     document.body.classList.add("login-opened");
+  //   } else {
+  //     document.body.classList.remove("login-opened");
+  //   }
+  // }, [loginOpened, CartMenu, PhoneState]);
 
   function LoginMenu() {
     return (
@@ -223,7 +223,7 @@ export default function Header({genderChoosed, setGenderChoosed,DarkModeprops, i
         </div>
         </div>
       {loginOpened && (
-        <div className="absolute z-20 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
+        <div className="fixed z-20 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
           <div className="w-full flex justify-end animate-slide">
             <Login
               loginclose={logintoggle}
