@@ -47,10 +47,21 @@ function getData(query) {
   console.log(requesteData)
   return requesteData;
 }
+
+function getSearchData(query) {
+  let requesteData = data.filter(product => {
+    return (
+      product.productName.toLowerCase().includes(query.toLowerCase()) ||
+      (typeof product.productId === 'string' && product.productId.toLowerCase().includes(query.toLowerCase()))
+    );
+  });
+  return requesteData;
+}
+
 const searchById = (id) => {
   return data.find((e)=>{
     return e.productId == id;
   })
 }
 
-export { getData, searchById };
+export { getData, searchById, getSearchData };

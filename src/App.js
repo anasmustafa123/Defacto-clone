@@ -15,10 +15,11 @@ import ProductContainer from "./components/ProductPageComponents/ProductContaine
 import ProductViewPage from "./pages/ProductViewPage";
 import ScrollToTop from "./components/utilities/ScrollToTop";
 function App() {
-  let [genderChoosed, setGenderChoosed] = useState(0);
+  const [genderChoosed, setGenderChoosed] = useState(0);
   const [DarkTheme, setDarkTheme] = useState(
     localStorage.getItem("Dark") ? true : false
   );
+  const [searchField, setSearchField] = useState("")
   const element = document.documentElement;
 
   useEffect(() => {
@@ -39,6 +40,7 @@ function App() {
           setGenderChoosed={setGenderChoosed}
           DarkModeprops={setDarkTheme}
           isDarkTheme={DarkTheme}
+          setSearchField={setSearchField}
         />
         <Routes>
           <Route
@@ -61,7 +63,7 @@ function App() {
               <GenderHomePage gender={genderChoosed} genderData={kids} />
             }
           />
-          <Route path="/products/:query" element={<ProductViewPage />} />
+          <Route path="/products/:query" element={<ProductViewPage searchField={searchField} />} />
           <Route path="/:itemId" element={<ProductContainer />} />
           <Route path="/stores" element={<Sto />} />
           <Route path="/favorites" element={<Fav />} />

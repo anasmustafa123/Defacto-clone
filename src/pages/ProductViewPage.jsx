@@ -1,11 +1,20 @@
 import ProductsView from "../components/ProductsView/ProductsView";
 import { useParams } from "react-router-dom";
-import { getData } from "../servises/dataCenter";
+import { getData, getSearchData } from "../servises/dataCenter";
 import SideBar from "../components/sidebar/SideBar";
-export default function ProductViewPage() {
+
+
+export default function ProductViewPage({searchField}) {
   const { query } = useParams();
-  console.log(query);
-  let data = getData(query);
+  let data = [];
+
+  if (searchField!="") {
+    data = getSearchData(searchField)
+  }else{
+    console.log(query);
+    data = getData(query);
+  }
+  
   return (
     <div className="flex justify-center gap-6 ">
       <SideBar className="" />

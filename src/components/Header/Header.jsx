@@ -7,7 +7,7 @@ import ShoppingCart from "../shoppingCart/ShoppingCart";
 import PhoneMenu from "./PhoneMenu";
 
 
-export default function Header({genderChoosed, setGenderChoosed,DarkModeprops, isDarkTheme}) {
+export default function Header({genderChoosed, setGenderChoosed,DarkModeprops, isDarkTheme, setSearchField}) {
 
   const [loginOpened, setLoginOpened] = useState(false);
   const [registerBtn, setRegisterBtn] = useState(false);
@@ -15,7 +15,9 @@ export default function Header({genderChoosed, setGenderChoosed,DarkModeprops, i
   const [CartMenu, SetCartMenu] = useState(false);
   const [PhoneState, SetPhoneMenu] =useState(false)
 
-  
+  const handelSearch = (e)=>{
+    setSearchField(e.target.value);
+  }
 
   const logintoggle = (x) => {
     console.log(x);
@@ -165,14 +167,18 @@ export default function Header({genderChoosed, setGenderChoosed,DarkModeprops, i
           </ul>
         </nav>
 
+        {/* search box */}
         <div className=" border border-black hidden sm:flex items-center gap-2 pl-3 pr-3 pt-1 pb-1 w-1/3 dark:bg-stone-700 dark:text-white">
           <i class="text-2xl bx bx-search"></i>
           <input
             className=" sm:text-xs md:text-sm bg-transparent outline-none w-full"
             type="text"
             placeholder="Search: Jean Pants, Basic Body. Moder Fit Shirt Track Suit"
+            onChange={(e)=>handelSearch(e)}
           />
         </div>
+
+
         <div className="">
           <nav className="defacto-nav">
             <ul className="p-0 m-0 gap-6 md:flex hidden">
