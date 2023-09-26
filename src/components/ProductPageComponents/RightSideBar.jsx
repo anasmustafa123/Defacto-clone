@@ -1,9 +1,10 @@
 import Stars from "../ProductsView/Stars";
 import { useState, useContext } from "react";
 import { UserContext } from "../../context/Context";
+import { isGuest } from "../../servises/backend";
 
 export default function RightSideBar({ productData }) {
-  const { isHearted, addToFav, removeFromFav, isUserGuest } =
+  const { isHearted, addToFav, removeFromFav, isUserGuest, addToCart } =
     useContext(UserContext);
   let sizes = ["XS", "S", "M", "L", "XL", "XXL"];
   return (
@@ -60,6 +61,14 @@ export default function RightSideBar({ productData }) {
         ))}
       </div>
       <button
+        onClick={() => {
+          if (isGuest()) {
+            alert("log in first");
+          } else {
+            alert("add to cart");
+            addToCart({ quantity: 1, v: productData });
+          }
+        }}
         className="bg-gray-500 text-white pt-2 pb-2 rounded"
         type="button"
       >
