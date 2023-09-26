@@ -38,6 +38,9 @@ const signIn = (userDetails) => {
   }
   return result;
 };
+const logout = () => {
+  localStorage.removeItem('cUser');
+}
 const getUserItems = (name) => {
   let cUserEmail = localStorage.getItem("cUser");
   let users = JSON.parse(localStorage.getItem("users"));
@@ -66,4 +69,4 @@ const updateLocalStorage = (name, items) => {
   localStorage.setItem("users", JSON.stringify(newUsers));
 };
 
-export { addUser, isUser, isGuest, getUserItems, signIn, updateLocalStorage };
+export { addUser, isUser, isGuest, getUserItems, signIn, updateLocalStorage, logout };

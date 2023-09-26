@@ -5,28 +5,30 @@ import { UserContext } from "../../context/Context";
 import { HeaderMenu } from "../../pages/HeaderMenu";
 import ShoppingCart from "../shoppingCart/ShoppingCart";
 import PhoneMenu from "./PhoneMenu";
-
-
-export default function Header({genderChoosed, setGenderChoosed,DarkModeprops, isDarkTheme}) {
-
+import { logout } from "../../servises/backend";
+export default function Header({
+  genderChoosed,
+  setGenderChoosed,
+  DarkModeprops,
+  isDarkTheme,
+}) {
   const [loginOpened, setLoginOpened] = useState(false);
   const [registerBtn, setRegisterBtn] = useState(false);
-  const { cartSize } = useContext(UserContext);
+  const { cartSize, isUserGuest, setIsUserGuest, setCart, setFav } = useContext(UserContext);
   const [CartMenu, SetCartMenu] = useState(false);
-  const [PhoneState, SetPhoneMenu] =useState(false)
-
-  
+  const [PhoneState, SetPhoneMenu] = useState(false);
 
   const logintoggle = (x) => {
     console.log(x);
     setLoginOpened(x);
   };
 
-  const ToggleCartMenu = (y) => {SetCartMenu(y)}
-
+  const ToggleCartMenu = (y) => {
+    SetCartMenu(y);
+  };
 
   useEffect(() => {
-    if (loginOpened||CartMenu || PhoneState) {
+    if (loginOpened || CartMenu || PhoneState) {
       document.body.classList.add("login-opened");
     } else {
       document.body.classList.remove("login-opened");
@@ -35,7 +37,6 @@ export default function Header({genderChoosed, setGenderChoosed,DarkModeprops, i
 
   function LoginMenu() {
     return (
-      
       <div className="hidden group-hover:block absolute bg-white z-10 w-64 h-48 ">
         <div className="p-3">
           <div className="mb-3">
@@ -81,78 +82,86 @@ export default function Header({genderChoosed, setGenderChoosed,DarkModeprops, i
 
   return (
     <>
-      
-       <div className="flex justify-between w-full  p-4 h-20 items-center dark:border-none dark:bg-stone-900 dark:text-white">
-        <div onClick={()=>{setGenderChoosed('none')}} className="logo flex gap-4">
+      <div className="flex justify-between w-full  p-4 h-20 items-center dark:border-none dark:bg-stone-900 dark:text-white">
+        <div
+          onClick={() => {
+            setGenderChoosed("none");
+          }}
+          className="logo flex gap-4"
+        >
           <Link to="/">
-            <img className=""
+            <img
+              className=""
               src="https://dfcdn.defacto.com.tr/AssetsV2/dist/img/de-facto-logo-light-v2.svg"
               alt=""
               width="141"
             />
           </Link>
-        
+
           <div>
-              <button onClick={() => {
-                DarkModeprops(!isDarkTheme)}
-                } className="text-4xl">
-                  <i  className = {"text-4xl " +
-                    (isDarkTheme ? 'bx bxs-toggle-right  text-stone-500 ' : "bx bx-toggle-left")
-                    }></i>
-              </button>
+            <button
+              onClick={() => {
+                DarkModeprops(!isDarkTheme);
+              }}
+              className="text-4xl"
+            >
+              <i
+                className={
+                  "text-4xl " +
+                  (isDarkTheme
+                    ? "bx bxs-toggle-right  text-stone-500 "
+                    : "bx bx-toggle-left")
+                }
+              ></i>
+            </button>
           </div>
         </div>
-        
-        
-        
-       
-
         <nav className="defacto-nav">
           <ul className="p-0 m-0  hidden sm:flex">
             <li
               onClick={() => {
-                setGenderChoosed('women');
+                setGenderChoosed("women");
               }}
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed === 'women' && "font-semibold underline")
+                (genderChoosed === "women" && "font-semibold underline")
               }
             >
               <Link to="/women">WOMEN</Link>
             </li>
             <li
               onClick={() => {
-                setGenderChoosed('men');
+                setGenderChoosed("men");
               }}
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed === 'men' && "font-semibold underline")
+                (genderChoosed === "men" && "font-semibold underline")
               }
             >
               <Link to="/men">MEN</Link>
             </li>
             <li
               onClick={() => {
-                setGenderChoosed('kids');
+                setGenderChoosed("kids");
               }}
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed === 'kids' && "font-semibold underline")
+                (genderChoosed === "kids" && "font-semibold underline")
               }
             >
               <Link to="/kids">KIDS</Link>
             </li>
             <li
               onClick={() => {
-                setGenderChoosed('s');
+                setGenderChoosed("s");
               }}
               className={
                 " mr-5 border-black hover:border-b-2 hover:text-gray-400 hover:border-gray-300" +
                 " " +
-                (genderChoosed === 's' && "font-semibold underline")
+                (genderChoosed === "s" && "font-semibold underline")
               }
             >
               <Link
@@ -175,45 +184,61 @@ export default function Header({genderChoosed, setGenderChoosed,DarkModeprops, i
         </div>
         <div className="">
           <nav className="defacto-nav">
-            <ul className="p-0 m-0 gap-6 md:flex hidden">
-              <div className="group read-only:" onClick={() => logintoggle(true)}>
-                <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black  hover:text-gray-400 hover:border-gray-300">
-                  <i class="bx bx-user"></i>
-                  <span className="text-sm hover:text-gray-400 hidden sm:inline" >Login</span>
-                </li>
-                {LoginMenu()}
-              </div>
+            <ul className=" p-0 m-0 gap-8 flex items-center">
+              {isUserGuest ? (
+                <div
+                  className="group read-only:"
+                  onClick={() => logintoggle(true)}
+                >
+                  <li className="flex gap-2 items-center text-xl hover:border-b-2 border-black  hover:text-gray-400 hover:border-gray-300">
+                    <i class="bx bx-user"></i>
+                    <span className="text-sm hover:text-gray-400 hidden sm:inline">
+                      Login
+                    </span>
+                  </li>
+                  {LoginMenu()}
+                </div>
+              ) : (
+                <div
+                  onClick={() => {
+                    logout();
+                    setCart([]);
+                    setFav([]);
+                    setIsUserGuest(true);
+                  }}
+                >
+                  <i class="text-4xl bx bx-log-out-circle hover:text-red-600 cursor-pointer"></i>
+                </div>
+              )}
 
-              <li>
-                <i class="bx bx-heart"></i>
-                <Link to={'/favorites'} className=" hidden sm:inline text-base hover:text-gray-400">
+              <li class="flex gap-2 items-center hover:text-red-600">
+                <i class="text-xl bx bx-heart"></i>
+                <Link to={"/favorites"} className=" hidden sm:inline text-base">
                   Favorites
                 </Link>
               </li>
-              
-              <li onClick={() => ToggleCartMenu(true)} className=" flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300">
+
+              <li
+                onClick={() => ToggleCartMenu(true)}
+                className=" flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300"
+              >
                 <i class="bx bx-shopping-bag"></i>
 
-                <button className="text-base hover:text-gray-400" onClick={() => ToggleCartMenu(true)
-      
-                }>
+                <button
+                  className="text-base hover:text-gray-400"
+                  onClick={() => ToggleCartMenu(true)}
+                >
                   shopping cart <span>{cartSize}</span>
                 </button>
               </li>
             </ul>
 
-          <div className="md:hidden text-4xl">
-            
-            <i onClick={() => SetPhoneMenu(true)} class='bx bx-menu'></i>
-
-
-
-          </div>
-
+            <div className="md:hidden text-4xl">
+              <i onClick={() => SetPhoneMenu(true)} class="bx bx-menu"></i>
+            </div>
           </nav>
-          
         </div>
-        </div>
+      </div>
       {loginOpened && (
         <div className="absolute z-20 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
           <div className="w-full flex justify-end animate-slide">
@@ -228,23 +253,27 @@ export default function Header({genderChoosed, setGenderChoosed,DarkModeprops, i
       {CartMenu && (
         <div className="absolute z-20 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
           <div className="w-full flex justify-end animate-slide">
-            <ShoppingCart carttoggle={ToggleCartMenu}/>
+            <ShoppingCart carttoggle={ToggleCartMenu} />
           </div>
         </div>
       )}
 
       <div className="border-b-2 realtive w-full dark:bg-zinc-900 dark:text-white">
         <div className="group w-44">
-          <span className="ml-3">
-            Accesorise & shoes
-          </span>
-          <div className="absolute z-10 "><HeaderMenu/></div>
+          <span className="ml-3">Accesorise & shoes</span>
+          <div className="absolute z-10 ">
+            <HeaderMenu />
+          </div>
         </div>
       </div>
-{PhoneState && (
+      {PhoneState && (
         <div className="absolute z-10 bg-[rgba(0,0,0,0.5)] w-full h-screen top-0 left-0 overflow-y-scroll ">
           <div className="w-full flex justify-end animate-slide">
-            <PhoneMenu Phoneprops={SetPhoneMenu} logintoggle={logintoggle} carttoggle={SetCartMenu} />
+            <PhoneMenu
+              Phoneprops={SetPhoneMenu}
+              logintoggle={logintoggle}
+              carttoggle={SetCartMenu}
+            />
           </div>
         </div>
       )}
