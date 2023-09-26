@@ -8,9 +8,9 @@ export default function ProductViewPage() {
   let data = getData(query);
   return (
     <div className="flex justify-center gap-6 ">
-      <SideBar className="fixed left-9 top-56" />
-      <div className="w-[1300px] relative">
-      <ProductsView data={data} gridCol={4} />
+      <SideBar className="" />
+      <div className="relative w-full h-screen overflow-scroll">
+        <ProductsView data={data} gridCol={4} />
       </div>
     </div>
   );

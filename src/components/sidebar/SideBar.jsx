@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
+
 export default function SideBar({ className }) {
   let arr4 = [
     { key: "men", value: "men" },
@@ -40,7 +42,7 @@ export default function SideBar({ className }) {
   return (
     <form
       action="#"
-      className={className + " " + "bg-gray-200 p-3 rounded-pants2xl"}
+      className={className + " " + "bg-zinc-200 p-3 rounded-pants2xl"}
     >
       <div className="ml-5 ">
         {arr4.map((v, index) => (
@@ -110,7 +112,7 @@ export default function SideBar({ className }) {
           type="submit"
           className="pl-10 pr-10 pt-1 pb-1 bg-gray-500 mt-3 rounded-2xl text-white"
         >
-          Search
+          Apply
         </Link>
       </div>
     </form>

@@ -31,7 +31,7 @@ export default function Header({ genderChoosed, setGenderChoosed }) {
 
   function LoginMenu() {
     return (
-      <div className="hidden group-hover:block absolute bg-white z-10 w-64 h-48 ">
+      <div className="hidden group-hover:block bg-white z-10 w-64 h-48  fixed">
         <div className="p-3">
           <div className="mb-3">
             <button
