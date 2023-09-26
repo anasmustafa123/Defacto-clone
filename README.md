@@ -1,6 +1,7 @@
 # Defacto Clone
 ## Team Leader
 - Fatma yasser
+- Walaa Gaber
 
 ## Team Members
 - Mariam
@@ -54,4 +55,3 @@
 **Data Collecting**
 - collecting the data from zappos api  (Anas)
 - collecting data from decota website  (Abanoub)
-- collecting data from defacto     (Daghash)

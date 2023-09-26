@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
+  import { Link } from "react-router-dom";
 function HomeView({ setGenderChoosed }) {
   return (
-    <div className="flex flex-col sm:flex-row overflow-hidden">
+    <div className="flex flex-col sm:flex-row overflow-hidden mt-6  dark:bg-stone-900 dark:text-white ">
       <Link
         onClick={() => {
           setGenderChoosed('w');
@@ -9,7 +9,7 @@ function HomeView({ setGenderChoosed }) {
         to="/women"
         className="relative group  cursor-pointer w-full overflow-hidden"
       >
-        <img
+        <img 
           src="https://dfcdn.defacto.com.tr/Mobile/woman_desktop_240e37ff-b1c6-4e53-aef7-9e64ec86b93c_e94d07a3-862e-4895-b03f-00e26e33ec69_DI_316.jpg"
           alt=""
           className="group-hover:scale-125 transition duration-500 "
@@ -80,7 +80,8 @@ function HomeView({ setGenderChoosed }) {
           className="absolute border-2 border-white bg-black bg-opacity-50
                         pl-9 pr-9 pt-1 pb-1
                         text-2xl  text-white
-                        top-1/2 left-1/2">
+                        top-1/2 left-1/2
+                        ">
           KIDS&BABY
         </div>
       </Link>

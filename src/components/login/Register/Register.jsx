@@ -1,7 +1,12 @@
-import React from "react";
-import { useState } from "react";
-import {  addUser } from "../../../servises/backend";
+import React, { useState } from "react";
+import { addUser } from "../../../servises/backend";
+
 export default function Register({ registerclose }) {
+  const [nameError, setNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
+  const [mobileError, setMobileError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [userData, setUserData] = useState({
     name: "",
     lName: "",
@@ -18,6 +23,82 @@ export default function Register({ registerclose }) {
     cloneUserData[name] = value;
     setUserData(cloneUserData);
   };
+
+  function validateName() {
+    if (userData["name"] === "") {
+      setNameError("Please enter your last name");
+      return false;
+    } else if (userData["name"].length < 2) {
+      setNameError("your last name must be at least 2 characters");
+      return false;
+    } else {
+      setNameError("");
+      return true;
+    }
+  }
+  function validateLastName() {
+    if (userData["lName"] === "") {
+      setLastNameError("Please enter your last name");
+      return false;
+    } else if (userData["lName"].length < 2) {
+      setLastNameError("your name must be at least 2 characters");
+      return false;
+    } else {
+      setLastNameError("");
+      return true;
+    }
+  }
+
+  function validateEmail() {
+    if (userData["email"] === "") {
+      setEmailError("this field is required");
+      return false;
+    } else if (
+      !userData["email"].includes("@") ||
+      !userData["email"].includes(".com")
+    ) {
+      setEmailError("wrong format");
+      return false;
+    } else {
+      setEmailError("");
+      return true;
+    }
+  }
+
+  function validateMobile() {
+    if (userData["pNum"] === "") {
+      setMobileError("this field is required");
+      return false;
+    } else if (!parseInt(userData["pNum"])) {
+      setMobileError("Not a valid Phone Number");
+      return false;
+    } else if (userData["pNum"].length < 10) {
+      setMobileError("Enter full phone number");
+      return false;
+    } else {
+      setMobileError("");
+      return true;
+    }
+  }
+
+  function validatePassword() {
+    if (userData["password"] === "") {
+      setPasswordError("Please enter your password");
+      return false;
+    } else if (
+      userData["password"].length < 8 ||
+      userData["password"].length > 20
+    ) {
+      setPasswordError(
+        "Your password must be in the range of 8-15 characters "
+      );
+      return false;
+    } else {
+      setPasswordError("");
+      return true;
+    }
+  }
+
   const days = [];
   for (let i = 1; i < 32; i++) {
     days.push(i);
@@ -38,14 +119,20 @@ export default function Register({ registerclose }) {
     <>
       {/* // social row */}
       <form
+        className=" w-96 relative z-10 p-5 "
         onSubmit={(e) => {
           e.preventDefault();
-          let result = addUser(userData)
-
-            alert(result.message)
-        
+          let res1= validateEmail();
+          let res2 = validateLastName();
+          let res3= validatePassword();
+          let res4= validateName();
+          let res5 = validateMobile();
+          
+          if (res1 && res2 && res3 && res4 && res5) {
+            let result = addUser(userData);
+            alert(result.message);
+          }
         }}
-        className=" w-96 relative z-10 p-5"
       >
         <div className="flex-col h-28  grid">
           <div className="text-center">
@@ -64,49 +151,55 @@ export default function Register({ registerclose }) {
         </div>
         <div className="mb-3 text-xs ">SUBSCRIBE WITH YOUR EMAIL ADDRESS</div>
         {/* //name &last name */}
-        <div className="relative flex mt-4 w-full justify-stretch ">
+        <div className="relative flex w-full justify-stretch ">
           {/* name */}
           <div className="flex ">
-            <div>
-              <input
-                onChange={(e) => {
-                  changeValue(e);
-                }}
-                name="name"
-                value={userData["name"]}
-                type="text"
-                required
-                placeholder=" "
-                className="
-            relative
-            border-0
-            border-b-2 border-gray-500 
-            w-full
-            bg-transparent 
-            outline-none
-            h-10
-            pt-2 peer"
-              />
-              <label
-                className="peer-focus:font-medium
+            <div className="mb-10 w-1/2 flex relative">
+              <div>
+                <input
+                  type="text"
+                  placeholder=" "
+                  className={`relative
+                  border-0
+                  border-b-2 ${
+                    nameError ? "border-red-600" : "border-gray-500 "
+                  } 
+                  w-full
+                  bg-transparent 
+                  outline-none
+                  h-8
+                  pt-2 peer`}
+                  name="name"
+                  value={userData["name"]}
+                  onChange={(e) => {
+                    changeValue(e);
+                  }}
+                  onBlur={() => validateName()}
+                />
+                <label
+                  for="name"
+                  className="peer-focus:font-medium
                 absolute text-sm duration-500
-                transform -translate-y-8 scale-75
+                transform -translate-y-4 scale-75
                 top-0 left-0 -z-10 origin-[0]
                 peer-focus:left-0
-                peer-focus:text-slate-700 text-slate-500
+                peer-focus:text-slate-500 text-slate-500
                 peer-placeholder-shown:scale-100
                 peer-placeholder-shown:-translate-y-0
                 peer-placeholder-shown:text-slate-950
                 peer-focus:scale-75
                 peer-focus:-translate-y-4
-            
-            "
-              >
-                Name
-              </label>
+                  "
+                >
+                  Name
+                </label>
+                {nameError && (
+                  <label className="text-red-700 text-xs">{nameError}</label>
+                )}
+              </div>
             </div>
             {/* last name */}
-            <div className="mb-8 pl-3 flex relative">
+            <div className="mb-10 pl-3 w-1/2 flex relative">
               <div>
                 <input
                   onChange={(e) => {
@@ -115,27 +208,31 @@ export default function Register({ registerclose }) {
                   name="lName"
                   value={userData["lName"]}
                   type="text"
-                  required
                   placeholder=" "
-                  className="
-              relative
-              border-0
-              border-b-2 border-gray-500 
-              w-full
-              bg-transparent 
-              outline-none
-              h-10
-              pt-2 peer
-                
-                "
+                  className={`relative
+                    border-0
+                    border-b-2 ${
+                      lastNameError ? "border-red-600" : "border-gray-500 "
+                    } 
+                    w-full
+                    bg-transparent 
+                    outline-none
+                    h-8
+                    pt-2 peer`}
+                  name="lName"
+                  value={userData["lName"]}
+                  onChange={(e) => {
+                    changeValue(e);
+                  }}
+                  onBlur={() => validateLastName()}
                 />
                 <label
                   className="peer-focus:font-medium
                 absolute text-sm duration-500
-                transform -translate-y-8 scale-75
+                transform -translate-y-4 scale-75
                 top-0 left-0 -z-10 origin-[0]
                 peer-focus:left-0
-                peer-focus:text-slate-700 text-slate-500
+                peer-focus:text-slate-500 text-slate-500
                 peer-placeholder-shown:scale-100
                 peer-placeholder-shown:-translate-y-0
                 peer-placeholder-shown:text-slate-950
@@ -146,11 +243,14 @@ export default function Register({ registerclose }) {
                 >
                   Last name
                 </label>
+                {lastNameError && (
+                  <span className=" text-red-700 text-xs">{lastNameError}</span>
+                )}
               </div>
             </div>
           </div>
         </div>
-        <div className="mb-8 ">
+        <div className="mb-10 ">
           {/* email */}
           <div className="relative flex-col">
             <input
@@ -160,26 +260,29 @@ export default function Register({ registerclose }) {
               name="email"
               value={userData["email"]}
               type="email"
-              required
               placeholder=" "
-              className="
-            relative
+              className={`relative
             border-0
-            border-b-2 border-gray-500 
+            border-b-2 ${emailError ? "border-red-600" : "border-gray-500 "}
             w-full
             bg-transparent 
             outline-none
-            h-10
-            pt-2 peer
-              "
+            h-8
+            pt-2 peer`}
+              name="email"
+              value={userData["email"]}
+              onChange={(e) => {
+                changeValue(e);
+              }}
+              onBlur={() => validateEmail()}
             />
             <label
               className="peer-focus:font-medium
                 absolute text-sm duration-500
-                transform -translate-y-8 scale-75
+                transform -translate-y-4 scale-75
                 top-0 left-0 -z-10 origin-[0]
                 peer-focus:left-0
-                peer-focus:text-slate-700 text-slate-500
+                peer-focus:text-slate-500 text-slate-500
                 peer-placeholder-shown:scale-100
                 peer-placeholder-shown:-translate-y-0
                 peer-placeholder-shown:text-slate-950
@@ -189,12 +292,15 @@ export default function Register({ registerclose }) {
             >
               E-mail Address
             </label>
+            {emailError && (
+              <label className="text-red-700 text-xs">{emailError}</label>
+            )}
           </div>
         </div>
         <div className="flex">
-          <div className="mb-8 pr-2 w-1/4">
+          <div className="mb-10 pr-2 w-1/4">
             <div>
-              <select disabled className="border-b-2 border-gray-500 h-10 w-20">
+              <select disabled className="border-b-2 border-gray-500 h-8 w-20">
                 <option
                   value="20"
                   selected="selected"
@@ -207,14 +313,7 @@ export default function Register({ registerclose }) {
           </div>
           <div className="mb-8 pl-2 pr-2 w-1/4">
             <div>
-              <select
-                onChange={(e) => {
-                  changeValue(e);
-                }}
-                name="phoneType"
-                className="border-b-2 border-gray-500 h-10 w-20"
-                required
-              >
+              <select className="border-b-2 border-gray-500 h-8 w-20">
                 <option value="select">select</option>
                 <option value="10">10</option>
                 <option value="11">11</option>
@@ -223,7 +322,8 @@ export default function Register({ registerclose }) {
               </select>
             </div>
           </div>
-          <div className="mb-4 pl-2 w-3/4">
+          {/* mobile */}
+          <div className="mb-4 pl-2 w-1/2">
             <div className="relative flex-col">
               <input
                 onChange={(e) => {
@@ -232,26 +332,31 @@ export default function Register({ registerclose }) {
                 name="pNum"
                 value={userData["{pNum}"]}
                 type="text"
-                required
                 placeholder=" "
-                className="
+                className={`
             relative
             border-0
-            border-b-2 border-gray-500 
+            border-b-2 ${mobileError ? "border-red-600" : "border-gray-500 "}
             w-full
             bg-transparent 
             outline-none
-            h-10
+            h-8
             peer
-              "
+              `}
+                name="pNum"
+                value={userData["{pNum}"]}
+                onChange={(e) => {
+                  changeValue(e);
+                }}
+                onBlur={() => validateMobile()}
               />
               <label
                 className="peer-focus:font-medium
                 absolute text-sm duration-500
-                transform -translate-y-8 scale-75
+                transform -translate-y-4 scale-75
                 top-0 left-0 -z-10 origin-[0]
                 peer-focus:left-0
-                peer-focus:text-slate-700 text-slate-500
+                peer-focus:text-slate-500 text-slate-500
                 peer-placeholder-shown:scale-100
                 peer-placeholder-shown:-translate-y-0
                 peer-placeholder-shown:text-slate-950
@@ -261,10 +366,14 @@ export default function Register({ registerclose }) {
               >
                 Mobile phone
               </label>
+              {mobileError && (
+                <label className="text-red-700 text-xs">{mobileError}</label>
+              )}
             </div>
           </div>
         </div>
-        <div className="mb-8  ">
+        {/* passwors */}
+        <div className="mb-10  ">
           {/* password */}
           <div className="relative flex-col">
             <input
@@ -275,36 +384,49 @@ export default function Register({ registerclose }) {
               value={userData["password"]}
               type="password"
               required
-              placeholder=" "
-              className="
-            relative
-            border-0
-            border-b-2 border-gray-500 
-            w-full
-            bg-transparent 
-            outline-none
-            h-10
-            px-2 peer
-              "
+              placeholder=""
+              className={`
+                    relative
+                    border-0
+                    border-b-2 ${
+                      passwordError ? "border-red-600" : "border-gray-500 "
+                    }
+                    w-full
+                    bg-transparent 
+                    outline-none
+                    h-8
+                    px-2 peer
+                    
+                    `}
+              name="password"
+              value={userData["password"]}
+              onChange={(e) => {
+                changeValue(e);
+              }}
+              onBlur={() => validatePassword()}
             />
             <label
               className="peer-focus:font-medium
                 absolute text-sm duration-500
-                transform -translate-y-8 scale-75
+                transform -translate-y-4 scale-75
                 top-0 left-0 -z-10 origin-[0]
                 peer-focus:left-0
-                peer-focus:text-slate-700 text-slate-500
+                peer-focus:text-slate-500 text-slate-500
                 peer-placeholder-shown:scale-100
                 peer-placeholder-shown:-translate-y-0
                 peer-placeholder-shown:text-slate-950
                 peer-focus:scale-75
                 peer-focus:-translate-y-4
-            "
+                "
             >
               Password
             </label>
+            {passwordError && (
+              <span className=" text-red-700 text-xs">{passwordError}</span>
+            )}
           </div>
         </div>
+
         <div className="mb-8">Date of Birth</div>
 
         <div className="flex mb-8">

@@ -1,8 +1,11 @@
-import React from "react";
-import { useState } from "react";
-import {  isUser } from "../../../servises/backend";
-
+import React, { useState } from "react";
+import { signIn, getUserItems } from "../../../servises/backend";
+import { UserContext } from "../../../context/Context";
+import { useContext } from "react";
 export default function Signin() {
+  const { setIsUserGuest, setCart, setFav  } = useContext(UserContext);
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -13,17 +16,54 @@ export default function Signin() {
     cloneUserData[name] = value;
     setUserData(cloneUserData);
   };
+
+  function validateEmail() {
+    if (userData["email"] === "") {
+      setEmailError("this field is required");
+      return false;
+      /*??  || !userData['email'].includes(".com") */
+    } else if (!userData["email"].includes("@")) {
+      setEmailError("wrong format");
+      return false;
+    } else {
+      setEmailError("");
+      return true;
+    }
+  }
+
+  function validatePassword() {
+    if (userData["password"] === "") {
+      setPasswordError("this field is required");
+      return false;
+    } else if (
+      userData["password"].length < 8 &&
+      userData["password"].length > 20
+    ) {
+      setPasswordError("wrong format");
+      return false;
+    } else {
+      setPasswordError("");
+      return true;
+    }
+  }
+
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault()
-        let result = isUser(userData);
-        alert(result.message);
-      }}
       className=" w-96 relative z-10 p-5"
+      onSubmit={(e) => {
+        e.preventDefault();
+        let res1 = validatePassword();
+        let res2 = validateEmail();
+        if (res1 && res2) {
+          let result = signIn(userData);
+          if (result.success) setIsUserGuest(false);
+          alert(result.message);
+          setCart(getUserItems('cart'))
+          setFav(getUserItems('favorites'))
+        }
+      }}
     >
       <div className="mb-8 text-xs ">LOG IN WITH E-MAIL ADDRESS</div>
-      {/* name */}
       <div className="mb-8 ">
         {/* email */}
         <div className="relative">
@@ -33,18 +73,22 @@ export default function Signin() {
             }}
             name="email"
             type="email"
-            required
             placeholder=" "
-            className="
+            className={`
             relative
             border-0
-            border-b-2 border-gray-500 
+            border-b-2 ${emailError ? "border-red-600" : "border-gray-500 "} 
             w-full
             bg-transparent 
             outline-none
             h-10
-            pt-2 peer
-              "
+            pt-2 peer `}
+            name="email"
+            value={userData["email"]}
+            onChange={(e) => {
+              changeValue(e);
+            }}
+            onBlur={() => validateEmail()}
           />
           <label
             className="peer-focus:font-medium
@@ -62,31 +106,39 @@ export default function Signin() {
           >
             E-mail Address
           </label>
+          {emailError && (
+            <label className="text-red-700 text-xs">{emailError}</label>
+          )}
         </div>
       </div>
       {/* password */}
-      <div className="mb-8 ">
-        {/* email */}
-        <div className="relative">
+      <div className="mb-8">
+        <div className="relative ">
           <input
             onChange={(e) => {
               changeValue(e);
             }}
             name="password"
             type="password"
-            required
             placeholder=" "
-            className="
+            className={`
             relative
-            border-0
-            border-b-2 border-gray-500 
-            w-full
             bg-transparent 
+            border-0
+            border-b-2 ${passwordError ? "border-red-600" : "border-gray-500 "} 
+            w-full 
             outline-none
             h-10
             pt-2 peer
-              "
+              `}
+            name="password"
+            value={userData["password"]}
+            onChange={(e) => {
+              changeValue(e);
+            }}
+            onBlur={() => validatePassword()}
           />
+
           <label
             className="peer-focus:font-medium
                 absolute text-sm duration-500
@@ -103,6 +155,9 @@ export default function Signin() {
           >
             Password
           </label>
+          {passwordError && (
+            <label className="text-red-700 text-xs">{passwordError}</label>
+          )}
         </div>
       </div>
       {/* checkbox and forgot password */}

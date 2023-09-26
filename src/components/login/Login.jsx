@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Register from "./Register/Register";
 import Signin from "./Sign in/Signin";
 
-export default function Login({loginclose,registerBtn,setRegisterBtn}) {
-
+export default function Login({ loginclose, registerBtn, setRegisterBtn }) {
   function NavLogin() {
     if (registerBtn) return <Register />;
     else return <Signin />;
@@ -11,15 +10,16 @@ export default function Login({loginclose,registerBtn,setRegisterBtn}) {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-center w-96 p-5 bg-white h-full"> 
+      <div className=" flex flex-col  items-center justify-center w-96 p-5 bg-white h-full dark:bg-stone-800 dark:text-white"> 
         <div className="w-full flex justify-end">
           <button
             onClick={() => {
               loginclose(false);
             }}
-            className=""
+            className="w-10"
           >
-            X
+            <span className="w-24 pr-2 pl-2">
+            <i class="text-4xl bx bx-x"></i></span>
           </button>
         </div>
         <div className="w-full">
@@ -32,6 +32,7 @@ export default function Login({loginclose,registerBtn,setRegisterBtn}) {
               }
             >
               <button
+                className="font-medium"
                 type="submit"
                 onClick={() => {
                   setRegisterBtn(false);
@@ -48,12 +49,12 @@ export default function Login({loginclose,registerBtn,setRegisterBtn}) {
               }
             >
               <button
-                className="justify-items-center"
+                className="justify-items-center text-center font-medium"
                 onClick={() => {
                   setRegisterBtn(true);
                 }}
               >
-                <span className="text-center">Register</span>
+                Register
               </button>
             </div>
           </div>

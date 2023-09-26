@@ -1,6 +1,5 @@
 import ImageSlider from "../components/clothes-page/ImageSlider";
 import Trends from "../components/clothes-page/Trends";
-import { getData } from "../servises/dataCenter";
 import { Link } from "react-router-dom";
 export default function GenderHomePage({ gender, genderData }) {
   let query = `/products/gender:${gender}`;
