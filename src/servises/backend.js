@@ -13,10 +13,10 @@ const addUser = (userDetails) => {
 const isUser = (user) => {
   let allUsers = JSON.parse(localStorage.getItem("users"));
   console.log(allUsers);
-  console.log(user)
+  console.log(user);
   if (allUsers) {
     let result = allUsers.reduce((a, b) => {
-      console.log({b})
+      console.log({ b });
       return (
         a ||
         (b["userDetails"]["email"] === user["email"] &&
@@ -40,16 +40,21 @@ const signIn = (userDetails) => {
 };
 const getUserItems = (name) => {
   let cUserEmail = localStorage.getItem("cUser");
-  let user =  JSON.parse(localStorage.getItem("users")).find((user) => {
-    return user["userDetails"]["email"] === cUserEmail;
-  });
-  return (user)? user[name] : [];
+  let users = JSON.parse(localStorage.getItem("users"));
+  if (users) {
+    let user = users.find((user) => {
+      return user["userDetails"]["email"] === cUserEmail;
+    });
+    return user ? user[name] : [];
+  } else {
+    return [];
+  }
 };
-const changeUser = (user, name ,items) => {
-  let newUser = {...user}
+const changeUser = (user, name, items) => {
+  let newUser = { ...user };
   newUser[name] = items;
-  return newUser
-}
+  return newUser;
+};
 const updateLocalStorage = (name, items) => {
   let cUserEmail = localStorage.getItem("cUser");
   let newUsers = JSON.parse(localStorage.getItem("users")).map((user) => {
@@ -57,15 +62,8 @@ const updateLocalStorage = (name, items) => {
       ? changeUser(user, name, items)
       : user;
   });
-  console.log(newUsers)
-  localStorage.setItem('users', JSON.stringify(newUsers));
+  console.log(newUsers);
+  localStorage.setItem("users", JSON.stringify(newUsers));
 };
 
-export {
-  addUser,
-  isUser,
-  isGuest,
-  getUserItems,
-  signIn,
-  updateLocalStorage,
-};
+export { addUser, isUser, isGuest, getUserItems, signIn, updateLocalStorage };
