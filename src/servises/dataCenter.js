@@ -1,13 +1,12 @@
 import { data } from "./fullData";
 
-localStorage.setItem("dataloaded", "true");
 function ifExist(data, key, valueArray) {
   return valueArray.reduce((a, b) => {
     console.log({ a, b });
     return a || data[key] === b;
   }, false);
 }
-function toObj(inputQuery) {
+function toArray(inputQuery) {
   return inputQuery
     .split(";")
     .map((x) => {
@@ -19,7 +18,7 @@ function toObj(inputQuery) {
     });
 }
 function getData(query) {
-  let objQuery = toObj(query);
+  let objQuery = toArray(query);
   let requesteData = data.filter((d) => {
     return objQuery.reduce((a, b) => {
       return a && ifExist(d, b[0], b[1]);
