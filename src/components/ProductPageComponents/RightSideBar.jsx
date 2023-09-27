@@ -11,10 +11,14 @@ export default function RightSideBar({ productData }) {
     <div className="flex flex-col gap-2  max-w-[400px]">
       <div
         onClick={() => {
-          if (isHearted) {
-            addToFav(productData);
+          if (isGuest()) {
+            alert("log in first");
           } else {
-            removeFromFav(productData);
+            if (!isHearted(productData)) {
+              addToFav(productData);
+            } else {
+              removeFromFav(productData);
+            }
           }
         }}
         className="flex justify-between items-center"
