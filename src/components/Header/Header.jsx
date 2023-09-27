@@ -37,7 +37,7 @@ export default function Header({
 
   function LoginMenu() {
     return (
-      <div className="hidden group-hover:block absolute bg-white z-10 w-64 h-48 ">
+      <div className="hidden group-hover:block absolute bg-white z-10 w-64 h-48 dark:bg-stone-950 ">
         <div className="p-3">
           <div className="mb-3">
             <button
@@ -183,8 +183,8 @@ export default function Header({
           />
         </div>
         <div className="">
-          <nav className="defacto-nav">
-            <ul className=" p-0 m-0 gap-8 flex items-center">
+          <nav className=" defacto-nav">
+            <ul className="hidden md:flex p-0 m-0 gap-8  items-center">
               {isUserGuest ? (
                 <div
                   className="group read-only:"
@@ -220,7 +220,7 @@ export default function Header({
 
               <li
                 onClick={() => ToggleCartMenu(true)}
-                className=" flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300"
+                className="flex gap-2 items-center text-xl hover:border-b-2 border-black hover:text-gray-400 hover:border-gray-300"
               >
                 <i class="bx bx-shopping-bag"></i>
 
@@ -233,9 +233,22 @@ export default function Header({
               </li>
             </ul>
 
-            <div className="md:hidden text-4xl">
-              <i onClick={() => SetPhoneMenu(true)} class="bx bx-menu"></i>
-            </div>
+            <div className="md:hidden text-4xl flex">
+            
+          <div>
+                
+                <Link to={'/favorites'} className="  text-base hover:text-gray-400">
+                <i class="text-4xl bx bx-heart"> </i>
+                </Link>
+              </div>
+            
+            
+            <i onClick={() => SetPhoneMenu(true)} class='bx bx-menu'></i>
+
+            
+
+          </div>
+
           </nav>
         </div>
       </div>
@@ -273,6 +286,8 @@ export default function Header({
               Phoneprops={SetPhoneMenu}
               logintoggle={logintoggle}
               carttoggle={SetCartMenu}
+              setGenderChoosed={setGenderChoosed} genderChoosed={genderChoosed}
+
             />
           </div>
         </div>
