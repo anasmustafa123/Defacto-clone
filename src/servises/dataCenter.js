@@ -27,11 +27,33 @@ function getData(query) {
   console.log(requesteData);
   return requesteData;
 }
-
+function sortData(sortKey, data) {
+  let newArr = [...data];
+  newArr =
+    sortKey === "price"
+      ? newArr.sort((a, b) => {
+          console.log(
+            a[sortKey].replace("$", "") - b[sortKey].replace("$", "")
+          );
+          return parseInt(
+            a[sortKey].replace("$", "") - b[sortKey].replace("$", "")
+          );
+        })
+      : sortKey == "name"
+      ? newArr.sort((a, b) => {
+          return a["productName"].toLowerCase() - b["productName"].toLowerCase();
+        })
+      : sortKey == "productId"
+      ? newArr.sort((a, b) => {
+          return a["productId"] - b["productId"];
+        })
+      : newArr;
+  return newArr;
+}
 const searchById = (id) => {
   return data.find((e) => {
     return e.productId == id;
   });
 };
 
-export { getData, searchById };
+export { getData, searchById, sortData };

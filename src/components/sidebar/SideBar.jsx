@@ -47,7 +47,7 @@ export default function SideBar({ className }) {
           <>
             <div className="flex ml-5">
               <input
-                value={v['key']}
+                value={v["key"]}
                 onChange={(e) => {
                   if (!e.target.checked) {
                     let copy = selectedGender.filter((oneGender) => {
@@ -61,7 +61,7 @@ export default function SideBar({ className }) {
                 type="checkbox"
               />
               <p className="ml-2" key={index}>
-                {v['value']}
+                {v["value"]}
               </p>
             </div>
           </>
@@ -74,7 +74,7 @@ export default function SideBar({ className }) {
             <div className="flex ml-5">
               <input
                 type="checkbox"
-                value={v['key']}
+                value={v["key"]}
                 onChange={(e) => {
                   if (!e.target.checked) {
                     let copy = selectedCategory.filter((oneCategory) => {
@@ -87,7 +87,7 @@ export default function SideBar({ className }) {
                 }}
               />
               <p className="ml-2" key={index}>
-                {v['value']}
+                {v["value"]}
               </p>
             </div>
           </>
@@ -107,6 +107,11 @@ export default function SideBar({ className }) {
       <div className="flex justify-center">
         <Link
           to={`/products/${strToQuery(selectedGender, selectedCategory)}`}
+          onClick={() => {
+            setTimeout(()=>{
+              window.location.reload();
+            },1000)
+          }}
           type="submit"
           className="pl-10 pr-10 pt-1 pb-1 bg-gray-500 mt-3 rounded-2xl text-white"
         >

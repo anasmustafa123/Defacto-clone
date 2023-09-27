@@ -5,10 +5,9 @@ export default function ProductsView({ gridCol, id = 0, data }) {
   const viewNum = 16;
   const viewSize = Math.floor(data.length / viewNum);
   let gridColsNum = `grid-cols-${gridCol}`;
+  
   //reset the number with any any change in data by filtering
-  useEffect(() => {
-    setViewIndex(0);
-  }, [data]);
+
   return (
     <div>
       <div
